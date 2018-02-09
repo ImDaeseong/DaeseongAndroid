@@ -3,6 +3,7 @@ package com.im.daeseong.banner_test;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -85,6 +86,16 @@ public class Banner_util {
                 //Log.e(TAG, "sTime:" +  String_util.getTime());
                 //Log.e(TAG, "sTime1:" +  String_util.getDate(String_util.getTime(), "yyyy-MM-dd hh:mm:ss"));
                 //Log.e(TAG, "isExpired:" +  String_util.isExpired("2018-02-03"));
+                //Log.e(TAG, "removeQuoted:" + String_util.removeQuoted("\"test\""));
+                //Log.e(TAG, "isPhoneNo:" + String_util.isPhoneNo("010-1234-5678"));
+                //Log.e(TAG, "isEmail:" + String_util.isEmail("test@test.co"));
+                //Log.e(TAG, "isNumeric:" + String_util.isNumeric("101030305"));
+                //Log.e(TAG, "isNumericInc:" + String_util.isNumericInc("ABD-3030-A"));
+                //Log.e(TAG, "getBannerIndex:" + String_util.getBannerIndex());
+                //String[] result =  String_util.split("test1;test2;test3", ";");
+                //for(int i=0; i <result.length; i++){
+                //    Log.e(TAG, "split:" + result[i]);
+                //}
 
                 bitmap = DownLoadImage(url);
 
