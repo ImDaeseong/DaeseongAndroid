@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ViewPager_test</string>
+
+    <string-array name="titles">
+        <item>number1</item>
+        <item>number2</item>
+        <item>number3</item>
+        <item>number4</item>
+    </string-array>
+
+    <string-array name="colors">
+        <item>#312f31</item>
+        <item>#f04a4c</item>
+        <item>#642b51</item>
+        <item>#06b4cf</item>
+    </string-array>
+
+</resources>
