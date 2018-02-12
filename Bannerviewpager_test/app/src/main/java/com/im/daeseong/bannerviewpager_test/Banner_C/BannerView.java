@@ -19,9 +19,9 @@ public class BannerView {
     private ViewPager viewPager;
     public PagerAdapter pagerAdapter;
 
-    private final int DELAY_TIME = 4000;
+    private final int DELAY_TIME = 5000;
 
-    private final int SCROLL_TIME = 400;
+    private final int SCROLL_TIME = 500;
     public LinearLayout linearLayout;
     private View bannerView;
     private int[] pics;
