@@ -14,7 +14,7 @@ public class Banner3styleActivity extends AppCompatActivity {
 
     private BannerView BannerView3;
 
-    private int[] imgs = new int[]{R.drawable.banner8,R.drawable.banner8,R.drawable.banner8,R.drawable.banner8};
+    private int[] imgs = new int[]{R.drawable.number1,R.drawable.number2,R.drawable.number3,R.drawable.number4};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

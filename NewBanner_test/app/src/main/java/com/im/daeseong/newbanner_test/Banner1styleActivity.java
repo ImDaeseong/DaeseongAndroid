@@ -22,10 +22,10 @@ public class Banner1styleActivity extends AppCompatActivity {
 
         Bitmap bitmap = null;
         try{
-            bitmap = new BannerdisplayImage().execute("https://images.everyfit.co.kr/FRONT/images/main/visual_sfMarket.jpg").get();
+            bitmap = new BannerdisplayImage().execute("https://.png").get();
         }catch (Exception e){
             e.printStackTrace();
         }
-        BannerView1.setImage(bitmap, R.drawable.banner8);
+        BannerView1.setImage(bitmap, R.drawable.number1);
     }
 }

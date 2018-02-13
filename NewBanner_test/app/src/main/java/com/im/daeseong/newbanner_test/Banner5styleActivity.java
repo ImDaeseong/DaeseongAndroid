@@ -12,7 +12,7 @@ public class Banner5styleActivity extends AppCompatActivity {
 
     private BannerView bannerView5;
 
-    private int[] imgs = new int[]{R.drawable.netmarbleadv02,R.drawable.netmarbleadv03,R.drawable.netmarbleadv04,R.drawable.banner8};
+    private int[] imgs = new int[]{R.drawable.number1,R.drawable.number2,R.drawable.number3,R.drawable.number4};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -3,10 +3,6 @@ package com.im.daeseong.newbanner_test;
 import android.app.Application;
 import android.content.Context;
 
-/**
- * Created by Daeseong on 2018-02-10.
- */
-
 public class MyApplication extends Application {
 
     private static MyApplication instance;

@@ -10,10 +10,6 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * Created by Daeseong on 2018-02-09.
- */
-
 public class BannerdisplayImage extends AsyncTask<String, Void, Bitmap> {
 
     @Override
