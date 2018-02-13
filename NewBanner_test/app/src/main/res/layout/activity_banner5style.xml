@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.im.daeseong.newbanner_test.Banner3styleActivity">
+    tools:context="com.im.daeseong.newbanner_test.Banner5styleActivity">
 
     <RelativeLayout
         android:layout_width="368dp"
@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.im.daeseong.newbanner_test.Banner3_style.BannerView
+        <com.im.daeseong.newbanner_test.Banner5_style.BannerView
             android:id="@+id/mBannerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

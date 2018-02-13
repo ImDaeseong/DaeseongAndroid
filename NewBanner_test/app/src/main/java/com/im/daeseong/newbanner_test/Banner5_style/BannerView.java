@@ -1,34 +1,41 @@
-package com.im.daeseong.newbanner_test.Banner4_style;
+package com.im.daeseong.newbanner_test.Banner5_style;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-
-import java.lang.reflect.Field;
-
 import android.view.animation.AccelerateInterpolator;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
 
 import com.im.daeseong.newbanner_test.R;
 
+import java.lang.reflect.Field;
+
 
 public class BannerView extends RelativeLayout {
+
+    private static final String TAG = BannerView.class.getSimpleName();
 
     protected ViewPager mViewPager;
     protected BannerAdapter mAdapter;
 
     private ClickListener listener;
-    private int CurrentPosition;
+    private int CurrentPosition = 0;
     private ViewPagerIndicatorView BannerDotView;
     private Context context;
     private final int SCROLL_TIME = 400;
+
+    private int nSize = 0;
+
 
     public BannerView(@NonNull Context context) {
         super(context);
@@ -47,13 +54,13 @@ public class BannerView extends RelativeLayout {
 
     private void initView(Context context) {
         this.context = context;
-        LayoutInflater.from(getContext()).inflate(R.layout.banner4_style_view, this);
-        mViewPager = (ViewPager)findViewById(R.id.banner4style_widget);
+        LayoutInflater.from(getContext()).inflate(R.layout.banner5_style_view, this);
+        mViewPager = (ViewPager)findViewById(R.id.banner5style_widget);
         BannerDotView = (ViewPagerIndicatorView) findViewById(R.id.indicator);
         initViewPager();
 
         final GestureDetector tapGestureDetector = new GestureDetector(getContext(), new TapGestureListener());
-        mViewPager = (ViewPager) findViewById(R.id.banner4style_widget);
+        mViewPager = (ViewPager) findViewById(R.id.banner5style_widget);
         mViewPager.addOnPageChangeListener(onPageChangeListener);
         setViewPagerDuration();
         mViewPager.setOnTouchListener(new OnTouchListener() {
@@ -70,16 +77,44 @@ public class BannerView extends RelativeLayout {
         mViewPager.setAdapter(mAdapter);
     }
 
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+
+            int item = mViewPager.getCurrentItem();
+            if(nSize != 0){
+                item = (item + 1) % nSize;
+            }else {
+                item = 0;
+            }
+            mViewPager.setCurrentItem(item, false);
+
+            /*
+            if(CurrentPosition > mViewPager.getCurrentItem()) {
+                CurrentPosition = 0;
+                mViewPager.setCurrentItem(CurrentPosition, false);
+            }else {
+                CurrentPosition = mViewPager.getCurrentItem() + 1;
+                mViewPager.setCurrentItem(CurrentPosition, false);
+                handler.sendEmptyMessageDelayed(0, 5000);
+            }
+            */
+        }
+    };
+
     public void setBannerData(int[] bannerData, ClickListener listener) {
 
         mAdapter.setData(bannerData);
 
+        nSize = bannerData.length;
+
         this.listener = listener;
 
         if(mAdapter.getCount() > 1){
-            mViewPager.setCurrentItem(0, false);
+            mViewPager.setCurrentItem(0, true);
             BannerDotView.init(mAdapter.getCount(), R.drawable.dot_off, R.drawable.dot_on, 15);
-            BannerDotView.setSelection(0);
+            BannerDotView.setSelection(CurrentPosition);
+            handler.sendEmptyMessageDelayed(0,5000);
         }
     }
 
@@ -90,8 +125,11 @@ public class BannerView extends RelativeLayout {
 
         @Override
         public void onPageSelected(int position) {
+
+            handler.removeMessages(0);
             CurrentPosition = position % mAdapter.getCount();
             BannerDotView.setSelection(CurrentPosition);
+            handler.sendEmptyMessageDelayed(0, 5000);
         }
 
         @Override

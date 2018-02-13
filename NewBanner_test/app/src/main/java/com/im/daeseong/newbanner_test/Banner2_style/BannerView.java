@@ -8,7 +8,6 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -21,9 +20,6 @@ import android.widget.RelativeLayout;
 
 import com.im.daeseong.newbanner_test.MainActivity;
 
-/**
- * Created by Daeseong on 2018-02-09.
- */
 
 public class BannerView  extends RelativeLayout implements View.OnTouchListener {
 

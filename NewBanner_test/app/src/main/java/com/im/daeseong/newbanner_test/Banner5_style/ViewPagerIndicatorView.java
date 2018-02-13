@@ -1,8 +1,7 @@
-package com.im.daeseong.newbanner_test.Banner4_style;
+package com.im.daeseong.newbanner_test.Banner5_style;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -33,10 +32,10 @@ public class ViewPagerIndicatorView extends LinearLayout {
         mDefaultDot = defaultDot;
         mSelectedDot = selectedDot;
 
-        for (int i=0;i<count;i++) {
+        for (int i = 0; i < count; i++) {
             dotImages[i] = new ImageView(mContext);
 
-           LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+            LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
             params.topMargin = 0;
             params.bottomMargin = 0;
@@ -54,7 +53,7 @@ public class ViewPagerIndicatorView extends LinearLayout {
     }
 
     public void setSelection(int position) {
-        for (int i=0;i<dotImages.length;i++) {
+        for (int i = 0; i < dotImages.length; i++) {
             if (i == position) {
                 dotImages[i].setImageResource(mSelectedDot);
             } else {

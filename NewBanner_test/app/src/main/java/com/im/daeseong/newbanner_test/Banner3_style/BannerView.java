@@ -3,137 +3,89 @@ package com.im.daeseong.newbanner_test.Banner3_style;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.view.PagerAdapter;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
+
 import com.im.daeseong.newbanner_test.R;
-
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 
-
-/**
- * Created by Daeseong on 2018-02-10.
- */
 
 public class BannerView extends RelativeLayout {
 
+    private static final String TAG = BannerView.class.getSimpleName();
+
+    protected ViewPager mViewPager;
+    protected BannerAdapter mAdapter;
+
+    private ClickListener listener;
+    private int CurrentPosition = 0;
+    private ViewPagerIndicatorView BannerDotView;
     private Context context;
-    private ViewPager BannerPager;
-    private BannerAdapter adapter;
-    private DotView BannerDotView;
-
-    private ArrayList<Banner> banners;
-    private int position;
-
-
-    private final int DELAY_TIME = 5000;
-    private final int SCROLL_WHAT = 0;
     private final int SCROLL_TIME = 400;
 
-    private BannerItemClickListener listener;
-
-    public BannerView(Context context){
+    public BannerView(@NonNull Context context) {
         super(context);
-        this.context = context;
-        initView();
+        initView(context);
     }
 
-    public BannerView(Context context, AttributeSet attributeSet){
-        super(context, attributeSet);
-        this.context = context;
-        initView();
+    public BannerView(@NonNull Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+        initView(context);
     }
 
-    public BannerView(Context context, AttributeSet attributeSet, int defStyleAttr){
-        super(context, attributeSet, defStyleAttr);
-        this.context = context;
-        initView();
+    public BannerView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        initView(context);
     }
 
-    private void initView(){
+    private void initView(Context context) {
+        this.context = context;
         LayoutInflater.from(getContext()).inflate(R.layout.banner3_style_view, this);
-        BannerPager = (ViewPager) findViewById(R.id.banner3style_widget);
-        BannerPager.addOnPageChangeListener(onPageChangeListener);
+        mViewPager = (ViewPager)findViewById(R.id.banner3style_widget);
+        BannerDotView = (ViewPagerIndicatorView) findViewById(R.id.indicator);
+        initViewPager();
+
+        final GestureDetector tapGestureDetector = new GestureDetector(getContext(), new TapGestureListener());
+        mViewPager = (ViewPager) findViewById(R.id.banner3style_widget);
+        mViewPager.addOnPageChangeListener(onPageChangeListener);
         setViewPagerDuration();
-        BannerDotView = (DotView) findViewById(R.id.banner3style_DotView);
-    }
-
-    public void setUpData(ArrayList<Banner> banners, BannerItemClickListener listener) {
-        this.banners = banners;
-        this.listener = listener;
-        adapter = new BannerAdapter();
-        BannerPager.setAdapter(adapter);
-        int half = Short.MAX_VALUE / 2;
-        half = half - half % banners.size();
-        BannerPager.setCurrentItem(half);
-    }
-
-    Handler handler = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-
-            BannerPager.setCurrentItem(BannerPager.getCurrentItem() + 1);
-            handler.sendEmptyMessageDelayed(SCROLL_WHAT,DELAY_TIME);
-            /*
-            if (position < Short.MAX_VALUE - 1){
-                BannerPager.setCurrentItem(position + 1, true);
-                handler.sendEmptyMessageDelayed(SCROLL_WHAT, DELAY_TIME);
+        mViewPager.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                tapGestureDetector.onTouchEvent(event);
+                return false;
             }
-            */
-        }
-    };
-
-    public void onStart(){
-        handler.removeMessages(0);
-        handler.sendEmptyMessageDelayed(SCROLL_WHAT, DELAY_TIME);
+        });
     }
 
-    public void onStop(){
-        handler.removeMessages(0);
+    protected void initViewPager() {
+        mAdapter = new BannerAdapter(getContext(), new int[]{});
+        mViewPager.setAdapter(mAdapter);
     }
 
-    private class BannerAdapter extends PagerAdapter{
+    public void setBannerData(int[] bannerData, ClickListener listener) {
 
-        @Override
-        public int getCount() {
-            return Short.MAX_VALUE;
-        }
+        mAdapter.setData(bannerData);
 
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return view == object;
-        }
+        this.listener = listener;
 
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-
-            final int index = position % banners.size();
-            final Banner banner = banners.get(index);
-            final ImageView imageView = new ImageView(getContext());
-            imageView.setImageResource(banner.resId);
-            /*
-            imageView.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onBannerClick(index, banner);
-                }
-            });
-            */
-            container.addView(imageView);
-            return imageView;
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            container.removeView((View)object);
+        if(mAdapter.getCount() > 1){
+            mViewPager.setCurrentItem(0, false);
+            BannerDotView.init(mAdapter.getCount(), R.drawable.dot_off, R.drawable.dot_on, 15);
+            BannerDotView.setSelection(0);
         }
     }
 
@@ -144,9 +96,8 @@ public class BannerView extends RelativeLayout {
 
         @Override
         public void onPageSelected(int position) {
-            handler.removeMessages(0);
-            BannerDotView.notifyDataChanged(position % banners.size(), banners.size());
-            handler.sendEmptyMessageDelayed(SCROLL_WHAT, DELAY_TIME);
+            CurrentPosition = position % mAdapter.getCount();
+            BannerDotView.setSelection(CurrentPosition);
         }
 
         @Override
@@ -154,15 +105,23 @@ public class BannerView extends RelativeLayout {
         }
     };
 
-    public interface BannerItemClickListener {
-        void onClink(String url);
+    private class TapGestureListener extends GestureDetector.SimpleOnGestureListener {
+        @Override
+        public boolean onSingleTapConfirmed(MotionEvent e) {
+
+            if(listener != null) {
+                int nClick = CurrentPosition % mAdapter.getCount();
+                listener.onClink(String.valueOf("nClick:" + nClick));
+            }
+            return false;
+        }
     }
 
     private void setViewPagerDuration(){
         try {
             Field field = ViewPager.class.getDeclaredField("mScroller");
             field.setAccessible(true);
-            field.set(BannerPager,getScroller(SCROLL_TIME));
+            field.set(mViewPager,getScroller(SCROLL_TIME));
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -180,14 +139,8 @@ public class BannerView extends RelativeLayout {
         return scroller;
     }
 
-    public static class Banner {
-        public int resId;
-        public String title;
-
-        public Banner(int resId, String title ) {
-            this.resId = resId;
-            this.title = title;
-        }
+    public interface ClickListener {
+        void onClink(String url);
     }
 
 }

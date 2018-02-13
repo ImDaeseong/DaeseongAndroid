@@ -14,23 +14,18 @@ public class Banner3styleActivity extends AppCompatActivity {
 
     private BannerView BannerView3;
 
+    private int[] imgs = new int[]{R.drawable.banner8,R.drawable.banner8,R.drawable.banner8,R.drawable.banner8};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_banner3style);
 
-        BannerView3 = (BannerView)findViewById(R.id.BannerView3);
-
-        ArrayList<BannerView.Banner> banners = new ArrayList<>();
-        banners.add(new BannerView.Banner(R.drawable.banner8, "title1"));
-        banners.add(new BannerView.Banner(R.drawable.banner8, "title2"));
-        banners.add(new BannerView.Banner(R.drawable.banner8, "title3"));
-        banners.add(new BannerView.Banner(R.drawable.banner8, "title4"));
-        BannerView3.setUpData(banners, new BannerView.BannerItemClickListener() {
+        BannerView3 = (com.im.daeseong.newbanner_test.Banner3_style.BannerView) findViewById(R.id.mBannerView);
+        BannerView3.setBannerData(imgs, new com.im.daeseong.newbanner_test.Banner3_style.BannerView.ClickListener() {
             @Override
             public void onClink(String url) {
-
-                Log.e(TAG, "onClink");
+                Log.e(TAG, "url:" + url);
             }
         });
 

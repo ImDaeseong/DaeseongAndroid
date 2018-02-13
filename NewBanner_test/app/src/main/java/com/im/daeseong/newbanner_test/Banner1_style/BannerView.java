@@ -13,12 +13,8 @@ import android.widget.RelativeLayout;
 
 import com.im.daeseong.newbanner_test.Banner1styleActivity;
 import com.im.daeseong.newbanner_test.MainActivity;
-import com.im.daeseong.newbanner_test.MyApplication;
 import com.im.daeseong.newbanner_test.R;
 
-/**
- * Created by Daeseong on 2018-02-09.
- */
 
 public class BannerView extends RelativeLayout implements View.OnTouchListener  {
 
