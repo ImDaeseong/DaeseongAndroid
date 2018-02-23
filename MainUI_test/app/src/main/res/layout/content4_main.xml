@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        tools:context="com.ff.naviagtionexample.MainActivity"
+        tools:showIn="@layout/app4_bar_main">
+
+        <TextView
+            android:id="@+id/tv01"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:text="Hello World!" />
+
+        <TextView
+            android:id="@+id/tv02"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_below="@+id/tv01"
+            android:text="Hello World!" />
+
+        <TextView
+            android:id="@+id/tv03"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_below="@+id/tv02"
+            android:text="Hello World!" />
+
+        <TextView
+            android:id="@+id/tv04"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_below="@+id/tv03"
+            android:text="Hello World!" />
+
+        <TextView
+            android:id="@+id/tv05"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_below="@+id/tv04"
+            android:text="Hello World!" />
+
+        <TextView
+            android:id="@+id/tv06"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_below="@+id/tv05"
+            android:text="Hello World!" />
+
+
+    </RelativeLayout>
+
+</android.support.v4.widget.NestedScrollView>
