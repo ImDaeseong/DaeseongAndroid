@@ -44,18 +44,29 @@ public class MainActivity extends AppCompatActivity
 
         //startActivity(new Intent(this, Style1Activity_Dialog.class));
         //startActivity(new Intent(this, Style2Activity_Dialog.class));
-        startActivity(new Intent(this, Style3Activity_Dialog.class));
+        //startActivity(new Intent(this, Style3Activity_Dialog.class));
         //startActivity(new Intent(this, Style4Activity_Dialog.class));
     }
 
     @Override
     public void onBackPressed() {
+
+        /*
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
+        */
+
+        new Custom1_Dialog(this, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        }).show();
+
     }
 
     @Override

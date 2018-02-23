@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MainUI_test</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="font_fontFamily_medium">sans-serif-medium</string>
+
+    <string name="Tab1">Tab1</string>
+    <string name="Tab2">Tab2</string>
+    <string name="Tab3">Tab3</string>
+    <string name="Tab4">Tab4</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

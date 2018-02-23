@@ -31,7 +31,8 @@
             android:name=".Style3Activity_Dialog"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Dialog" />
-        <activity android:name=".Style4Activity_Dialog"
+        <activity
+            android:name=".Style4Activity_Dialog"
             android:screenOrientation="portrait"
             android:theme="@style/daeseong1DialogTheme"></activity>
     </application>
