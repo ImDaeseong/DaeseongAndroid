@@ -10,7 +10,11 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class Mainui2Activity extends AppCompatActivity {
 
@@ -18,6 +22,28 @@ public class Mainui2Activity extends AppCompatActivity {
     private TabLayout mtabLayout = null;
     private ViewPager mviewPager = null;
     private  Tab2PagerAdapter mtab2PagerAdapter = null;
+
+    private int[] tabIcons = {
+            R.drawable.b1,
+            R.drawable.b2,
+            R.drawable.b3,
+            R.drawable.b4
+    };
+
+    private int[] tabTexts = {
+            R.string.Tab1,
+            R.string.Tab2,
+            R.string.Tab3,
+            R.string.Tab4
+    } ;
+
+    private int[] tabIconsSelect = {
+            R.drawable.b1,
+            R.drawable.b2,
+            R.drawable.b3,
+            R.drawable.b4
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

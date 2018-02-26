@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:checkable="false"
+        android:icon="@drawable/b1"
+        android:title="title"
+        app:showAsAction="always"></item>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/b_news1"
+            android:title="b_news1	" />
+        <item
+            android:id="@+id/b_news2"
+            android:title="b_news2" />
+    </group>
+
+    <item
+        android:checkable="false"
+        android:icon="@drawable/b2"
+        android:title="title"
+        app:showAsAction="always"></item>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/b1_news1"
+            android:title="b1_news1" />
+        <item
+            android:id="@+id/b1_news2"
+            android:title="b1_news2" />
+    </group>
+
+    <item
+        android:checkable="false"
+        android:icon="@drawable/b3"
+        android:title="title"
+        app:showAsAction="always"></item>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/b2_news1"
+            android:title="b2_news1" />
+    </group>
+
+
+    <item
+        android:checkable="false"
+        android:icon="@drawable/b4"
+        android:title="title"
+        app:showAsAction="withText"></item>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/b3_news1"
+            android:title="b3_news1	" />
+    </group>
+
+
+    <item android:title="title"
+        android:checkable="false"
+        android:icon="@drawable/b1"></item>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/b4_news1"
+            android:title="b4_news1	" />
+    </group>
+
+    <item android:title="title"
+        android:checkable="false"
+        android:icon="@drawable/b2"></item>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/b5_news1"
+            android:title="b5_news1" />
+    </group>
+
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/face"
+                android:icon="@drawable/banner2"
+                android:title="facebook" />
+        </menu>
+    </item>
+
+</menu>

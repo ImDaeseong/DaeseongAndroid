@@ -26,4 +26,7 @@
     <color name="yellow">#FFE400</color>
     <color name="blue">#0054FF</color>
     <color name="orange">#FF5E00</color>
+    <color name="black">#000000</color>
+    <color name="PrimaryBackground">#2894FF</color>
+
 </resources>
