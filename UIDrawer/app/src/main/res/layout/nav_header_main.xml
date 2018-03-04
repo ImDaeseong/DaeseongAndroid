@@ -22,9 +22,27 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:srcCompat="@drawable/profile" />
+
+        <TextView
+            android:layout_width="47dp"
+            android:layout_height="47dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/ico_bg_num"
+            android:gravity="center"
+            android:lines="1"
+            android:text="999"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="15dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView1"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="@+id/imageView1"
+            app:layout_constraintRight_toRightOf="@+id/imageView1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.353" />
+
     </android.support.constraint.ConstraintLayout>
-
-
-
 
 </android.support.constraint.ConstraintLayout>

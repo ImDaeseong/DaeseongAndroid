@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView  Main_navigationView;
     private ViewPager Main_viewPager;
     private MainPagerAdapter mainPagerAdapter = null;
+
+    private ImageView profile;
 
 
     @Override
@@ -45,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
         Main_tabLayout = (TabLayout)findViewById(R.id.maintabLayout);
 
+        //탭 넓이 계산 -- 잘 않맞네
+        //Main_tabLayout.post(tabLayoutWidth);
+
         //Main_tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#FFFFFF"));
         //Main_tabLayout.setTabTextColors(Color.parseColor("#707070"), Color.parseColor("#FFFFFF"));
         //Main_tabLayout.getChildAt(0).setBackgroundColor(Color.parseColor("#008000")); // 배경색
@@ -60,6 +66,19 @@ public class MainActivity extends AppCompatActivity {
 
 
         Main_navigationView = (NavigationView)findViewById(R.id.mainnav_view);
+
+        //Drawer Header Menu 접근
+        View headerLayout = Main_navigationView.getHeaderView(0);
+        profile = (ImageView)headerLayout.findViewById(R.id.imageView1);
+        profile.setImageResource(R.drawable.profile1);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("tag", "profile");
+            }
+        });
+
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, Main_drawerLayout, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         Main_drawerLayout.setDrawerListener(toggle);
@@ -123,6 +142,26 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
+    Runnable tabLayoutWidth = new Runnable() {
+        @Override
+        public void run() {
+
+            if(Main_tabLayout.getWidth() < MainActivity.this.getResources().getDisplayMetrics().widthPixels ){
+                Main_tabLayout.setTabMode(TabLayout.MODE_FIXED);
+                ViewGroup.LayoutParams mParams = Main_tabLayout.getLayoutParams();
+                mParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                Main_tabLayout.setLayoutParams(mParams);
+
+                Log.e("tag", "tabLayoutWidth:MODE_FIXED");
+
+            }else{
+                Main_tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+
+                Log.e("tag", "tabLayoutWidth:MODE_SCROLLABLE");
+            }
+        }
+    };
 
     private void setInitTabLayout(){
 
