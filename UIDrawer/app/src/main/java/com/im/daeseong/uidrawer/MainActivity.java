@@ -48,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
         Main_tabLayout = (TabLayout)findViewById(R.id.maintabLayout);
 
-        //탭 넓이 계산 -- 잘 않맞네
-        //Main_tabLayout.post(tabLayoutWidth);
 
         //Main_tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#FFFFFF"));
         //Main_tabLayout.setTabTextColors(Color.parseColor("#707070"), Color.parseColor("#FFFFFF"));
@@ -212,6 +210,10 @@ public class MainActivity extends AppCompatActivity {
         Main_viewPager.setAdapter(mainPagerAdapter);
 
         Main_tabLayout.setupWithViewPager(Main_viewPager);
+
+        //탭 넓이 계산
+        //Main_tabLayout.post(tabLayoutWidth);
+        TabLayout_util.getInstance().dynamicSetTabLayoutMode(Main_tabLayout);
 
         Main_viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

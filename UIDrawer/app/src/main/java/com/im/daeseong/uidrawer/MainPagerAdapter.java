@@ -11,7 +11,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 public class MainPagerAdapter extends FragmentPagerAdapter {
 
     private static final int TAB_COUNT = 4;
-    private String titles[] = {"텝1", "텝2 테스트2", "텝3 테스트 탭3", "텝4 테스트"};
+    private String titles[] = {"텝1", "텝2", "텝3", "텝4"};
 
     public MainPagerAdapter(FragmentManager fm){
         super(fm);
