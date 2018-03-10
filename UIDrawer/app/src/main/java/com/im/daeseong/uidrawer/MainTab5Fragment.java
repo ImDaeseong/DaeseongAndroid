@@ -3,22 +3,20 @@ package com.im.daeseong.uidrawer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by Daeseong on 2018-03-02.
+ * Created by Daeseong on 2018-03-10.
  */
-
-public class MainTab4Fragment extends Fragment {
+public class MainTab5Fragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment4_main, container, false);
+        return inflater.inflate(R.layout.fragment5_main, container, false);
     }
 
     @Override
@@ -26,3 +24,4 @@ public class MainTab4Fragment extends Fragment {
         super.onDestroyView();
     }
 }
+
