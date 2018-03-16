@@ -39,6 +39,7 @@ public class MainTab3Fragment extends Fragment {
     private ProgressBar pProgressBar;
     private Context mContext;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private boolean bRefresh = false;
 
     @Nullable
     @Override
@@ -61,6 +62,8 @@ public class MainTab3Fragment extends Fragment {
             @Override
             public void onRefresh() {
                 try{
+                    Log.e(TAG, "onRefresh");
+                    bRefresh = true;
                     wvWebView.loadUrl(wvWebView.getUrl());
                 }catch (Exception e){
                     e.printStackTrace();
@@ -179,6 +182,7 @@ public class MainTab3Fragment extends Fragment {
                 wvWebView.loadUrl("about:blank");
                 pProgressBar.setVisibility(View.GONE);
                 swipeRefreshLayout.setRefreshing(false);
+                bRefresh = false;
 
                 super.onReceivedError(view, errorCode, description, failingUrl);
             }
@@ -243,16 +247,19 @@ public class MainTab3Fragment extends Fragment {
                 if (newProgress == 100) {
                     pProgressBar.setVisibility(View.GONE);
                     swipeRefreshLayout.setRefreshing(false);
+                    bRefresh = false;
 
                 } else {
-                    if (!swipeRefreshLayout.isRefreshing())
-                        swipeRefreshLayout.setRefreshing(true);
 
-                    if (pProgressBar.getVisibility() == View.GONE){
-                        pProgressBar.setVisibility(View.VISIBLE);
+                    if(bRefresh){
+                        if(!swipeRefreshLayout.isRefreshing())
+                            swipeRefreshLayout.setRefreshing(true);
+                    }else {
+                        if (pProgressBar.getVisibility() == View.GONE){
+                            pProgressBar.setVisibility(View.VISIBLE);
+                        }
+                        pProgressBar.setProgress(newProgress);
                     }
-
-                    pProgressBar.setProgress(newProgress);
                 }
 
                 super.onProgressChanged(view, newProgress);
