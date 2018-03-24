@@ -22,12 +22,7 @@ public class Banner3styleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_banner3style);
 
         BannerView3 = (com.im.daeseong.newbanner_test.Banner3_style.BannerView) findViewById(R.id.mBannerView);
-        BannerView3.setBannerData(imgs, new com.im.daeseong.newbanner_test.Banner3_style.BannerView.ClickListener() {
-            @Override
-            public void onClink(String url) {
-                Log.e(TAG, "url:" + url);
-            }
-        });
+        BannerView3.setBannerData(imgs);
 
     }
 }

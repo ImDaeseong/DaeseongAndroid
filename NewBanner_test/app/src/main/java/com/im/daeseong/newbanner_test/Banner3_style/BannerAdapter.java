@@ -9,13 +9,14 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class BannerAdapter extends PagerAdapter {
 
     private final String TAG = getClass().getSimpleName();
+
     private List<ImageView> mBannerImgs;
     private int[] mBannerResIds;
     private Context mContext;
+    private OnItemClickListener listener;
 
     public BannerAdapter(Context context, int [] imgRes) {
         this.mContext = context;
@@ -35,10 +36,19 @@ public class BannerAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(ViewGroup container, final int position) {
         if (mBannerImgs != null && !mBannerImgs.isEmpty()) {
             ImageView iv = mBannerImgs.get(position);
             iv.setImageResource(mBannerResIds[position]);
+
+            iv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null)
+                        listener.onItemClick(position);
+                }
+            });
+
             container.addView(iv);
             return iv;
         }
@@ -63,5 +73,13 @@ public class BannerAdapter extends PagerAdapter {
             iv.setImageResource(i);
             mBannerImgs.add(iv);
         }
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
     }
 }

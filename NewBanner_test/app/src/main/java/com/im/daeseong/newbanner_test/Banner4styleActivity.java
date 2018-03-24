@@ -20,12 +20,6 @@ public class Banner4styleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_banner4style);
 
         bannerView4 = (com.im.daeseong.newbanner_test.Banner4_style.BannerView) findViewById(R.id.mBannerView);
-        bannerView4.setBannerData(imgs, new BannerView.ClickListener() {
-            @Override
-            public void onClink(String url) {
-                Log.e(TAG, "url:" + url);
-            }
-        });
-        //bannerView4.setSelectPageIndex(0);
+        bannerView4.setBannerData(imgs);
     }
 }

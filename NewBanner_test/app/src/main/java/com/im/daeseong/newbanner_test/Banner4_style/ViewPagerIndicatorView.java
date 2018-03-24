@@ -2,7 +2,6 @@ package com.im.daeseong.newbanner_test.Banner4_style;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.ImageView;

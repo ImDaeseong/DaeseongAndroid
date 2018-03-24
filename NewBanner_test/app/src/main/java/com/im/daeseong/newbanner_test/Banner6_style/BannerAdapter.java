@@ -13,6 +13,7 @@ public class BannerAdapter extends PagerAdapter implements ViewPager.OnPageChang
 
     private int[] mBannerResIds;
     private Context mContext;
+    private OnItemClickListener listener;
 
     public BannerAdapter(Context context, int [] imgRes) {
         this.mContext = context;
@@ -37,9 +38,19 @@ public class BannerAdapter extends PagerAdapter implements ViewPager.OnPageChang
     @Override
     public Object instantiateItem(final ViewGroup container, final int position) {
         ImageView iv = new ImageView(mContext);
-        container.addView(iv);
-        iv.setScaleType(ImageView.ScaleType.CENTER_INSIDE);//.FIT_XY);
+        iv.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         iv.setImageResource(mBannerResIds[position%mBannerResIds.length]);
+
+        iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null)
+                    listener.onItemClick(position);
+            }
+        });
+
+        container.addView(iv);
+
         return iv;
     }
 
@@ -58,4 +69,11 @@ public class BannerAdapter extends PagerAdapter implements ViewPager.OnPageChang
 
     }
 
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
 }

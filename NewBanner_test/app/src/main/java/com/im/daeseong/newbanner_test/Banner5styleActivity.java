@@ -19,11 +19,6 @@ public class Banner5styleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_banner5style);
 
         bannerView5 = (BannerView) findViewById(R.id.mBannerView);
-        bannerView5.setBannerData(imgs, new BannerView.ClickListener() {
-            @Override
-            public void onClink(String url) {
-                Log.e(TAG, "url:" + url);
-            }
-        });
+        bannerView5.setBannerData(imgs);
     }
 }
