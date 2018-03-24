@@ -1,5 +1,6 @@
 package com.im.daeseong.uidrawer;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -98,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.e("tag", "picabi");
+
             }
         });
 

@@ -22,7 +22,9 @@
         <activity android:name=".Banner2styleActivity" />
         <activity android:name=".Banner3styleActivity" />
         <activity android:name=".Banner4styleActivity" />
-        <activity android:name=".Banner5styleActivity"></activity>
+        <activity android:name=".Banner5styleActivity" />
+        <activity android:name=".Banner6styleActivity" />
+        <activity android:name=".Banner8styleActivity"></activity>
     </application>
 
 </manifest>
