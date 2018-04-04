@@ -15,7 +15,7 @@
         android:padding="10dp"
         android:gravity="center"
         android:inputType="textMultiLine"
-        android:text="TextViewTextViewTextViewTextViewTextViewTextView TextViewTextViewTextView TextViewTextViewTextViewTextView TextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextView"
+        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,7 +27,6 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:text="ok"
-        android:onClick="btnOK_Click"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

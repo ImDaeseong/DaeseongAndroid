@@ -35,7 +35,13 @@ public class Custom1_Dialog extends Dialog {
             }
         });
 
-        btnclose_dialog.setOnClickListener(mcloseListener);
+        btnclose_dialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+
     }
 
 }
