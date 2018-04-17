@@ -1,7 +1,5 @@
 package com.im.daeseong.batterychange_test;
 
-import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -11,13 +9,9 @@ import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.Display;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -74,25 +68,16 @@ public class MainActivity extends AppCompatActivity {
         display.getSize(size);
         int screenLength = size.y;
 
-        ViewGroup rootView = (ViewGroup) ((ViewGroup) this.findViewById(android.R.id.content)).getChildAt(0);
+        ViewGroup rootView = (ViewGroup)findViewById(R.id.clMain);
         floatingTextView = new FloatingTextView(rootView);
         floatingTextView.setText("");
         floatingTextView.getFloatingview().setVisibility(View.VISIBLE);
 
         ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) floatingTextView.getFloatingview().getLayoutParams();
-
-        //layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
-        //layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
-        //layoutParams.leftToLeft = ConstraintLayout.LayoutParams.PARENT_ID;
-        //layoutParams.rightToLeft = ConstraintLayout.LayoutParams.PARENT_ID;
-        //layoutParams.bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID;
-        //layoutParams.topToTop = ConstraintLayout.LayoutParams.PARENT_ID;
-
-        //layoutParams.setMargins(0,(screenLength - (screenLength/5)),0,0);
-        layoutParams.setMargins(0,(screenLength - (screenLength/3)),0,0);
+        //layoutParams.setMargins(0, (screenLength - dip2px(this, 120)),0,0);
+        layoutParams.setMargins(0, (screenLength - dip2px(this, 210)),0,0);
 
         floatingTextView.getFloatingview().setLayoutParams(layoutParams);
-
         rootView.addView(floatingTextView.getFloatingview());
     }
 
@@ -110,9 +95,14 @@ public class MainActivity extends AppCompatActivity {
         else {
             tvbattery.setTextColor(Color.RED);
         }
-        tvbattery.setText(String.format("Battery Check:%d%%", batteryLevel));
+        tvbattery.setText(String.format("밧데리 잔량:%d%%", batteryLevel));
 
         floatingTextView.setText(tvbattery.getText().toString());
+    }
+
+    public static int dip2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5F);
     }
 
 }
