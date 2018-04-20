@@ -17,12 +17,14 @@ public class ImageViewAdapter  extends ArrayAdapter<ImageItem> {
     private Context context;
     private int ResourceID;
     private ArrayList<ImageItem> arrayList = new ArrayList<ImageItem>();
+    private boolean bItem;
 
-    public ImageViewAdapter(Context context, int ResourceID, ArrayList<ImageItem> arrayList){
+    public ImageViewAdapter(Context context, int ResourceID, ArrayList<ImageItem> arrayList, boolean bItem){
         super(context, ResourceID, arrayList);
         this.context = context;
         this.ResourceID = ResourceID;
         this.arrayList = arrayList;
+        this.bItem = bItem;
     }
 
     @NonNull
@@ -30,7 +32,13 @@ public class ImageViewAdapter  extends ArrayAdapter<ImageItem> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         LayoutInflater layoutInflater =  LayoutInflater.from(this.context);
-        View view = layoutInflater.inflate(R.layout.grid_item, parent, false);
+
+        View view = null;
+        if(bItem){
+            view = layoutInflater.inflate(R.layout.grid_item, parent, false);
+        }else {
+            view = layoutInflater.inflate(R.layout.grid_item1, parent, false);
+        }
 
         ImageView imageView = (ImageView)view.findViewById(R.id.ivTitle);
         TextView textView = (TextView)view.findViewById(R.id.tvTitle);

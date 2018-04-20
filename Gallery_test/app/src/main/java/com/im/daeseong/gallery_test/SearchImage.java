@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.support.annotation.Nullable;
-import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -101,5 +100,4 @@ public class SearchImage {
         option.inSampleSize = 10;
         return BitmapFactory.decodeFile(sPath, option);
     }
-
 }
