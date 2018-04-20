@@ -1,6 +1,7 @@
 package com.im.daeseong.gallery_test;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -36,11 +37,41 @@ public class Main2Activity extends AppCompatActivity {
     private ArrayList<ImageItem> initImages(){
         try {
             ArrayList<ImageItem> imageItems = new ArrayList<>();
-            for (String item : SearchImage.getAllPicture()){
-                Bitmap bitmap = SearchImage.loadBitmap(item);
-                String title = SearchImage.getFileName(item);
-                imageItems.add(new ImageItem(bitmap, title));
-            }
+            Bitmap bitmap;
+            String title;
+
+            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg1);
+            title = "title1";
+            imageItems.add(new ImageItem(bitmap, title));
+
+            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg2);
+            title = "title2";
+            imageItems.add(new ImageItem(bitmap, title));
+
+            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg3);
+            title = "title3";
+            imageItems.add(new ImageItem(bitmap, title));
+
+            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg4);
+            title = "title4";
+            imageItems.add(new ImageItem(bitmap, title));
+
+            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg5);
+            title = "title5";
+            imageItems.add(new ImageItem(bitmap, title));
+
+            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg6);
+            title = "title6";
+            imageItems.add(new ImageItem(bitmap, title));
+
+            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg7);
+            title = "title7";
+            imageItems.add(new ImageItem(bitmap, title));
+
+            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg8);
+            title = "title8";
+            imageItems.add(new ImageItem(bitmap, title));
+
             return imageItems;
         }catch (Exception e){
         }
