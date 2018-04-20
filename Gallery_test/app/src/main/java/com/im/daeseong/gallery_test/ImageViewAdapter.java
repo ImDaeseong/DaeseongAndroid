@@ -1,6 +1,5 @@
 package com.im.daeseong.gallery_test;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -29,29 +28,18 @@ public class ImageViewAdapter  extends ArrayAdapter<ImageItem> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View view = convertView;
-        ViewHolder viewHolder = null;
 
-        if(view == null){
-            LayoutInflater layoutInflater = ((Activity)context).getLayoutInflater();
-            view = layoutInflater.inflate(ResourceID, parent, false);
-            viewHolder = new ViewHolder();
-            viewHolder.imageView = (ImageView)view.findViewById(R.id.ivTitle);
-            viewHolder.textView = (TextView)view.findViewById(R.id.tvTitle);
-            view.setTag(viewHolder);
-        }else {
-            viewHolder = (ViewHolder)view.getTag();
-        }
+        LayoutInflater layoutInflater =  LayoutInflater.from(this.context);
+        View view = layoutInflater.inflate(R.layout.grid_item, parent, false);
+
+        ImageView imageView = (ImageView)view.findViewById(R.id.ivTitle);
+        TextView textView = (TextView)view.findViewById(R.id.tvTitle);
 
         ImageItem item = arrayList.get(position);
-        viewHolder.imageView.setImageBitmap(item.getBitmap());
-        viewHolder.textView.setText(item.getTitle());
-        return view;
-    }
+        imageView.setImageBitmap(item.getBitmap());
+        textView.setText(item.getTitle());
 
-    static class ViewHolder{
-        ImageView imageView;
-        TextView textView;
+        return view;
     }
 }
 

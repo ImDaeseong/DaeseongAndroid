@@ -1,16 +1,12 @@
 package com.im.daeseong.gallery_test;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
-
-import java.io.File;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,31 +33,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private ArrayList<ImageItem> initImages(){
-
         try {
-
-            final ArrayList<ImageItem> imageItems = new ArrayList<>();
-
-            ArrayList<String> dirlist;
-            ArrayList<String> imgs;
-
-            dirlist = new ArrayList<>();
-            if (SearchImage.getDirList(SearchImage.PICTURES) != null) {
-                dirlist = SearchImage.getDirList(SearchImage.PICTURES);
-            }
-            dirlist.add(SearchImage.CAMERA);
-
-            for (int i = 0; i < dirlist.size(); i++) {
-                imgs = SearchImage.getImageList(dirlist.get(i));
-
-                for (int k = 0; k < imgs.size(); k++) {
-                    Bitmap bitmap = SearchImage.loadBitmap(imgs.get(k));
-                    String title = SearchImage.getFileName(imgs.get(k));
-                    imageItems.add(new ImageItem(bitmap, title));
-                }
+            ArrayList<ImageItem> imageItems = new ArrayList<>();
+            for (String item : SearchImage.getAllPicture()){
+                Bitmap bitmap = SearchImage.loadBitmap(item);
+                String title = SearchImage.getFileName(item);
+                imageItems.add(new ImageItem(bitmap, title));
             }
             return imageItems;
-
         }catch (Exception e){
         }
         return null;

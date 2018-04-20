@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
+
 import java.io.File;
 import java.util.ArrayList;
 
@@ -13,45 +15,58 @@ public class SearchImage {
     public static String PICTURES = ROOT_DIR + "/Pictures";
     public static String CAMERA = ROOT_DIR + "/DCIM/Camera";
 
-    public static ArrayList<String> getDirList(String sPath){
+    private static ArrayList<String> allDir;
+    private static ArrayList<String> allPicture;
 
-        ArrayList<String> dirlist = new ArrayList<>();
-        File dir = new File(sPath);
+    public static ArrayList<String> getAllPicture(){
 
-        File[] files = dir.listFiles();
-        if(files == null) {
-            return null;
+        allPicture = new ArrayList<>();
+        allDir = new ArrayList<>();
+        if (getDirList(SearchImage.PICTURES) != null) {
+            allDir = getDirList(SearchImage.PICTURES);
         }
+        allDir.add(SearchImage.CAMERA);
 
-        for(int i = 0; i < files.length; i++){
-            if(files[i].isDirectory()){
-                dirlist.add(files[i].getAbsolutePath());
+        for (String dir : allDir) {
+            getImageList(dir);
+        }
+        return allPicture;
+    }
+
+    private static ArrayList<String> getDirList(String sPath){
+
+        File dir = new File(sPath);
+        File[] fileList = dir.listFiles();
+        if(fileList == null) return null;
+
+        for (File current : fileList){
+            if(current.isDirectory()){
+                allDir.add(current.getAbsolutePath());
             }
         }
-        return dirlist;
+        return allDir;
     }
 
     @Nullable
-    public static ArrayList<String> getImageList(String sPath){
-        ArrayList<String> dirlist = new ArrayList<>();
+    private static void getImageList(String sPath){
+
         File dir = new File(sPath);
+        File[] fileList = dir.listFiles();
 
-        File[] files = dir.listFiles();
-        if(files == null) {
-            return null;
-        }
+        if(fileList != null) {
 
-        for (int i = 0; i < files.length; i++) {
-            if (files[i].isFile()) {
-                String sImagePath = files[i].getAbsolutePath();
-                String sSearch = getExtName(sImagePath);
+            for (File current : fileList) {
+                if (current.isFile()) {
 
-                if(sSearch.equals("jpeg") || sSearch.equals("jpg")  || sSearch.equals("png") ){
-                    dirlist.add(files[i].getAbsolutePath());
+                    String sImagePath = current.getAbsolutePath();
+                    String sSearch = getExtName(sImagePath);
+
+                    if (sSearch.equals("jpeg") || sSearch.equals("jpg") || sSearch.equals("png")) {
+                        allPicture.add(sImagePath);
+                    }
                 }
             }
         }
-        return dirlist;
     }
 
     public static String getExtName(String sPath){
@@ -76,7 +91,6 @@ public class SearchImage {
                 return sPath;
             }
             return sPath.substring(sPath.lastIndexOf("/") + 1);
-
         }catch (Exception e){
         }
         return sPath;
