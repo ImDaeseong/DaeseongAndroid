@@ -31,24 +31,29 @@ public class ImageViewAdapter  extends ArrayAdapter<ImageItem> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        LayoutInflater layoutInflater =  LayoutInflater.from(this.context);
-
-        View view = null;
-        if(bItem){
-            view = layoutInflater.inflate(R.layout.grid_item, parent, false);
-        }else {
-            view = layoutInflater.inflate(R.layout.grid_item1, parent, false);
+        if(convertView == null){
+            if(bItem){
+                convertView = LayoutInflater.from(this.context).inflate(R.layout.grid_item, parent, false);
+            }else {
+                convertView = LayoutInflater.from(this.context).inflate(R.layout.grid_item1, parent, false);
+            }
         }
 
-        ImageView imageView = (ImageView)view.findViewById(R.id.ivTitle);
-        TextView textView = (TextView)view.findViewById(R.id.tvTitle);
+        ImageView imageView = (ImageView)convertView.findViewById(R.id.ivTitle);
+        TextView textView = (TextView)convertView.findViewById(R.id.tvTitle);
 
         ImageItem item = arrayList.get(position);
         imageView.setImageBitmap(item.getBitmap());
         textView.setText(item.getTitle());
 
-        return view;
+        return convertView;
     }
+
+    public void addPhoto(ImageItem item){
+        this.arrayList.add(item);
+        this.notifyDataSetChanged();
+    }
+
 }
 
 
