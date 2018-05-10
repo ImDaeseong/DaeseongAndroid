@@ -5,7 +5,7 @@ import android.view.View;
 public abstract class OnSingleClickListener implements View.OnClickListener {
 
     private long lastTime = 0;
-    private long delayTime = 1000;
+    private long delayTime = 500;
 
     public OnSingleClickListener(){
     }
