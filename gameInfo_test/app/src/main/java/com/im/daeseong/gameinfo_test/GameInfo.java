@@ -44,6 +44,8 @@ public class GameInfo {
 
                 //Log.d(TAG, "Installed package (User) :" + packageName);
 
+                //getApkPath(context, packageName);
+
                 if(isGamePackageName(packageName)){
                     GameItem item = new GameItem();
                     item.appName = appName;
@@ -64,7 +66,9 @@ public class GameInfo {
     public static String getApkPath(Context context, String packageName){
         String sSourceDir = null;
         try{
+            //Log.e(TAG, "publicSourceDir:" + context.getPackageManager().getApplicationInfo(packageName, 0).publicSourceDir);
             sSourceDir = context.getPackageManager().getApplicationInfo(packageName, 0).sourceDir;
+            //Log.e(TAG, "sSourceDir2:" + sSourceDir);
         }catch (Exception e){
         }
         return sSourceDir;
