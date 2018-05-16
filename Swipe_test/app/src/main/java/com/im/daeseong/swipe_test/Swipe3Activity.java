@@ -19,22 +19,22 @@ public class Swipe3Activity extends AppCompatActivity {
         swipeFrameLayout.setOnSwipeListener(new SwipeFrameLayout.OnSwipeFrameListener() {
             @Override
             public void swipeLeft() {
-                Log.e(TAG, " swipeLeft ");
+                Log.e(TAG, "swipeLeft");
             }
 
             @Override
             public void swipeRight() {
-                Log.e(TAG, " swipeRight ");
+                Log.e(TAG, "swipeRight");
             }
 
             @Override
             public void swipeUp() {
-                Log.e(TAG, " swipeUp ");
+                Log.e(TAG, "swipeUp");
             }
 
             @Override
             public void swipeDown() {
-                Log.e(TAG, " swipeDown ");
+                Log.e(TAG, "swipeDown");
             }
         });
 

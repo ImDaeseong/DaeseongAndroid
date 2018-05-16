@@ -49,18 +49,18 @@ public class Swipe2Activity extends AppCompatActivity {
             if (Math.abs(diffX) > Math.abs(diffY)) {
                 if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
                     if (diffX > 0) {
-                        Log.e(TAG, " onSwipeRight ");
+                        Log.e(TAG, "onSwipeRight");
                     } else {
-                        Log.e(TAG, " onSwipeLeft ");
+                        Log.e(TAG, "onSwipeLeft");
                     }
                     result = true;
                 }
             } else {
                 if (Math.abs(diffY) > SWIPE_THRESHOLD && Math.abs(velocityY) > SWIPE_VELOCITY_THRESHOLD) {
                     if (diffY < 0) {
-                        Log.e(TAG, "onSwipeUp ");
+                        Log.e(TAG, "onSwipeUp");
                     } else {
-                        Log.e(TAG, "onSwipeDown ");
+                        Log.e(TAG, "onSwipeDown");
                     }
                     result = true;
                 }
