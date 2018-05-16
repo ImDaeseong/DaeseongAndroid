@@ -1,6 +1,7 @@
 package com.im.daeseong.serviceboot_completed_test;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.graphics.drawable.Drawable;
@@ -43,6 +44,21 @@ public class GameInfo {
         }
         return gameList;
     }
+
+    public static boolean runApp(Context context, String sPackage){
+
+        boolean bRun = false;
+        try {
+            Intent intent = context.getPackageManager().getLaunchIntentForPackage(sPackage);
+            if (intent != null) {
+                context.startActivity(intent);
+                bRun = true;
+            }
+        }catch (Exception e){
+        }
+        return bRun;
+    }
+
 
     public static class GameItem{
         public String appName = "";
