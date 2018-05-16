@@ -10,6 +10,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //GameInfo.runApp(this, "com.mediaweb.picaplay");
+        //GameInfo.runApp(this, "ds.id.Bahasa");
     }
 }
