@@ -1,12 +1,9 @@
 package com.im.daeseong.toast_test;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.Environment;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,11 +16,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
-
 public class MainActivity extends AppCompatActivity {
 
-    private Button button1, button2, button3;
+    private Button button1, button2, button3, button4;
     private ImageView ivbitmap;
 
     @Override
@@ -74,6 +69,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        button4 = (Button)findViewById(R.id.button4);
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Toast_layout1(MainActivity.this, "ClickToast ClickToast");
+            }
+        });
+
     }
 
     private Bitmap getBitmapFromView(View view){
