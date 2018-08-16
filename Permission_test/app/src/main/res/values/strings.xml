@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Permission_test</string>
+    <string name="title_activity_permission1">Permission1Activity</string>
+</resources>
