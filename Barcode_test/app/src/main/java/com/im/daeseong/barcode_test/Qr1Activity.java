@@ -5,10 +5,9 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.widget.Toast;
 
 import com.google.zxing.Result;
 
@@ -32,16 +31,9 @@ public class Qr1Activity extends AppCompatActivity implements ZXingScannerView.R
     @Override
     public void handleResult(Result result) {
 
-        //AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-        //alertDialog.setMessage(result.getText());
-        //alertDialog.show();
-        //Log.e("Resultado",result.getText());
-        //Log.e("ResultadoBar",result.getBarcodeFormat().toString());
-        //onResume();
-
-        Log.e("Resultado",result.getText());
-        Log.e("ResultadoBar",result.getBarcodeFormat().toString());
-
+        Toast.makeText(this,result.getText(),Toast.LENGTH_LONG).show();
+        Toast.makeText(this,result.getBarcodeFormat().toString(),Toast.LENGTH_LONG).show();
+        
         //한번 찍고 나서 멈추는걸 방지하기 위해
         zXingScannerView.resumeCameraPreview(this);
         finish();

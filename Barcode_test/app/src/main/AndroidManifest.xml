@@ -23,7 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Qr1Activity"></activity>
+        <activity android:name=".Qr1Activity" />
+        <activity android:name=".Qr2Activity" />
+        <activity android:name=".Qr3Activity" />
+        <activity android:name=".Qr4Activity"></activity>
     </application>
 
 </manifest>

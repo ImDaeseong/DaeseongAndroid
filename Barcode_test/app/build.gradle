@@ -29,4 +29,5 @@ dependencies {
     //QRCode
     compile 'me.dm7.barcodescanner:zxing:1.9.8'
 
+    compile 'com.journeyapps:zxing-android-embedded:3.3.0'
 }
