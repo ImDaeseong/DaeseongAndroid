@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private Button button1, button2, button3;
+    private Button button1, button2, button3, button4;
 
     private BroadcastReceiver broadcastReceiver = null;
     private IntentFilter intentFilter = null;
@@ -56,6 +56,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        button4 = findViewById(R.id.button4);
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Main4Activity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -71,13 +80,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onReceive(Context context, Intent intent) {
 
-                String sOn = intent.getExtras().getString("screen");
-                Log.e(TAG, sOn);
+                if(intent.getAction().equals("com.daeseong.sensormanager_test.Screen")) {
+
+                    String sDesc = intent.getExtras().getString("screen");
+                    Log.e(TAG, sDesc);
+
+                } else if(intent.getAction().equals("com.daeseong.sensormanager_test.Front")) {
+
+                    String sDesc = intent.getExtras().getString("front");
+                    Log.e(TAG, sDesc);
+                }
             }
         };
 
         intentFilter = new IntentFilter();
         intentFilter.addAction("com.daeseong.sensormanager_test.Screen");
+        intentFilter.addAction("com.daeseong.sensormanager_test.Front");
         registerReceiver(broadcastReceiver, intentFilter);
     }
 

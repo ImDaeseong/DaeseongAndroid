@@ -16,7 +16,6 @@ public class LockActivity extends AppCompatActivity {
     private BroadcastReceiver broadcastReceiver = null;
     private IntentFilter intentFilter = null;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +23,6 @@ public class LockActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lock);
 
         initFilter();
-
     }
 
     @Override
@@ -42,18 +40,14 @@ public class LockActivity extends AppCompatActivity {
 
                 if(intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
 
-                    Log.e(TAG, "폰화면 꺼짐" );
-
                     Intent item = new Intent("com.daeseong.sensormanager_test.Screen");
-                    item.putExtra("screen", "off");
+                    item.putExtra("screen", "폰화면 꺼짐");
                     context.sendBroadcast(item);
 
                 } else if(intent.getAction().equals(Intent.ACTION_SCREEN_ON)){
 
-                    Log.e(TAG, "폰화면 켜짐" );
-
                     Intent item = new Intent("com.daeseong.sensormanager_test.Screen");
-                    item.putExtra("screen", "on");
+                    item.putExtra("screen", "폰화면 켜짐");
                     context.sendBroadcast(item);
 
                 }

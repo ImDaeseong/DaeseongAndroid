@@ -49,8 +49,6 @@ public class Main2Activity extends AppCompatActivity implements SensorEventListe
     @Override
     public void onSensorChanged(SensorEvent event) {
 
-        Log.e(TAG, "onSensorChanged");
-
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
 
             double dX = event.values[0];
@@ -88,8 +86,6 @@ public class Main2Activity extends AppCompatActivity implements SensorEventListe
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
         Log.e(TAG, "onAccuracyChanged");
-
     }
 }
