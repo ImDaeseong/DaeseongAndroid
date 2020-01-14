@@ -42,7 +42,7 @@ public class Main4Activity extends AppCompatActivity {
 
                 } else if(timePickerDialogEx.BUTTON_TYPE == Dialog.BUTTON_NEGATIVE) {
 
-                    Log.e(TAG, "BUTTON_NEGATIVE:" );
+                    Log.e(TAG, "BUTTON_NEGATIVE" );
                 }
             }
         });
