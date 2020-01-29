@@ -34,6 +34,8 @@ public class Main1Activity extends AppCompatActivity {
     private void  initkakao_login(){
         sessionCallback = new SessionCallback();
         Session.getCurrentSession().addCallback(sessionCallback);
+
+        //실행 시 로그인 토큰이 있으면 자동으로 로그인 수행
         Session.getCurrentSession().checkAndImplicitOpen();
     }
 
