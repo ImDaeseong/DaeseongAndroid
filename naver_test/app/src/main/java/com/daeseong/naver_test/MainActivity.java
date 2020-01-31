@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private static OAuthLogin oAuthLogin;
     private static Context mContext;
 
-    private static String OAUTH_CLIENT_ID = "";
-    private static String OAUTH_CLIENT_SECRET = "";
+    private static String OAUTH_CLIENT_ID = "SYAuaxabinMVcyTZRWw4";
+    private static String OAUTH_CLIENT_SECRET = "6nqNSDSx33";
     private static String OAUTH_CLIENT_NAME = "네이버 아이디로 로그인";
 
 
