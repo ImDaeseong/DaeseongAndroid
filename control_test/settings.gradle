@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name='control_test'
