@@ -1,4 +1,4 @@
-package com.im.daeseong.glide_test;
+package com.mediaweb.glide_test;
 
 import org.junit.Test;
 
