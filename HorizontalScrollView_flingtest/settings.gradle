@@ -1,0 +1,2 @@
+rootProject.name='HorizontalScrollView_flingtest'
+include ':app'
