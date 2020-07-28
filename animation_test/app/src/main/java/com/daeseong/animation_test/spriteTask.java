@@ -72,8 +72,6 @@ public class spriteTask extends TimerTask {
 
             //Bitmap -> imageView
             Bitmap croppedBmp = Bitmap.createBitmap(bitmap, xPosition, yPosition, nWidth, nHeight);
-            //imageView.setImageBitmap(croppedBmp);
-            //list.add(imageView);
             list.add(croppedBmp);
         }
     }

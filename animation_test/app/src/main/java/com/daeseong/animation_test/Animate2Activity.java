@@ -27,7 +27,6 @@ public class Animate2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_animate2);
 
         image1 = (ImageView)findViewById(R.id.image1);
-        //image1.setVisibility(View.INVISIBLE);
 
         button1 = (Button)findViewById(R.id.button1);
         button1.setOnClickListener(new View.OnClickListener() {

@@ -63,7 +63,7 @@ public class Animate1Activity extends AppCompatActivity {
         //objectAnimator.setInterpolator(new LinearInterpolator());//일정한 속도
         //objectAnimator.setInterpolator(new AccelerateInterpolator());//점점 빠르게 속도
         //objectAnimator.setInterpolator(new DecelerateInterpolator());//점점 느리게 속도
-        objectAnimator.setDuration(2000);;//2초동안 실행
+        objectAnimator.setDuration(2000);//2초동안 실행
         objectAnimator.start();
     }
 
@@ -74,14 +74,14 @@ public class Animate1Activity extends AppCompatActivity {
         //objectAnimator.setInterpolator(new LinearInterpolator());//일정한 속도
         //objectAnimator.setInterpolator(new AccelerateInterpolator());//점점 빠르게 속도
         //objectAnimator.setInterpolator(new DecelerateInterpolator());//점점 느리게 속도
-        objectAnimator.setDuration(2000);;//2초동안 실행
+        objectAnimator.setDuration(2000);//2초동안 실행
         objectAnimator.start();
     }
 
     private void runAnimation3(ImageView imageView) {
 
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(imageView, "rotationY", 0f, 720f);
-        objectAnimator.setDuration(2000);;//2초동안 실행
+        objectAnimator.setDuration(2000);//2초동안 실행
 
         objectAnimator.addListener(new Animator.AnimatorListener() {
             @Override

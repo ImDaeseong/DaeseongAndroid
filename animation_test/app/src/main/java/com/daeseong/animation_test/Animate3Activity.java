@@ -2,34 +2,19 @@ package com.daeseong.animation_test;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.animation.Animator;
 import android.animation.AnimatorSet;
-import android.animation.Keyframe;
 import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.animation.TypeEvaluator;
-import android.animation.ValueAnimator;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewAnimationUtils;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.animation.CycleInterpolator;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.Interpolator;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.OvershootInterpolator;
-import android.view.animation.RotateAnimation;
-import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import java.util.Random;
 
 public class Animate3Activity extends AppCompatActivity {
 
@@ -67,7 +52,7 @@ public class Animate3Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                shakeAnimate1(Animate3Activity.this, image1);
+                runAnimation2(Animate3Activity.this, image1);
 
             }
         });
@@ -77,7 +62,7 @@ public class Animate3Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                shakeAnimate2(image1, 20, 5);
+                runAnimation3(image1, 20, 5);
             }
         });
     }
@@ -102,20 +87,14 @@ public class Animate3Activity extends AppCompatActivity {
         shake.start();
     }
 
-    private static int dip2px(Context context, float dpValue) {
-        float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
-    }
-
-
-    public static void shakeAnimate1(Context context, View v){
+    public static void runAnimation2(Context context, View v){
 
         Animation animation = AnimationUtils.loadAnimation(context, R.anim.shake);
         animation.setInterpolator(new CycleInterpolator(2));
         v.startAnimation(animation);
     }
 
-    public static void shakeAnimate2(View v, int duration, int offset) {
+    public static void runAnimation3(View v, int duration, int offset) {
         Animation anim = new TranslateAnimation(-offset,offset,0,0);
         anim.setDuration(duration);
         anim.setRepeatMode(Animation.REVERSE);
@@ -123,5 +102,8 @@ public class Animate3Activity extends AppCompatActivity {
         v.startAnimation(anim);
     }
 
-
+    private static int dip2px(Context context, float dpValue) {
+        float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
 }
