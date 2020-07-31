@@ -1,0 +1,2 @@
+rootProject.name='ImageViewGradient_test'
+include ':app'
