@@ -26,12 +26,6 @@ public class HorizontalScrollView2Activity extends AppCompatActivity {
         init();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-    }
-
     private void init(){
 
         llayout = (LinearLayout) findViewById(R.id.llayout);

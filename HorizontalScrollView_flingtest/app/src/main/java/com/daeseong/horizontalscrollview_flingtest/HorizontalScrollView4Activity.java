@@ -114,7 +114,6 @@ public class HorizontalScrollView4Activity extends AppCompatActivity {
                 if (gestureDetector.onTouchEvent(event)) {
                     return true;
                 }
-
                 return false;
             }
         });
@@ -127,6 +126,16 @@ public class HorizontalScrollView4Activity extends AppCompatActivity {
                 refreshInit();
             }
         });
+    }
+
+    private void prevImage(){
+
+        hsc.smoothScrollTo((int) hsc.getScrollX() - nWidth,0);
+    }
+
+    private void nextImage(){
+
+        hsc.smoothScrollTo((int) hsc.getScrollX() + nWidth,0);
     }
 
     private void refreshInit(){

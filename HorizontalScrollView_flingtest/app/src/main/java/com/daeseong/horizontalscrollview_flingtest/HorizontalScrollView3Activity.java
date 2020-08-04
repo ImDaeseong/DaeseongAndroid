@@ -104,6 +104,16 @@ public class HorizontalScrollView3Activity extends AppCompatActivity {
         });
     }
 
+    private void prevImage(){
+
+        hsc.smoothScrollTo((int) hsc.getScrollX() - nWidth,0);
+    }
+
+    private void nextImage(){
+
+        hsc.smoothScrollTo((int) hsc.getScrollX() + nWidth,0);
+    }
+
     private void refreshInit(){
 
         //이미지 개수

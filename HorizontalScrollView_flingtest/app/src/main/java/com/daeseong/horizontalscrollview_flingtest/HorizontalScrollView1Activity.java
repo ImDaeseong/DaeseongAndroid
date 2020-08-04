@@ -107,7 +107,6 @@ public class HorizontalScrollView1Activity extends AppCompatActivity {
                 if (gestureDetector.onTouchEvent(event)) {
                     return true;
                 }
-
                 return false;
             }
         });
@@ -120,6 +119,16 @@ public class HorizontalScrollView1Activity extends AppCompatActivity {
                 refreshInit();
             }
         });
+    }
+
+    private void prevImage(){
+
+        hsc.smoothScrollTo((int) hsc.getScrollX() - nWidth,0);
+    }
+
+    private void nextImage(){
+
+        hsc.smoothScrollTo((int) hsc.getScrollX() + nWidth,0);
     }
 
     private void refreshInit(){
@@ -212,5 +221,4 @@ public class HorizontalScrollView1Activity extends AppCompatActivity {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
     }
-
 }
