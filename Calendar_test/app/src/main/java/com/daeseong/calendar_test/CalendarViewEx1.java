@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -19,29 +18,29 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class CalendarViewEx extends ConstraintLayout {
+public class CalendarViewEx1 extends ConstraintLayout {
 
     private static final String TAG = CalendarViewEx.class.getSimpleName();
 
     private TextView tv_title;
     private View clleft_arrow, clright_arrow;
-    private GridView gridview1;
+    private SwipeGridView gridview1;
 
     private final Calendar calendar = Calendar.getInstance();
 
     private ArrayList<Date> arrayList = new ArrayList<>();
 
-    public CalendarViewEx(Context context){
+    public CalendarViewEx1(Context context){
         super(context);
         init(context);
     }
 
-    public CalendarViewEx(Context context, @Nullable AttributeSet attrs) {
+    public CalendarViewEx1(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
-    public CalendarViewEx(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CalendarViewEx1(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
@@ -49,7 +48,7 @@ public class CalendarViewEx extends ConstraintLayout {
     private void init(Context context){
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.calendar_view1, this);
+        View view = inflater.inflate(R.layout.calendar_view2, this);
 
         tv_title = view.findViewById(R.id.tv_title);
         clleft_arrow = view.findViewById(R.id.clleft_arrow);
@@ -113,9 +112,30 @@ public class CalendarViewEx extends ConstraintLayout {
                 Log.e(TAG, "sDay:" + sDay);
 
             }
-
         });
 
-    }
+        gridview1.setOnSwipeListener(new SwipeGridView.OnSwipeFrameListener() {
+            @Override
+            public void swipeLeft() {
+                calendar.add(Calendar.MONTH, -1);
+                showCalendarView();
+            }
 
+            @Override
+            public void swipeRight() {
+                calendar.add(Calendar.MONTH, 1);
+                showCalendarView();
+            }
+
+            @Override
+            public void swipeUp() {
+            }
+
+            @Override
+            public void swipeDown() {
+            }
+        });
+
+
+    }
 }

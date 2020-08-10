@@ -3,10 +3,6 @@ package com.daeseong.calendar_test;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
-
-import java.util.Calendar;
-import java.util.Locale;
 
 public class Main6Activity extends AppCompatActivity {
 

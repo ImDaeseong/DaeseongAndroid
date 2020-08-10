@@ -175,7 +175,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <GridView
+    <com.daeseong.calendar_test.SwipeGridView
         android:id="@+id/gridview1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

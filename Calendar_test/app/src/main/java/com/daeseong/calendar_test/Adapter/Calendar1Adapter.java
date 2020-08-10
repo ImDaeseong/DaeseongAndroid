@@ -1,6 +1,7 @@
 package com.daeseong.calendar_test.Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import com.daeseong.calendar_test.R;
 
@@ -21,14 +23,11 @@ public class Calendar1Adapter extends BaseAdapter {
     TextView tv_day1, tv_day2;
 
     private ArrayList<Date> arrayList = new ArrayList<>();
-    private int nMonth, nDay;
 
-    public Calendar1Adapter(Context context, ArrayList<Date> arrayList, int nMonth, int nDay){
+    public Calendar1Adapter(Context context, ArrayList<Date> arrayList){
 
         this.context = context;
         this.arrayList = arrayList;
-        this.nMonth = nMonth;
-        this.nDay = nDay;
     }
 
     @Override
@@ -57,14 +56,35 @@ public class Calendar1Adapter extends BaseAdapter {
         tv_day1 = (TextView)convertView.findViewById(R.id.tv_day1);
         tv_day2 = (TextView)convertView.findViewById(R.id.tv_day2);
 
+        //날짜
         final Date date = arrayList.get(position);
         int nDay = date.getDate();
         String sDay = String.format("%02d",nDay);
 
+
+        //일요일 날짜 색상 빨간색
+        Calendar calendar = getCalendar(date);
+        int nWeek = calendar.get(Calendar.DAY_OF_WEEK);
+        if(nWeek == 1){
+            tv_day1.setTextColor(Color.RED);
+        }else {
+            tv_day1.setTextColor(Color.parseColor("#000000"));
+        }
+
+
         tv_day1.setText(sDay);
-        tv_day2.setText("");
 
         return convertView;
+    }
+
+    private Calendar getCalendar(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar;
+    }
+
+    private Date getCalendarDate(Calendar calendar) {
+        return calendar.getTime();
     }
 
 }
