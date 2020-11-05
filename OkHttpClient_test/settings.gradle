@@ -1,0 +1,2 @@
+rootProject.name='OkHttpClient_test'
+include ':app'
