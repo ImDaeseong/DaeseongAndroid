@@ -1,4 +1,4 @@
-package com.mediaweb.glide_test;
+package com.daeseong.glide_test;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.mediaweb.glide_test", appContext.getPackageName());
+        assertEquals("com.daeseong.glide_test", appContext.getPackageName());
     }
 }

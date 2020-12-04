@@ -1,4 +1,4 @@
-package com.mediaweb.glide_test;
+package com.daeseong.glide_test;
 
 import android.content.Context;
 import android.widget.ImageView;
@@ -31,5 +31,4 @@ public class GlideUtil {
                         .error(R.drawable.ic_launcher_background))
                 .into(imageView);
     }
-
 }
