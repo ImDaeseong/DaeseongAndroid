@@ -23,8 +23,10 @@ public class MainActivity extends AppCompatActivity {
     private static OAuthLogin oAuthLogin;
     private static Context mContext;
 
-    private static String OAUTH_CLIENT_ID = "SYAuaxabinMVcyTZRWw4";
-    private static String OAUTH_CLIENT_SECRET = "6nqNSDSx33";
+    //네이버 아이디로 로그인
+    //https://developers.naver.com/apps/#/list
+    private static String OAUTH_CLIENT_ID = "Client ID";
+    private static String OAUTH_CLIENT_SECRET = "Client Secret";
     private static String OAUTH_CLIENT_NAME = "네이버 아이디로 로그인";
 
 
@@ -57,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
             @SuppressLint("HandlerLeak")
             @Override
             public void onClick(View v) {
-                //oAuthLogin.startOauthLoginActivity(MainActivity.this, mOAuthLoginHandler);
 
+                //oAuthLogin.startOauthLoginActivity(MainActivity.this, mOAuthLoginHandler);
                 OAuthLogin.getInstance().startOauthLoginActivity(MainActivity.this, new OAuthLoginHandler(){
 
                     @Override
