@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.im.daeseong.button_test">
+    package="com.daeseong.bottomnavigationview_test">
 
     <application
         android:allowBackup="true"
@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Main4Activity"></activity>
+        <activity android:name=".Main3Activity" />
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".Main1Activity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,12 +20,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Button1Activity" />
-        <activity android:name=".Button2Activity" />
-        <activity android:name=".Button3Activity" />
-        <activity android:name=".Button4Activity" />
-        <activity android:name=".Button5Activity" />
-        <activity android:name=".Button6Activity" />
     </application>
 
 </manifest>
