@@ -27,7 +27,6 @@ public class AudioPlayer {
             removeListener();
 
             if (mediaPlayer != null) {
-                mediaPlayer.stop();
                 mediaPlayer.release();
                 mediaPlayer = null;
             }
