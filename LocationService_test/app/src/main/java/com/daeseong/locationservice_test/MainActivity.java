@@ -13,14 +13,17 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private BroadcastReceiver broadcastReceiver;
+    private Button button1, button2;
 
+    private BroadcastReceiver broadcastReceiver;
     private static double currentLatitude;
     private static double  currentLongitude;
 
@@ -28,6 +31,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        button1 = findViewById(R.id.button1);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                runService();
+            }
+        });
+
+        button2 = findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                stopService();
+            }
+        });
 
         if (broadcastReceiver == null) {
             broadcastReceiver = new BroadcastReceiver() {
@@ -55,13 +76,12 @@ public class MainActivity extends AppCompatActivity {
 
         Log.e(TAG, "onDestroy");
 
+        stopService();
+
         if (broadcastReceiver != null) {
             unregisterReceiver(broadcastReceiver);
         }
-
-        stopService(new Intent(this, LocationService.class));
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -97,29 +117,42 @@ public class MainActivity extends AppCompatActivity {
 
     private void runService(){
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
-            Log.e(TAG, "startForegroundService");
+                Log.e(TAG, "startForegroundService");
 
-            if (LocationService.serviceIntent == null){
+                if (LocationService.serviceIntent == null) {
 
-                Intent intent = new Intent(this, LocationService.class);
-                startForegroundService(intent);
+                    Intent intent = new Intent(this, LocationService.class);
+                    startForegroundService(intent);
+                } else {
+                    Log.e(TAG, "startForegroundService 이미 실행중");
+                }
+
             } else {
-                Log.e(TAG, "startForegroundService 이미 실행중");
+
+                Log.e(TAG, "startService");
+
+                if (LocationService.serviceIntent == null) {
+
+                    Intent intent = new Intent(this, LocationService.class);
+                    startService(intent);
+                } else {
+                    Log.e(TAG, "startService 이미 실행중");
+                }
             }
+        }catch (Exception ex){
+            Log.e(TAG, ex.getMessage().toString());
+        }
+    }
 
-        } else {
-
-            Log.e(TAG, "startService");
-
-            if (LocationService.serviceIntent == null){
-
-                Intent intent = new Intent(this, LocationService.class);
-                startService(intent);
-            } else {
-                Log.e(TAG, "startService 이미 실행중");
-            }
+    private void stopService(){
+        try{
+            Intent intent = new Intent(this, LocationService.class);
+            stopService(intent);
+        }catch (Exception ex){
+            Log.e(TAG, ex.getMessage().toString());
         }
     }
 
