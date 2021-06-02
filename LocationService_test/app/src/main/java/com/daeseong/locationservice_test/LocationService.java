@@ -3,7 +3,6 @@ package com.daeseong.locationservice_test;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -30,7 +29,7 @@ public class LocationService extends Service implements LocationListener {
     @Override
     public IBinder onBind(Intent intent) {
 
-        Log.e(TAG, "onBind");
+        //Log.e(TAG, "onBind");
 
         return null;
     }
@@ -38,7 +37,7 @@ public class LocationService extends Service implements LocationListener {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        Log.e(TAG, "onStartCommand");
+        //Log.e(TAG, "onStartCommand");
 
         serviceIntent = intent;
 
@@ -68,14 +67,14 @@ public class LocationService extends Service implements LocationListener {
     public void onCreate() {
         super.onCreate();
 
-        Log.e(TAG, "onCreate");
+        //Log.e(TAG, "onCreate");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
 
-        Log.e(TAG, "onDestroy");
+        //Log.e(TAG, "onDestroy");
 
         serviceIntent = null;
 
@@ -91,8 +90,8 @@ public class LocationService extends Service implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
 
-        Log.e(TAG, "onLocationChanged getLatitude: " + location.getLatitude());
-        Log.e(TAG, "onLocationChanged getLongitude: " + location.getLongitude());
+        //Log.e(TAG, "onLocationChanged getLatitude: " + location.getLatitude());
+        //Log.e(TAG, "onLocationChanged getLongitude: " + location.getLongitude());
 
         Intent intent = new Intent("LOCATION_UPDATE");
         intent.putExtra("LATITUDE", location.getLatitude());
@@ -132,8 +131,8 @@ public class LocationService extends Service implements LocationListener {
             boolean bGPS = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);//GPS 이용 위치,  android.permission.ACCESS_FINE_LOCATION
             boolean bNetwork = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);//기지국, WIFI, android.permission.ACCESS_FINE_LOCATION||android.permission.ACCESS_COARSE_LOCATION
 
-            Log.e(TAG, "bGPS:" + bGPS);
-            Log.e(TAG, "bNetwork:" + bNetwork);
+            //Log.e(TAG, "bGPS:" + bGPS);
+            //Log.e(TAG, "bNetwork:" + bNetwork);
 
             if (!bGPS && !bNetwork) {
 
