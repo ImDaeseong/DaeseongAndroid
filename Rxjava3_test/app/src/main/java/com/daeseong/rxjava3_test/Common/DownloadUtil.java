@@ -2,7 +2,6 @@ package com.daeseong.rxjava3_test.Common;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,9 +10,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.Callable;
+
 import io.reactivex.rxjava3.core.Observable;
 
-public class DownloadJson {
+public class DownloadUtil {
 
     public Observable<String> getData(String sUrl){
 

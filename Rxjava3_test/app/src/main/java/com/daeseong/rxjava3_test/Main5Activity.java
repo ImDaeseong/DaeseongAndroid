@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
-import com.daeseong.rxjava3_test.Common.DownloadJson;
+import com.daeseong.rxjava3_test.Common.DownloadUtil;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class Main5Activity extends AppCompatActivity {
@@ -16,7 +16,7 @@ public class Main5Activity extends AppCompatActivity {
     private String sUrl = "https://api.bithumb.com/public/ticker/BTC";
     private String sImgUrl = "https://.png";
 
-    private DownloadJson downloadJson;
+    private DownloadUtil downloadUtil;
 
     public Main5Activity() {
     }
@@ -28,8 +28,8 @@ public class Main5Activity extends AppCompatActivity {
 
         textView1 = (TextView)findViewById(R.id.textView1);
 
-        downloadJson = new DownloadJson();
-        downloadJson.getData(sUrl)
+        downloadUtil = new DownloadUtil();
+        downloadUtil.getData(sUrl)
                 .subscribeOn(Schedulers.io())
                 .onErrorComplete()
                 .subscribe(sResult -> {
@@ -40,7 +40,7 @@ public class Main5Activity extends AppCompatActivity {
                     }
                 });
 
-        downloadJson.getBitmap(sUrl)
+        downloadUtil.getBitmap(sUrl)
                 .subscribeOn(Schedulers.io())
                 .onErrorComplete()
                 .subscribe(bBitmap -> {

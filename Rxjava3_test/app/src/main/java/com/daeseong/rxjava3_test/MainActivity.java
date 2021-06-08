@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private Button button1, button2, button3, button4, button5;
+    private Button button1, button2, button3, button4, button5, button6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +70,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(MainActivity.this, Main5Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        button6 = findViewById(R.id.button6);
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, Main6Activity.class);
                 startActivity(intent);
             }
         });
