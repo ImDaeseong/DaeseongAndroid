@@ -35,6 +35,8 @@ public class Main6Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main6);
 
+        sendUtil = new SendUtil();
+
         setLocalIP();
 
         textView1 = (TextView)findViewById(R.id.textView1);
@@ -47,7 +49,7 @@ public class Main6Activity extends AppCompatActivity {
                 String sMsg = textView1.getText().toString();
                 if(TextUtils.isEmpty(sMsg)) return;
 
-                sendUtil = new SendUtil();
+                //sendUtil = new SendUtil();
                 sendUtil.SendMessage(sLocalIP, 10000, sMsg)
                         .subscribeOn(Schedulers.io())
                         .onErrorComplete()
