@@ -128,6 +128,13 @@ public class MainActivity extends AppCompatActivity {
         final Intent activity = new Intent(this, MainActivity.class);
         activity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(activity);
+
+        /*
+        //현재 상태 유지
+        final Intent activity = new Intent(this, MainActivity.class);
+        activity.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(activity);
+        */
     }
 
 }
