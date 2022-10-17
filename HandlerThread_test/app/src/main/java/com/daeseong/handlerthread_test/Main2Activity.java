@@ -101,6 +101,7 @@ public class Main2Activity extends AppCompatActivity {
             Log.e(TAG, ex.getMessage().toString());
         } finally {
 
+            handler = null;
             thread = null;
         }
     }

@@ -2,6 +2,7 @@ package com.daeseong.handlerthread_test;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -10,22 +11,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Main3Activity extends AppCompatActivity {
+public class Main4Activity extends AppCompatActivity {
 
-    private static final String TAG = Main3Activity.class.getSimpleName();
+    private static final String TAG = Main4Activity.class.getSimpleName();
 
     private TextView tv1;
     private Button button1, button2;
 
-    private Thread thread = null;
+    private MyThread myThread = null;
     public Handler handler = null;
-    private myRunnable1 myRunnable1 = null;
-    private myRunnable2 myRunnable2 = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_main4);
 
         init();
 
@@ -36,7 +35,9 @@ public class Main3Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                handler.sendEmptyMessage(1);
+                if(handler != null){
+                    handler.sendEmptyMessage(1);
+                }
             }
         });
 
@@ -45,11 +46,8 @@ public class Main3Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(handler != null){
-                    Message message = Message.obtain();
-                    message.what = 2;
-                    message.obj = "sendMessage";
-                    handler.sendMessage(message);
+                if(handler != null && myThread != null){
+                    myThread.sendMessage();
                 }
             }
         });
@@ -75,11 +73,8 @@ public class Main3Activity extends AppCompatActivity {
             }
         };
 
-        myRunnable1 = new myRunnable1();
-        myRunnable2 = new myRunnable2();
-
-        thread = new Thread(myRunnable1);
-        thread.start();
+        myThread = new MyThread(handler, true,"sParam");
+        myThread.start();
     }
 
     private void clear() {
@@ -87,16 +82,12 @@ public class Main3Activity extends AppCompatActivity {
         try {
 
             if(handler != null){
-                handler.removeCallbacks(myRunnable2);
-                handler.removeCallbacks(myRunnable1);
-            }
-
-            if(handler != null){
                 handler.removeMessages(0);
             }
 
-            if (thread != null) {
-                thread.interrupt();
+            if (myThread != null) {
+                myThread.clear();
+                myThread.interrupt();
             }
 
         } catch (Exception ex) {
@@ -105,28 +96,55 @@ public class Main3Activity extends AppCompatActivity {
         } finally {
 
             handler = null;
-            thread = null;
+            myThread = null;
         }
     }
 
-    private class myRunnable1 implements java.lang.Runnable {
+    private class MyThread extends Thread {
 
-        @Override
-        public void run() {
+        private Handler handler = null;
+        private String sParam;
+        private boolean bRun = false;
 
-            handler.post(myRunnable2);
+        public MyThread(Handler handler, boolean bRun, String sParam){
+
+            this.handler = handler;
+            this.bRun = bRun;
+            this.sParam = sParam;
         }
-    }
-
-    private class myRunnable2 implements java.lang.Runnable {
 
         @Override
         public void run() {
+            super.run();
+
+            while (bRun){
+
+                //Log.e(TAG, "MyThread run");
+
+                try{
+
+                    if(handler != null){
+                        handler.sendEmptyMessage(0);
+                    }
+
+                    //1초에 한번씩 전달
+                    Thread.sleep(1000);
+
+                }catch (Exception ex){
+                }
+            }
+        }
+
+        public void sendMessage(){
 
             Message message = Message.obtain();
-            message.what = 0;
-            message.obj = "myRunnable2";
+            message.what = 2;
+            message.obj = "sendMessage";
             handler.sendMessage(message);
+        }
+
+        public void clear(){
+            bRun = false;
         }
     }
 }
