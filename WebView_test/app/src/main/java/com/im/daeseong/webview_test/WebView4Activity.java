@@ -161,9 +161,13 @@ public class WebView4Activity extends AppCompatActivity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
 
-                Log.e(TAG, "html에 있는 javascript 호출");
+                progressBar.setVisibility(View.GONE);
+
+                sTitle = view.getTitle();
+                Log.d("onPageFinished", sTitle);
 
                 webJavaScriptInterface.Javascript_htmlTojavaScript();
+                Log.e(TAG, "html에 있는 javascript 호출");
             }
 
             @TargetApi(Build.VERSION_CODES.N)
@@ -367,7 +371,7 @@ public class WebView4Activity extends AppCompatActivity {
         }
     }
 
-    public class webJavaScriptInterface {
+    private class webJavaScriptInterface {
 
         Context mContext;
 

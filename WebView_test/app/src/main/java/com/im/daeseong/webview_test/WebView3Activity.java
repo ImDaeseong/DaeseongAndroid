@@ -137,7 +137,7 @@ public class WebView3Activity extends AppCompatActivity {
         }
     }
 
-    class BackPressCloseHandler {
+    private class BackPressCloseHandler {
         private long backKeyPressedTime = 0;
         private Toast toast;
         private Activity activity;

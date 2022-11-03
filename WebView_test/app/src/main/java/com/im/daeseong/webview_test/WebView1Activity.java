@@ -213,7 +213,6 @@ public class WebView1Activity extends AppCompatActivity {
 
             Log.d("onPageFinished", sTitle);
         }
-
     }
 
 }

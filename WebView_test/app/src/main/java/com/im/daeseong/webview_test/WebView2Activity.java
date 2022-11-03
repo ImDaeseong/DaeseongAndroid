@@ -131,7 +131,6 @@ public class WebView2Activity extends AppCompatActivity {
             }
         });
 
-
         //네트워크 연결 여부
         if(isNetworkAvailable(this)){
             webView.loadUrl("file:///android_asset/test2.html");
@@ -139,25 +138,6 @@ public class WebView2Activity extends AppCompatActivity {
             webView.loadUrl("about:blank");
         }
     }
-
-    public class webJavaScriptInterface{
-        Activity activity;
-
-        webJavaScriptInterface(Activity activity){
-            this.activity = activity;
-        }
-
-        @JavascriptInterface
-        public void Javascript_makeText(String message){
-            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
-        }
-
-        @JavascriptInterface
-        public void Javascript_finish(){
-            activity.finish();
-        }
-    }
-
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -248,4 +228,22 @@ public class WebView2Activity extends AppCompatActivity {
 
     }
 
+
+    private class webJavaScriptInterface{
+        Activity activity;
+
+        webJavaScriptInterface(Activity activity){
+            this.activity = activity;
+        }
+
+        @JavascriptInterface
+        public void Javascript_makeText(String message){
+            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
+        }
+
+        @JavascriptInterface
+        public void Javascript_finish(){
+            activity.finish();
+        }
+    }
 }
