@@ -4,16 +4,13 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
-
 import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
@@ -34,7 +31,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 public class WebView4Activity extends AppCompatActivity {
 
@@ -75,6 +71,7 @@ public class WebView4Activity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+
     }
 
     @Override
