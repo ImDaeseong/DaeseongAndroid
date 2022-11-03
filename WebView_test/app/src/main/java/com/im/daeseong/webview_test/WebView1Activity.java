@@ -8,12 +8,11 @@ import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;//import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.Window;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
@@ -23,22 +22,20 @@ import android.webkit.WebViewClient;
 
 public class WebView1Activity extends AppCompatActivity {
 
+    private static final String TAG = WebView1Activity.class.getSimpleName();
+
     public String sTitle;
     public Context context;
     private WebView webView;
 
-    private boolean IsConnect(){
-
-        boolean bConnected = false;
-        try {
-            ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-            if (networkInfo != null && networkInfo.isConnected())
-                bConnected = true;
-        }catch (Exception e){
-            e.printStackTrace();
+    public static boolean isNetworkAvailable(Context context)
+    {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()){
+            return true;
         }
-        return bConnected;
+        return false;
     }
 
     @Override
@@ -112,17 +109,22 @@ public class WebView1Activity extends AppCompatActivity {
                 return true;
                 //return super.onJsConfirm(view, url, message, result);
             }
+
+            @Override
+            public void onReceivedTitle(WebView view, String title) {
+                super.onReceivedTitle(view, title);
+
+                Log.e(TAG, "title:" + title);
+            }
         });
 
 
-
         //네트워크 연결 여부
-        if(IsConnect()){
+        if(isNetworkAvailable(this)){
             webView.loadUrl("file:///android_asset/test1.html");
         }else {
             webView.loadUrl("about:blank");
         }
-
     }
 
     @Override
@@ -142,11 +144,14 @@ public class WebView1Activity extends AppCompatActivity {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
+            Log.d("test1.html 에서 링크 클릭시:", url);
+
             try {
-                Log.d("UrlLoading1", url);
 
                 if (url.startsWith("app://")) {
                     Intent intent = new Intent(context.getApplicationContext(), MainActivity.class);
+                    //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    //intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(intent);
                 } else {
                     view.loadUrl(url);
@@ -163,13 +168,16 @@ public class WebView1Activity extends AppCompatActivity {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
 
+            Log.d("test1.html 에서 링크 클릭시:", request.getUrl().toString());
+
             try {
 
                 String url = request.getUrl().toString();
-                Log.d("UrlLoading2", url);
 
                 if (url.startsWith("app://")) {
                     Intent intent = new Intent(context.getApplicationContext(), MainActivity.class);
+                    //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    //intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(intent);
                 } else {
                     view.loadUrl(url);
@@ -205,6 +213,7 @@ public class WebView1Activity extends AppCompatActivity {
 
             Log.d("onPageFinished", sTitle);
         }
+
     }
 
 }

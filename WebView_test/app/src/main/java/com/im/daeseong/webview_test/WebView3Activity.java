@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
@@ -14,31 +14,25 @@ import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class WebView3Activity extends AppCompatActivity {
 
-    public String sTitle;
+    private static final String TAG = WebView3Activity.class.getSimpleName();
+
     public Context context;
     private WebView webView;
-    private ProgressBar progressBar;
 
     private BackPressCloseHandler backPressCloseHandler;
 
-
-    private boolean IsConnect(){
-
-        boolean bConnected = false;
-        try {
-            ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-            if (networkInfo != null && networkInfo.isConnected())
-                bConnected = true;
-        }catch (Exception e){
-            e.printStackTrace();
+    public static boolean isNetworkAvailable(Context context)
+    {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()){
+            return true;
         }
-        return bConnected;
+        return false;
     }
 
     @Override
@@ -51,16 +45,15 @@ public class WebView3Activity extends AppCompatActivity {
         setContentView(R.layout.activity_web_view3);
 
         context = getApplicationContext();
-        progressBar = (ProgressBar)findViewById(R.id.progressBar2);
 
-        webView = (WebView)findViewById(R.id.webview3);
+        webView = (WebView)findViewById(R.id.webview1);
         webView.getSettings().setDefaultTextEncodingName("UTF-8");
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setAppCacheEnabled(true);
         webView.setWebViewClient(new CustomWebViewClient());
 
         //네트워크 연결 여부
-        if(IsConnect()){
+        if(isNetworkAvailable(this)){
             webView.loadUrl("http://m.naver.com");
         }else {
             webView.loadUrl("about:blank");

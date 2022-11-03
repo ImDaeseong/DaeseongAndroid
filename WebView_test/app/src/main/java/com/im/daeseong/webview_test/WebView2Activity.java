@@ -9,8 +9,8 @@ import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;//import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -27,23 +27,21 @@ import android.widget.Toast;
 
 public class WebView2Activity extends AppCompatActivity {
 
+    private static final String TAG = WebView2Activity.class.getSimpleName();
+
     public String sTitle;
     public Context context;
     private WebView webView;
     private ProgressBar progressBar;
 
-    private boolean IsConnect(){
-
-        boolean bConnected = false;
-        try {
-            ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-            if (networkInfo != null && networkInfo.isConnected())
-                bConnected = true;
-        }catch (Exception e){
-            e.printStackTrace();
+    public static boolean isNetworkAvailable(Context context)
+    {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()){
+            return true;
         }
-        return bConnected;
+        return false;
     }
 
     @Override
@@ -55,7 +53,7 @@ public class WebView2Activity extends AppCompatActivity {
 
         progressBar = (ProgressBar)findViewById(R.id.progressBar1);
 
-        webView = (WebView)findViewById(R.id.webview2);
+        webView = (WebView)findViewById(R.id.webview1);
         webView.getSettings().setJavaScriptEnabled(true);//웹뷰에서 자바스크립트 실행 가능
 
         //webView.setBackgroundColor(0);
@@ -125,10 +123,17 @@ public class WebView2Activity extends AppCompatActivity {
                 //return super.onJsConfirm(view, url, message, result);
             }
 
+            @Override
+            public void onReceivedTitle(WebView view, String title) {
+                super.onReceivedTitle(view, title);
+
+                Log.e(TAG, "title:" + title);
+            }
         });
 
+
         //네트워크 연결 여부
-        if(IsConnect()){
+        if(isNetworkAvailable(this)){
             webView.loadUrl("file:///android_asset/test2.html");
         }else {
             webView.loadUrl("about:blank");
