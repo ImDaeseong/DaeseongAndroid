@@ -4,22 +4,21 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Main2Activity extends AppCompatActivity {
+public class Main5Activity extends AppCompatActivity {
 
-    private static final String TAG = Main2Activity.class.getSimpleName();
+    private static final String TAG = Main5Activity.class.getSimpleName();
 
     private BottomNavigationView bottomNavigationView;
     private ViewPager viewPager;
+    private MenuItem menuItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main5);
 
         viewPager = findViewById(R.id.viewPager);
 
@@ -62,23 +61,13 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
 
-                switch (position) {
-                    case 0:
-                        bottomNavigationView.getMenu().findItem(R.id.list).setChecked(true);
-                        break;
-                    case 1:
-                        bottomNavigationView.getMenu().findItem(R.id.sentence).setChecked(true);
-                        break;
-                    case 2:
-                        bottomNavigationView.getMenu().findItem(R.id.word).setChecked(true);
-                        break;
-                    case 3:
-                        bottomNavigationView.getMenu().findItem(R.id.myword).setChecked(true);
-                        break;
-                    case 4:
-                        bottomNavigationView.getMenu().findItem(R.id.setting).setChecked(true);
-                        break;
+                if (menuItem != null) {
+                    menuItem.setChecked(false);
+                } else {
+                    bottomNavigationView.getMenu().getItem(0).setChecked(false);
                 }
+                bottomNavigationView.getMenu().getItem(position).setChecked(true);
+                menuItem = bottomNavigationView.getMenu().getItem(position);
             }
         });
 
@@ -87,11 +76,11 @@ public class Main2Activity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager v) {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.addFragment(new Fragment1());
-        viewPagerAdapter.addFragment(new Fragment2());
-        viewPagerAdapter.addFragment(new Fragment3());
-        viewPagerAdapter.addFragment(new Fragment4());
-        viewPagerAdapter.addFragment(new Fragment5());
+        viewPagerAdapter.addFragment(Fragment1.newInstance());// new Fragment1());
+        viewPagerAdapter.addFragment(Fragment2.newInstance());// new Fragment2());
+        viewPagerAdapter.addFragment(Fragment3.newInstance());// new Fragment3());
+        viewPagerAdapter.addFragment(Fragment4.newInstance());// new Fragment4());
+        viewPagerAdapter.addFragment(Fragment5.newInstance());// new Fragment5());
         v.setAdapter(viewPagerAdapter);
     }
 }

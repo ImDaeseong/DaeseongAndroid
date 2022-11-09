@@ -3,8 +3,8 @@ package com.daeseong.bottomnavigationview_test;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
-
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -78,11 +78,11 @@ public class Main4Activity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager v) {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.addFragment(new Fragment1());
-        viewPagerAdapter.addFragment(new Fragment2());
-        viewPagerAdapter.addFragment(new Fragment3());
-        viewPagerAdapter.addFragment(new Fragment4());
-        viewPagerAdapter.addFragment(new Fragment5());
+        viewPagerAdapter.addFragment(Fragment1.newInstance());// new Fragment1());
+        viewPagerAdapter.addFragment(Fragment2.newInstance());// new Fragment2());
+        viewPagerAdapter.addFragment(Fragment3.newInstance());// new Fragment3());
+        viewPagerAdapter.addFragment(Fragment4.newInstance());// new Fragment4());
+        viewPagerAdapter.addFragment(Fragment5.newInstance());// new Fragment5());
         v.setAdapter(viewPagerAdapter);
     }
 }
