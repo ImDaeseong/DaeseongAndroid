@@ -7,8 +7,8 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 
 public class Main1Activity extends AppCompatActivity {
 
@@ -75,22 +75,27 @@ public class Main1Activity extends AppCompatActivity {
 
         switch (nIndex){
             case 0:
+                fragmentTransaction.setCustomAnimations(R.anim.slide_in_bottom, R.anim.slide_out_top);
                 fragmentTransaction.replace(R.id.frameLayout, fragment1);
                 fragmentTransaction.commit();
                 break;
             case 1:
+                fragmentTransaction.setCustomAnimations(R.anim.slide_in_bottom, R.anim.slide_out_top);
                 fragmentTransaction.replace(R.id.frameLayout, fragment2);
                 fragmentTransaction.commit();
                 break;
             case 2:
+                fragmentTransaction.setCustomAnimations(R.anim.slide_in_bottom, R.anim.slide_out_top);
                 fragmentTransaction.replace(R.id.frameLayout, fragment3);
                 fragmentTransaction.commit();
                 break;
             case 3:
+                fragmentTransaction.setCustomAnimations(R.anim.slide_in_bottom, R.anim.slide_out_top);
                 fragmentTransaction.replace(R.id.frameLayout, fragment4);
                 fragmentTransaction.commit();
                 break;
             case 4:
+                fragmentTransaction.setCustomAnimations(R.anim.slide_in_bottom, R.anim.slide_out_top);
                 fragmentTransaction.replace(R.id.frameLayout, fragment5);
                 fragmentTransaction.commit();
                 break;

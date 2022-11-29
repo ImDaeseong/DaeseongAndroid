@@ -21,6 +21,10 @@ public class Fragment2 extends Fragment {
         return new Fragment2();
     }
 
+    public Fragment2(){
+
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
