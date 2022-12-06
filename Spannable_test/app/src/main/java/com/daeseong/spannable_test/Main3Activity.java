@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -12,6 +14,8 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.ImageSpan;
+import android.text.style.StyleSpan;
 import android.text.style.URLSpan;
 import android.text.style.UnderlineSpan;
 import android.view.View;
@@ -21,7 +25,7 @@ public class Main3Activity extends AppCompatActivity {
 
     private static final String TAG = Main3Activity.class.getSimpleName();
 
-    private TextView tv1, tv2, tv3, tv4, tv5;
+    private TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +47,19 @@ public class Main3Activity extends AppCompatActivity {
         tv5 = (TextView) findViewById(R.id.tv5);
         tv5.setText("텍스트 색상 변경");
 
+        tv6 = (TextView) findViewById(R.id.tv6);
+        tv6.setText("텍스트 이미지 추가");
+
+        tv7 = (TextView) findViewById(R.id.tv7);
+        tv7.setText("텍스트 색상 볼드 처리");
+
         settv1();
         settv2();
         settv3();
         settv4();
         settv5();
+        settv6();
+        settv7();
     }
 
     private void settv1(){
@@ -94,5 +106,30 @@ public class Main3Activity extends AppCompatActivity {
 
         //클릭 가능하게 설정
         tv5.setMovementMethod(LinkMovementMethod.getInstance());
+    }
+
+    private void settv6(){
+
+        Drawable drawable = getResources().getDrawable(R.drawable.number1, null);
+        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+
+        SpannableString spannableString = new SpannableString(tv6.getText());
+        spannableString.setSpan(new ImageSpan(drawable), 0, 3, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+
+        tv6.setText(spannableString);
+    }
+
+    private void settv7(){
+
+        //문장에서 찾을 문자열
+        String sFind = "볼드";
+        int nStart = tv7.getText().toString().indexOf(sFind);
+        int nEnd = nStart + sFind.length();
+
+        SpannableString spannableString = new SpannableString(tv7.getText());
+        spannableString.setSpan(new ForegroundColorSpan(Color.WHITE), nStart, nEnd, 0);
+        spannableString.setSpan(new BackgroundColorSpan(Color.RED), nStart, nEnd, 0);
+        spannableString.setSpan(new StyleSpan(Typeface.BOLD), nStart, nEnd, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+        tv7.setText(spannableString);
     }
 }

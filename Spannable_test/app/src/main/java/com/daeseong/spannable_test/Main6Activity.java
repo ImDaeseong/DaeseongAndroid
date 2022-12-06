@@ -1,12 +1,26 @@
 package com.daeseong.spannable_test;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
 import android.text.method.ScrollingMovementMethod;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main6Activity extends AppCompatActivity {
 
@@ -15,9 +29,34 @@ public class Main6Activity extends AppCompatActivity {
     private EditText et1;
     private TextView tv1;
     private Button button1;
+    private Button button2;
 
     private String sEdit;
 
+    private String sData = "서울\n" +
+            "구름많음\n" +
+            "온도 1.6°\n" +
+            "미세 좋음\n" +
+            "초미세 좋음\n" +
+            "[https://weather.naver.com/today/01110580?cpName=KMA]\n" +
+            "\n" +
+            " 춘천\n" +
+            "<!--구름많음-->\n" +
+            "[https://weather.naver.com/today/01150101?cpName=KMA]\n" +
+            "\n" +
+            "강릉\n" +
+            "<!--흐림-->\n" +
+            "  온도 5.6° [https://weather.naver.com/today/16113114?cpName=KMA]\n" +
+            "\n" +
+            "청주\n" +
+            "초미세 좋음 [https://weather.naver.com/today/07170630?cpName=KMA] <!--흐림-->\n" +
+            "\n" +
+            "대전\n" +
+            "미세 보통\n" +
+            "초미세 보통\n" +
+            "[https://weather.naver.com/today/06110517?cpName=KMA]\n" +
+            "\n";
+/*
     private String sData = "서울\n" +
             "구름많음\n" +
             "온도 1.6°\n" +
@@ -41,6 +80,8 @@ public class Main6Activity extends AppCompatActivity {
             "초미세 보통\n" +
             "\"https://weather.naver.com/today/06110517?cpName=KMA\"\n" +
             "\n";
+*/
+    private final Pattern AT_PATTERN = Pattern.compile("\n");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,10 +101,82 @@ public class Main6Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                sEdit = et1.getText().toString();
+                sEdit = CheckReturn(et1.getText().toString());
                 tv1.setText(sEdit);
+            }
+        });
+
+        button2 = (Button)findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                CheckLink(et1.getText().toString());
             }
         });
     }
 
+    private void CheckLink(String sInput){
+
+        //[] 감싼 부분이 링크
+        SpannableString spannableString = new SpannableString(sInput);
+        Matcher matcher = Pattern.compile("\\[[^\\]]+\\]").matcher(sInput);
+
+        String sFind, sUrl;
+        int nLength;
+        while (matcher.find()) {
+            sFind = matcher.group();
+            nLength = sFind.length();
+            sUrl = sFind.substring(1, nLength - 1);
+
+            //Log.e(TAG, sUrl);
+            spannableString.setSpan(new ClickableSpanEx(this, sUrl), matcher.start(), matcher.end(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        tv1.setText((SpannableString) spannableString);
+        tv1.setMovementMethod(LinkMovementMethod.getInstance());
+    }
+
+    private String CheckReturn(String sInput){
+
+        //\n(줄바꿈) 기준으로 문자열 정리
+        SpannableString spannableString = new SpannableString(sInput);
+        Pattern pattern = Pattern.compile("\n");
+        Matcher matcher = pattern.matcher(spannableString);
+        while (matcher.find()) {
+            int start = matcher.start();
+            int end = matcher.end();
+            spannableString.setSpan(new AbsoluteSizeSpan(15, true), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        //Log.e(TAG, spannableString.toString());
+
+        return spannableString.toString();
+    }
+
+    private class ClickableSpanEx extends ClickableSpan {
+
+        private Context context;
+        private String sUrl;
+
+        public ClickableSpanEx(Context context, String sUrl) {
+            this.context = context;
+            this.sUrl = sUrl;
+        }
+
+        @Override
+        public void updateDrawState(TextPaint ds) {
+            super.updateDrawState(ds);
+
+            ds.setColor(Color.RED);
+            ds.setUnderlineText(false);
+        }
+
+        @Override
+        public void onClick(View widget) {
+
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(this.sUrl));
+            startActivity(intent);
+        }
+    }
 }
