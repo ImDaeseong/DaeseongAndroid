@@ -2,19 +2,12 @@ package com.daeseong.spannable_test;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
-import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.method.ScrollingMovementMethod;
 import android.text.style.AbsoluteSizeSpan;
-import android.text.style.ClickableSpan;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -152,31 +145,5 @@ public class Main6Activity extends AppCompatActivity {
         //Log.e(TAG, spannableString.toString());
 
         return spannableString.toString();
-    }
-
-    private class ClickableSpanEx extends ClickableSpan {
-
-        private Context context;
-        private String sUrl;
-
-        public ClickableSpanEx(Context context, String sUrl) {
-            this.context = context;
-            this.sUrl = sUrl;
-        }
-
-        @Override
-        public void updateDrawState(TextPaint ds) {
-            super.updateDrawState(ds);
-
-            ds.setColor(Color.RED);
-            ds.setUnderlineText(false);
-        }
-
-        @Override
-        public void onClick(View widget) {
-
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(this.sUrl));
-            startActivity(intent);
-        }
     }
 }
