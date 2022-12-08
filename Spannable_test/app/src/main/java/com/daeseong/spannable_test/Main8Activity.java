@@ -111,8 +111,8 @@ public class Main8Activity extends AppCompatActivity {
 
                     //링크 보여주는 부분
                     slink2_Sub = getNameURL(slink2);
-                    SpannableString s2 = new SpannableString(getNameURL(slink2_Sub));
-                    s2.setSpan(new ClickableSpanEx(this, slink2), 0 , slink2_Sub.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+                    SpannableString s2 = new SpannableString(slink2_Sub + " "); //여기에 공백을 하나 넎어야만 전체 라인 클릭이 않된다.
+                    s2.setSpan(new ClickableSpanEx(this, slink2), 0 , slink2_Sub.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                     stringArray.add((SpannedString) TextUtils.concat(s1, s2, "\n") );
                 } else {
