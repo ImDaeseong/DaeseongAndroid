@@ -8,6 +8,7 @@ import android.text.SpannedString;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,28 +27,28 @@ public class Main8Activity extends AppCompatActivity {
 
     private ArrayList<SpannedString> stringArray = new ArrayList<>();
 
-    private String sData = "서울\n" +
+    private String sData = "서울          서울         서울\n" +
             "구름많음\n" +
             "온도 1.6°\n" +
             "미세 좋음\n" +
             "초미세 좋음\n" +
-            "[https://weather.naver.com/today/01110580?cpName=KMA]\n" +
+            "[https://weather.naver.com/today/01110580?cpName=KMA] 링크 처리 1 \n" +
             "\n" +
-            " 춘천\n" +
+            " 춘천         춘천 \n" +
             "<!--구름많음-->\n" +
-            "[https://weather.naver.com/today/01150101?cpName=KMA]\n" +
+            "   링크 처리 2 [https://weather.naver.com/today/01150101?cpName=KMA]\n" +
             "\n" +
-            "강릉\n" +
+            "강릉__강릉\n" +
             "<!--흐림-->\n" +
-            "  온도 5.6° [https://weather.naver.com/today/16113114?cpName=KMA]\n" +
+            "  온도 5.6° [https://weather.naver.com/today/16113114?cpName=KMA]   링크 처리 3\n" +
             "\n" +
-            "청주\n" +
-            "초미세 좋음 [https://weather.naver.com/today/07170630?cpName=KMA] <!--흐림-->\n" +
+            "!청주       청주!\n" +
+            "초미세 좋음 [https://weather.naver.com/today/07170630?cpName=KMA] 링크 처리 4  <!--흐림-->\n" +
             "\n" +
-            "대전\n" +
+            "@대전                            대전#\n" +
             "미세 보통\n" +
             "초미세 보통\n" +
-            "[https://weather.naver.com/today/06110517?cpName=KMA]\n" +
+            "링크 처리 5 [https://weather.naver.com/today/06110517?cpName=KMA]   링크 처리 5\n" +
             "\n";
 
     @Override
@@ -90,6 +91,7 @@ public class Main8Activity extends AppCompatActivity {
         String slink2;
         String slink2_Sub;
         String slink3;
+        String slink4;
 
         String[] sRead = sInput.split("\n");
         for(int i=0; i < sRead.length; i++) {
@@ -106,6 +108,9 @@ public class Main8Activity extends AppCompatActivity {
                     //링크 부분
                     slink2 = sCheck.substring(sCheck.indexOf("[")+1 , sCheck.indexOf("]"));
 
+                    //링크 끝나는 부분
+                    slink3 = sCheck.substring(sCheck.indexOf("]")+1);
+
                     SpannableString s1 = new SpannableString(slink1);
                     stringArray.add((SpannedString) TextUtils.concat("", s1));
 
@@ -114,18 +119,20 @@ public class Main8Activity extends AppCompatActivity {
                     SpannableString s2 = new SpannableString(slink2_Sub + " "); //여기에 공백을 하나 넎어야만 전체 라인 클릭이 않된다.
                     s2.setSpan(new ClickableSpanEx(this, slink2), 0 , slink2_Sub.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-                    stringArray.add((SpannedString) TextUtils.concat(s1, s2, "\n") );
+                    SpannableString s3 = new SpannableString(slink3);
+                    stringArray.add((SpannedString) TextUtils.concat("", s3));
+
+                    stringArray.add((SpannedString) TextUtils.concat(s1, s2, s3, "\n") );
                 } else {
 
                     //링크 없는 라인
-                    slink3 = sCheck;
+                    slink4 = sCheck;
 
-                    SpannableString s3 = new SpannableString(slink3);
-                    stringArray.add((SpannedString) TextUtils.concat("", s3, "\n") );
+                    SpannableString s4 = new SpannableString(slink4);
+                    stringArray.add((SpannedString) TextUtils.concat("", s4, "\n") );
                 }
             }
         }
-
     }
 
     private String getNameURL(String sInput){
