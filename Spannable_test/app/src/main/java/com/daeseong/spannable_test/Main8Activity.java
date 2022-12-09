@@ -87,11 +87,11 @@ public class Main8Activity extends AppCompatActivity {
 
     private void checkLink(String sInput){
 
-        String slink1;
-        String slink2;
-        String slink2_Sub;
-        String slink3;
-        String slink4;
+        String slink1 = "";
+        String slink2 = "";
+        String slink2_Sub = "";
+        String slink3 = "";
+        String slink4 = "";
 
         String[] sRead = sInput.split("\n");
         for(int i=0; i < sRead.length; i++) {
@@ -112,7 +112,6 @@ public class Main8Activity extends AppCompatActivity {
                     slink3 = sCheck.substring(sCheck.indexOf("]")+1);
 
                     SpannableString s1 = new SpannableString(slink1);
-                    stringArray.add((SpannedString) TextUtils.concat("", s1));
 
                     //링크 보여주는 부분
                     slink2_Sub = getNameURL(slink2);
@@ -120,7 +119,6 @@ public class Main8Activity extends AppCompatActivity {
                     s2.setSpan(new ClickableSpanEx(this, slink2), 0 , slink2_Sub.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                     SpannableString s3 = new SpannableString(slink3);
-                    stringArray.add((SpannedString) TextUtils.concat("", s3));
 
                     stringArray.add((SpannedString) TextUtils.concat(s1, s2, s3, "\n") );
                 } else {
