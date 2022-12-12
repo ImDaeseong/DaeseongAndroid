@@ -60,7 +60,7 @@ public class Main8Activity extends AppCompatActivity {
             "\n" +
             " 춘천         춘천 \n" +
             "<!--구름많음-->\n" +
-            "   링크 처리 2 https://weather.naver.com/today/01150101?cpName=KMA \n" +
+            "   링크 처리 2 https://weather.naver.com/today/01150101?cpName=KMA\n" +
             "\n" +
             "강릉__강릉\n" +
             "<!--흐림-->\n" +
@@ -125,12 +125,12 @@ public class Main8Activity extends AppCompatActivity {
     private void checkLinkhttps(String sInput){
 
         String slink1;
-        String slink2;
+        String slink2 = "";
         String slink2_Sub;
         String slink3;
         String slink4;
         String slast;
-        int nEnd;
+        int nEnd = 0;
 
         String[] sRead = sInput.split("\n");
         for(int i=0; i < sRead.length; i++) {
@@ -144,18 +144,22 @@ public class Main8Activity extends AppCompatActivity {
                     //링크 아닌부분
                     slink1 = sCheck.substring(0, sCheck.indexOf("https"));
 
+                    //링크 부분
                     slast = sCheck.substring(sCheck.indexOf("https"));
 
-                    //링크 부분
                     nEnd = slast.indexOf(" ");
-                    if(nEnd != -1){
+                    if(nEnd != -1 ){
                         slink2 = slast.substring(0, nEnd);
                     } else {
-                        slink2 = "";
+                        slink2 = slast;
                     }
 
                     //링크 끝나는 부분
-                    slink3 = slast.substring(nEnd+1);
+                    if(nEnd == -1){
+                        slink3 = "";
+                    }else {
+                        slink3 = slast.substring(nEnd+1);
+                    }
 
                     SpannableString s1 = new SpannableString(slink1);
 
