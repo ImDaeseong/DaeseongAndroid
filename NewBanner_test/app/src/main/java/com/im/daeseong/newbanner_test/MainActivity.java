@@ -1,14 +1,14 @@
 package com.im.daeseong.newbanner_test;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button button1, button2, button3, button4, button5, button6;
+    private Button button1, button2, button3, button4, button5, button6, button7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button4 = (Button)findViewById(R.id.button4);
         button5 = (Button)findViewById(R.id.button5);
         button6 = (Button)findViewById(R.id.button6);
+        button7 = (Button)findViewById(R.id.button7);
 
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button4.setOnClickListener(this);
         button5.setOnClickListener(this);
         button6.setOnClickListener(this);
+        button7.setOnClickListener(this);
     }
 
     @Override
@@ -50,6 +52,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button6:
                 startActivity(new Intent(this, Banner6styleActivity.class));
+                break;
+            case R.id.button7:
+                startActivity(new Intent(this, Banner7styleActivity.class));
                 break;
         }
     }

@@ -2,7 +2,7 @@ package com.im.daeseong.newbanner_test;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.im.daeseong.newbanner_test.Banner1_style.BannerView;
