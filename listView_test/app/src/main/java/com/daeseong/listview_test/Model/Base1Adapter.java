@@ -55,22 +55,9 @@ public class Base1Adapter extends BaseAdapter {
 
         highlightItem(i, view);
 
-        /*
-        if (i % 2 == 0) {
-            view.setBackgroundColor(Color.GRAY);
-        } else {
-            view.setBackgroundColor(Color.WHITE);
-        }
-        */
+        //setBackgroundColor(i,view);
 
-        /*
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setChangeBackColor(view, i);
-            }
-        });
-        */
+        //setViewClick(i,view);
 
         return view;
     }
@@ -121,6 +108,26 @@ public class Base1Adapter extends BaseAdapter {
         }else {
             view.setBackgroundColor(Color.WHITE);
         }
+    }
+
+    private void setBackgroundColor(int i, View view){
+
+        if (i % 2 == 0) {
+            view.setBackgroundColor(Color.GRAY);
+        } else {
+            view.setBackgroundColor(Color.WHITE);
+        }
+    }
+
+    private void setViewClick(int i, View view){
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                setChangeBackColor(view, i);
+            }
+        });
     }
 
     public void setSelectItem(int nSelect){

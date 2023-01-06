@@ -68,7 +68,6 @@ public class SelectConstraintLayout extends ConstraintLayout implements Checkabl
 
     @Override
     protected int[] onCreateDrawableState(int extraSpace) {
-        //return super.onCreateDrawableState(extraSpace);
 
         final int[] drawableState = super.onCreateDrawableState(extraSpace + 1);
 

@@ -13,7 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import com.daeseong.listview_test.Model.Base9Adapter;
 import com.daeseong.listview_test.Model.Base9Adapter1;
-import java.util.List;
+import java.util.ArrayList;
 
 public class ListView9Activity extends AppCompatActivity {
 
@@ -45,7 +45,7 @@ public class ListView9Activity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 String sKey = MapApi.getInstance().getList().get(i);
-                List<itemData> item =  MapApi.getInstance().getItem(sKey);
+                ArrayList<itemData> item =  MapApi.getInstance().getItem(sKey);
                 if(item != null){
                     base9Adapter1.addAll(item);
                 }

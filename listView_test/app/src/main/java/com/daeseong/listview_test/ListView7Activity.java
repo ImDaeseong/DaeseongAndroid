@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import com.daeseong.listview_test.Controls.LeftView;
 import com.daeseong.listview_test.Controls.RightView;
-import java.util.List;
+import java.util.ArrayList;
 
 public class ListView7Activity extends AppCompatActivity {
 
@@ -60,7 +60,7 @@ public class ListView7Activity extends AppCompatActivity {
         ly2.removeAllViews();
 
         String sKey = MapApi.getInstance().getList().get(nSelect);
-        List<itemData> list =  MapApi.getInstance().getItem(sKey);
+        ArrayList<itemData> list =  MapApi.getInstance().getItem(sKey);
         if(list != null) {
             for (int i =0; i < list.size(); i++) {
                 RightView rightView = new RightView(this, list.get(i).getLocName());

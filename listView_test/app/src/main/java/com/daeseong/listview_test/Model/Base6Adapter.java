@@ -7,16 +7,16 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.daeseong.listview_test.R;
-import java.util.List;
+import java.util.ArrayList;
 
 public class Base6Adapter extends BaseAdapter {
 
     private static final String TAG = Base6Adapter.class.getSimpleName();
 
     private Activity activity;
-    private List<String> list;
+    private ArrayList<String> list;
 
-    public Base6Adapter(Activity activity, List<String> list){
+    public Base6Adapter(Activity activity, ArrayList<String> list){
         this.activity = activity;
         this.list = list;
     }

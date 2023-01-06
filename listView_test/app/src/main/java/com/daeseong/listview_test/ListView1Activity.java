@@ -5,14 +5,15 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import com.daeseong.listview_test.Model.Base1Adapter;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class ListView1Activity extends AppCompatActivity {
 
@@ -65,7 +66,7 @@ public class ListView1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                List<itemData> item = MapApi.getInstance().getItem("서울");
+                ArrayList<itemData> item = MapApi.getInstance().getItem("서울");
                 if(item != null){
                     base1Adapter.addAll(item);
                 }
@@ -77,7 +78,7 @@ public class ListView1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                List<itemData> item = MapApi.getInstance().getItem("부산");
+                ArrayList<itemData> item = MapApi.getInstance().getItem("부산");
                 if(item != null){
                     base1Adapter.addAll(item);
                 }
@@ -89,7 +90,7 @@ public class ListView1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                List<itemData> item = MapApi.getInstance().getItem("대구");
+                ArrayList<itemData> item = MapApi.getInstance().getItem("대구");
                 if(item != null){
                     base1Adapter.addAll(item);
                 }
@@ -101,9 +102,9 @@ public class ListView1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                HashMap<String, List<itemData>> map = MapApi.getInstance().getItem();
+                HashMap<String, ArrayList<itemData>> map = MapApi.getInstance().getItem();
                 for (String key : map.keySet()) {
-                    List<itemData> list = map.get(key);
+                    ArrayList<itemData> list = map.get(key);
                     if (list != null) {
                         base1Adapter.add(list);
                     }
@@ -112,7 +113,7 @@ public class ListView1Activity extends AppCompatActivity {
         });
 
         //자동 클릭
-        new Handler().post(new Runnable() {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
 

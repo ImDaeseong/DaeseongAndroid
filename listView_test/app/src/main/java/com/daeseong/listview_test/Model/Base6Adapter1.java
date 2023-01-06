@@ -2,7 +2,6 @@ package com.daeseong.listview_test.Model;
 
 import android.app.Activity;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,18 +9,18 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.daeseong.listview_test.R;
 import com.daeseong.listview_test.itemData;
-import java.util.List;
+import java.util.ArrayList;
 
 public class Base6Adapter1 extends BaseAdapter {
 
     private static final String TAG = Base1Adapter.class.getSimpleName();
 
     private Activity activity;
-    private List<itemData> list;
+    private ArrayList<itemData> list;
 
     private int nSelect = -1;
 
-    public Base6Adapter1(Activity activity, List<itemData> list){
+    public Base6Adapter1(Activity activity, ArrayList<itemData> list){
         this.activity = activity;
         this.list = list;
     }
@@ -59,13 +58,13 @@ public class Base6Adapter1 extends BaseAdapter {
         return view;
     }
 
-    public void addAll(List<itemData> list){
+    public void addAll(ArrayList<itemData> list){
 
         this.list = list;
         notifyDataSetChanged();
     }
 
-    public void add(List<itemData> list){
+    public void add(ArrayList<itemData> list){
 
         this.list.addAll(list);
         notifyDataSetChanged();
@@ -87,8 +86,6 @@ public class Base6Adapter1 extends BaseAdapter {
 
         if(nSelect == i){
             tv.setTextColor(Color.RED);
-
-            Log.e(TAG, "web call");
         }else {
             tv.setTextColor(Color.BLACK);
         }

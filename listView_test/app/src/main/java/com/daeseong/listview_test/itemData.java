@@ -16,11 +16,23 @@ public class itemData {
         return sLocName;
     }
 
+    public void setLocName(String sLocName) {
+        this.sLocName = sLocName;
+    }
+
     public double getLatitude() {
         return dLatitude;
     }
 
+    public void setLatitude(double dLatitude) {
+        this.dLatitude = dLatitude;
+    }
+
     public double getLongitude() {
         return dLongitude;
+    }
+
+    public void setLongitude(double dLongitude) {
+        this.dLongitude = dLongitude;
     }
 }

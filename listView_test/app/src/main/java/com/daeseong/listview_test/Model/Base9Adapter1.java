@@ -8,16 +8,16 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.daeseong.listview_test.R;
 import com.daeseong.listview_test.itemData;
-import java.util.List;
+import java.util.ArrayList;
 
 public class Base9Adapter1 extends BaseAdapter {
 
     private static final String TAG = Base9Adapter1.class.getSimpleName();
 
     private Activity activity;
-    private List<itemData> list;
+    private ArrayList<itemData> list;
 
-    public Base9Adapter1(Activity activity, List<itemData> list){
+    public Base9Adapter1(Activity activity, ArrayList<itemData> list){
         this.activity = activity;
         this.list = list;
     }
@@ -53,7 +53,7 @@ public class Base9Adapter1 extends BaseAdapter {
         return view;
     }
 
-    public void addAll(List<itemData> list){
+    public void addAll(ArrayList<itemData> list){
 
         this.list = list;
         notifyDataSetChanged();

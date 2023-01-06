@@ -9,14 +9,14 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.daeseong.listview_test.R;
 import com.daeseong.listview_test.itemData;
-import java.util.List;
+import java.util.ArrayList;
 
 public class Base2Adapter extends BaseAdapter {
 
     private static final String TAG = Base2Adapter.class.getSimpleName();
 
     private Activity activity;
-    private List<itemData> list;
+    private ArrayList<itemData> list;
 
     private int nSelect = -1;
 
@@ -31,7 +31,7 @@ public class Base2Adapter extends BaseAdapter {
         void onViewItemClick(int nIndex);
     }
 
-    public Base2Adapter(Activity activity, List<itemData> list){
+    public Base2Adapter(Activity activity, ArrayList<itemData> list){
         this.activity = activity;
         this.list = list;
     }
@@ -78,13 +78,13 @@ public class Base2Adapter extends BaseAdapter {
         return view;
     }
 
-    public void addAll(List<itemData> list){
+    public void addAll(ArrayList<itemData> list){
 
         this.list = list;
         notifyDataSetChanged();
     }
 
-    public void add(List<itemData> list){
+    public void add(ArrayList<itemData> list){
 
         this.list.addAll(list);
         notifyDataSetChanged();

@@ -11,7 +11,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import com.daeseong.listview_test.Model.Base2Adapter;
-import java.util.List;
+import java.util.ArrayList;
 
 public class ListView2Activity extends AppCompatActivity {
 
@@ -71,7 +71,7 @@ public class ListView2Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                List<itemData> item = MapApi.getInstance().getItem("서울");
+                ArrayList<itemData> item = MapApi.getInstance().getItem("서울");
                 if(item != null){
                     base2Adapter.addAll(item);
                 }
@@ -83,7 +83,7 @@ public class ListView2Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                List<itemData> item = MapApi.getInstance().getItem("부산");
+                ArrayList<itemData> item = MapApi.getInstance().getItem("부산");
                 if(item != null){
                     base2Adapter.addAll(item);
                 }
@@ -95,7 +95,7 @@ public class ListView2Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                List<itemData> item = MapApi.getInstance().getItem("대구");
+                ArrayList<itemData> item = MapApi.getInstance().getItem("대구");
                 if(item != null){
                     base2Adapter.addAll(item);
                 }

@@ -14,7 +14,7 @@ import android.widget.GridView;
 import android.widget.ListView;
 import com.daeseong.listview_test.Model.Base6Adapter;
 import com.daeseong.listview_test.Model.Base6Adapter1;
-import java.util.List;
+import java.util.ArrayList;
 
 public class ListView6Activity extends AppCompatActivity {
 
@@ -59,7 +59,7 @@ public class ListView6Activity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                List<itemData> item = MapApi.getInstance().getItem(MapApi.getInstance().getList().get(i));
+                ArrayList<itemData> item = MapApi.getInstance().getItem(MapApi.getInstance().getList().get(i));
                 if(item != null){
                     base6Adapter1.addAll(item);
                 }

@@ -1,8 +1,8 @@
 package com.daeseong.listview_test;
 
+import android.util.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class MapApi {
 
@@ -10,8 +10,8 @@ public class MapApi {
 
     private static MapApi instance = null;
 
-    private List<String> list;
-    private HashMap<String, List<itemData>> map;
+    private ArrayList<String> list;
+    private HashMap<String, ArrayList<itemData>> map;
 
     public static MapApi getInstance() {
         if(instance == null){
@@ -32,7 +32,7 @@ public class MapApi {
         initMap();
     }
 
-    public boolean setMap(String sIndex, List<itemData> list){
+    public boolean setMap(String sIndex, ArrayList<itemData> list){
         if(map.containsKey(sIndex)){
             return false;
         }
@@ -40,18 +40,18 @@ public class MapApi {
         return true;
     }
 
-    public List<itemData> getItem(String sIndex){
+    public ArrayList<itemData> getItem(String sIndex){
         if(map.containsKey(sIndex)){
             return map.get(sIndex);
         }
         return null;
     }
 
-    public HashMap<String, List<itemData>> getItem(){
+    public HashMap<String, ArrayList<itemData>> getItem(){
         return map;
     }
 
-    public List<String> getList(){
+    public ArrayList<String> getList(){
         return list;
     }
 
@@ -249,15 +249,13 @@ public class MapApi {
         list.add(new itemData("서귀포시", 0f, 0f));
         setMap("제주", list);
 
-        /*
         //데이터 확인
-        HashMap<String, List<itemData>> map = getItem();
+        HashMap<String, ArrayList<itemData>> map = getItem();
         for(String key : map.keySet()){
             for (int i = 0; i < map.get(key).size(); i++) {
                 Log.e(TAG, key + " " + map.get(key).get(i).getLocName());
             }
         }
-        */
 
     }
 }
