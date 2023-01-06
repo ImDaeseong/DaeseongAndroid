@@ -1,8 +1,8 @@
 package com.im.daeseong.gridlayout_test;
 
 import android.graphics.Point;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;//import android.support.design.widget.FloatingActionButton;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Display;

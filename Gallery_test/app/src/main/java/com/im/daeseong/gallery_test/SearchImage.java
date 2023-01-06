@@ -3,8 +3,7 @@ package com.im.daeseong.gallery_test;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
-import android.support.annotation.Nullable;
-
+import androidx.annotation.Nullable;//import android.support.annotation.Nullable;
 import java.io.File;
 import java.util.ArrayList;
 

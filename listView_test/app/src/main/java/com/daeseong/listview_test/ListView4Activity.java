@@ -1,0 +1,59 @@
+package com.daeseong.listview_test;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+public class ListView4Activity extends AppCompatActivity {
+
+    private static final String TAG = ListView4Activity.class.getSimpleName();
+
+    private ListView lv1;
+    private FloatingActionButton fb1;
+
+    private ArrayAdapter<String> adapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_list_view4);
+
+        fb1 = findViewById(R.id.fb1);
+
+        lv1 = (ListView)findViewById(R.id.lv1);
+        lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                String item = (String)adapterView.getItemAtPosition(i);
+                Log.e(TAG, item);
+            }
+        });
+
+        fb1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                for(int k=0; k < lv1.getAdapter().getCount(); k++){
+
+                    if(lv1.isItemChecked(k)){
+                        Log.e(TAG, (String) lv1.getItemAtPosition(k));
+                    }
+                }
+            }
+        });
+
+        initData();
+    }
+
+    private void initData() {
+
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_multiple_choice, MapApi.getInstance().getList());
+        lv1.setAdapter(adapter);
+    }
+}
