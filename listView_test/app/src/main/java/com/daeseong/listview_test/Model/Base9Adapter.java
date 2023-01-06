@@ -32,12 +32,12 @@ public class Base9Adapter extends BaseAdapter {
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return list.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     @Override
@@ -51,5 +51,4 @@ public class Base9Adapter extends BaseAdapter {
 
         return view;
     }
-
 }

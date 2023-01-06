@@ -125,6 +125,6 @@ public class ListView1Activity extends AppCompatActivity {
                 }
             }
         });
-    }
 
+    }
 }

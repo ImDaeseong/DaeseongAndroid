@@ -59,5 +59,3 @@ public class Base10Adapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 }
-
-

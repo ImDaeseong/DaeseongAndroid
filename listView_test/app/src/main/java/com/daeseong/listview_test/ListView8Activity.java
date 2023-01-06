@@ -15,7 +15,7 @@ public class ListView8Activity extends AppCompatActivity {
 
     private SwipeRefreshLayout swl1;
     private ListView lv1;
-    private View HeaderView, FooterView;
+    private View FooterView;
     private Base1Adapter base1Adapter;
 
     private int nIndex = 0;

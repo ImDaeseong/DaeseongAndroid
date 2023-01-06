@@ -13,15 +13,6 @@ public class MapApi {
     private List<String> list;
     private HashMap<String, List<itemData>> map;
 
-    public MapApi(){
-
-        list = new ArrayList<>();
-        map = new HashMap<>();
-
-        initList();
-        initMap();
-    }
-
     public static MapApi getInstance() {
         if(instance == null){
             synchronized (MapApi.class){
@@ -30,6 +21,15 @@ public class MapApi {
             }
         }
         return instance;
+    }
+
+    public MapApi(){
+
+        list = new ArrayList<>();
+        map = new HashMap<>();
+
+        initList();
+        initMap();
     }
 
     public boolean setMap(String sIndex, List<itemData> list){

@@ -31,8 +31,6 @@ public class ListView6Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view6);
 
-        //initData();
-
         lv1 = (ListView)findViewById(R.id.lv1);
         lv1.setDivider(new ColorDrawable(Color.WHITE));
         lv1.setDividerHeight(0);
