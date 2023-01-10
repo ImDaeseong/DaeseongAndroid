@@ -1,7 +1,6 @@
 package com.daeseong.tablayout_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 public class Main5Activity extends AppCompatActivity {
