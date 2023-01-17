@@ -1,7 +1,6 @@
 package com.daeseong.bottomsheetdialog_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;

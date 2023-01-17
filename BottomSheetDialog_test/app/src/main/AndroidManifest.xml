@@ -13,6 +13,20 @@
         android:theme="@style/Theme.BottomSheetDialog_test"
         tools:targetApi="31">
         <activity
+            android:name=".Main7Activity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Main6Activity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Main5Activity"
             android:exported="false">
             <meta-data

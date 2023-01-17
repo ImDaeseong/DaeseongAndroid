@@ -1,7 +1,6 @@
 package com.daeseong.bottomsheetdialog_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +10,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private Button button1, button2, button3, button4, button5;
+    private Button button1, button2, button3, button4, button5, button6, button7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +22,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button3 = (Button)findViewById(R.id.button3);
         button4 = (Button)findViewById(R.id.button4);
         button5 = (Button)findViewById(R.id.button5);
+        button6 = (Button)findViewById(R.id.button6);
+        button7 = (Button)findViewById(R.id.button7);
 
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
         button4.setOnClickListener(this);
         button5.setOnClickListener(this);
+        button6.setOnClickListener(this);
+        button7.setOnClickListener(this);
     }
 
     @Override
@@ -48,6 +51,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button5:
                 startActivity(new Intent(this, Main5Activity.class));
+                break;
+            case R.id.button6:
+                startActivity(new Intent(this, Main6Activity.class));
+                break;
+            case R.id.button7:
+                startActivity(new Intent(this, Main7Activity.class));
                 break;
         }
     }
