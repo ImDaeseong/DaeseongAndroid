@@ -28,7 +28,10 @@ public class CustomDialog1 extends Dialog {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout1);
 
+        //다이얼로그 영역밖 터치, 백키 입력시 dismiss 막음
         setCancelable(false);
+
+        //다이얼로그 영역밖 터치만
         setCanceledOnTouchOutside(false);
 
         btn1 = findViewById(R.id.btn1);

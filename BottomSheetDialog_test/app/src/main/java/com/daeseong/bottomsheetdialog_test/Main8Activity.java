@@ -1,23 +1,24 @@
 package com.daeseong.bottomsheetdialog_test;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import androidx.annotation.NonNull;
 
-public class CustomDialog3 extends Dialog {
+public class Main8Activity extends AppCompatActivity {
 
-    private static final String TAG = CustomDialog3.class.getSimpleName();
-
-    private Context context;
+    private static final String TAG = Main8Activity.class.getSimpleName();
 
     private View cL1;
     private Button btn1_1, btn2_1, btn3_1;
@@ -28,29 +29,12 @@ public class CustomDialog3 extends Dialog {
 
     private boolean bClick = false;
 
-    public CustomDialog3(@NonNull Context context) {
-        super(context);
-        this.context = context;
-    }
-
-    private void setVisibleView(){
-
-        if(bClick){
-
-            cL1.setVisibility(View.GONE);
-            cL2.setVisibility(View.VISIBLE);
-
-        }else {
-
-            cL1.setVisibility(View.VISIBLE);
-            cL2.setVisibility(View.GONE);
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_layout3);
+        setContentView(R.layout.activity_main8);
+
+        init();
 
         cL1 = findViewById(R.id.cL1);
         cL2 = findViewById(R.id.cL2);
@@ -86,7 +70,6 @@ public class CustomDialog3 extends Dialog {
                 setVisibleView();
             }
         });
-
 
         et1 = (EditText) findViewById(R.id.et1);
         et1.addTextChangedListener(new TextWatcher() {
@@ -125,7 +108,7 @@ public class CustomDialog3 extends Dialog {
             @Override
             public void onClick(View view) {
 
-                dismiss();
+                finish();
             }
         });
     }
@@ -141,7 +124,7 @@ public class CustomDialog3 extends Dialog {
     @Override
     public boolean onTouchEvent(@NonNull MotionEvent event) {
 
-        if (event.getAction() == MotionEvent.ACTION_DOWN  && isOutOfBounds((Activity) this.context, event)) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN  && isOutOfBounds(this, event)) {
 
             //Log.e(TAG, "다이얼로그 영역밖 터치");
 
@@ -151,13 +134,35 @@ public class CustomDialog3 extends Dialog {
         return true;
     }
 
+    private void setVisibleView(){
+
+        if(bClick){
+
+            cL1.setVisibility(View.GONE);
+            cL2.setVisibility(View.VISIBLE);
+
+        }else {
+
+            cL1.setVisibility(View.VISIBLE);
+            cL2.setVisibility(View.GONE);
+        }
+    }
+
+    private void init(){
+
+        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
+        getWindow().setGravity(Gravity.BOTTOM);
+    }
+
     private void changeView(){
 
         if(bClick){
             bClick = false;
             setVisibleView();
         } else {
-            dismiss();
+            finish();
         }
     }
 
