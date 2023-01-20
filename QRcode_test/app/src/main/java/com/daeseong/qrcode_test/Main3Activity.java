@@ -2,12 +2,9 @@ package com.daeseong.qrcode_test;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.os.Bundle;
 import android.util.Log;
-
 import com.google.zxing.Result;
-
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class Main3Activity extends AppCompatActivity {
