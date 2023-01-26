@@ -1,13 +1,7 @@
 package com.im.daeseong.banner_test;
 
 import android.app.Application;
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 
 public class MyApplication  extends Application{
 

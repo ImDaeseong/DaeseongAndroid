@@ -1,21 +1,18 @@
 package com.im.daeseong.banner_test;
 
 import android.util.Log;
-
+import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.StringTokenizer;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class String_util {
+
+    private static final String TAG = String_util.class.getSimpleName();
 
     private String_util() {
         throw new UnsupportedOperationException("String_util");
@@ -281,7 +278,6 @@ public class String_util {
         return nResult;
     }
 
-
     public static boolean isEmpty(String sInput) {
         if(sInput == null || sInput.length() == 0)
             return true;
@@ -305,6 +301,7 @@ public class String_util {
     }
 
     public static String getReplace(String sInput) {
+
         return sInput.replace(" ", "+");
     }
 
@@ -328,4 +325,86 @@ public class String_util {
         }
     }
 
+    public static String getLastVisitDay(String sInput){
+
+        String sResult = "";
+
+        try {
+
+            Date startDate = getDate(sInput, "yyyy-MM-dd");
+            long lTime = getDifferentDays(startDate, new Date());
+
+            //Math.floor 로 소수점 무시하고 앞에 데이터만 처리
+            int nYears = (int) Math.floor((float) lTime / 365);
+
+            long nTempYears = lTime - (nYears * 365);
+
+            int nMonths = (int) Math.floor((float) nTempYears / 30);
+
+            long nTempMonths = nTempYears - (nMonths * 30);
+
+            int nWeeks = (int) Math.floor((float) nTempMonths / 7);
+            int Days = (int) Math.floor((float)  nTempMonths-(nWeeks * 7) );
+
+            //String sValue = String.format("[%d]  %d년 %d개월 %d주 %d일 전", lTime, nYears, nMonths, nWeeks, Days);
+            //Log.e(TAG, sValue);
+
+            if( lTime == 0) {
+
+                sResult = String.format("오늘");
+
+            } if ( lTime > 0 && lTime < 7) {
+
+                sResult = String.format("%d일 전", lTime);
+
+            } if ( lTime > 6 && lTime < 30) {
+
+                if (Days == 0) {
+                    sResult = String.format("%d주 %d일 전", nWeeks, Days);
+                } else {
+                    sResult = String.format("%d주 전", nWeeks);
+                }
+
+            } if ( lTime > 29 && lTime < 365) {
+
+                if (nWeeks == 0) {
+                    sResult = String.format("%d개월", nMonths);
+                } else {
+                    sResult = String.format("%d개월 %d주", nMonths, nWeeks);
+                }
+
+                if (Days == 0) {
+                    sResult += String.format(" 전");
+                } else {
+                    sResult += String.format(" %d일 전", Days);
+                }
+
+            } if ( lTime > 365) {
+
+                if (nMonths == 0) {
+                    sResult = String.format("%d년", nYears);
+                } else {
+                    sResult = String.format("%d년 %d개월", nYears, nMonths);
+                }
+
+                if (nWeeks == 0) {
+                    sResult += String.format("");
+                } else {
+                    sResult += String.format(" %d주", nWeeks);
+                }
+
+                if (Days == 0) {
+                    sResult += String.format(" 전");
+                } else {
+                    sResult += String.format(" %d일 전", Days);
+                }
+
+            }
+
+        }catch (Exception e){
+
+        }
+
+        return sResult;
+    }
 }
