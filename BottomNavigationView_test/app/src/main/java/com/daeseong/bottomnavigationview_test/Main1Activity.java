@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-
 public class Main1Activity extends AppCompatActivity {
 
     private static final String TAG = Main1Activity.class.getSimpleName();

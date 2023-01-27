@@ -4,13 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Main3Activity extends AppCompatActivity {
+public class Main7Activity extends AppCompatActivity {
 
-    private static final String TAG = Main3Activity.class.getSimpleName();
+    private static final String TAG = Main7Activity.class.getSimpleName();
 
     private BottomNavigationView bottomNavigationView;
     private ViewPager viewPager;
@@ -19,7 +18,7 @@ public class Main3Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_main7);
 
         viewPager = findViewById(R.id.viewPager);
 
@@ -37,6 +36,12 @@ public class Main3Activity extends AppCompatActivity {
                         break;
                     case R.id.word:
                         viewPager.setCurrentItem(2);
+                        break;
+                    case R.id.myword:
+                        viewPager.setCurrentItem(3);
+                        break;
+                    case R.id.setting:
+                        viewPager.setCurrentItem(4);
                         break;
                 }
                 return false;
@@ -71,9 +76,11 @@ public class Main3Activity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager v) {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.addFragment(new Fragment1());
-        viewPagerAdapter.addFragment(new Fragment2());
-        viewPagerAdapter.addFragment(new Fragment3());
+        viewPagerAdapter.addFragment(Fragment1.newInstance());// new Fragment1());
+        viewPagerAdapter.addFragment(Fragment2.newInstance());// new Fragment2());
+        viewPagerAdapter.addFragment(Fragment3.newInstance());// new Fragment3());
+        viewPagerAdapter.addFragment(Fragment4.newInstance());// new Fragment4());
+        viewPagerAdapter.addFragment(Fragment5.newInstance());// new Fragment5());
         v.setAdapter(viewPagerAdapter);
     }
 }
