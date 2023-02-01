@@ -3,7 +3,6 @@ package com.im.daeseong.newbanner_test;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;

@@ -10,11 +10,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-
 import com.im.daeseong.newbanner_test.Banner1styleActivity;
 import com.im.daeseong.newbanner_test.MainActivity;
 import com.im.daeseong.newbanner_test.R;
-
 
 public class BannerView extends RelativeLayout implements View.OnTouchListener  {
 

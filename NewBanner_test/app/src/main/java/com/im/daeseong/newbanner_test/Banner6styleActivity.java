@@ -1,6 +1,7 @@
 package com.im.daeseong.newbanner_test;
 
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import androidx.viewpager.widget.ViewPager;//import android.support.v4.view.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
@@ -22,7 +23,7 @@ public class Banner6styleActivity extends AppCompatActivity {
 
     private int[] imgs = new int[]{R.drawable.number1,R.drawable.number2,R.drawable.number3,R.drawable.number4};
 
-    private Handler handler = new Handler(){
+    private Handler handler = new Handler(Looper.getMainLooper()){
         @Override
         public void handleMessage(Message msg) {
 

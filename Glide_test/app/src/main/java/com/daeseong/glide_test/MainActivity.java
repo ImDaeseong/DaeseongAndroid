@@ -1,9 +1,10 @@
 package com.daeseong.glide_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ImageView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,11 +19,14 @@ public class MainActivity extends AppCompatActivity {
 
         GlideUtil.getInstance().load(this, iv1, "http://goo.gl/gEgYUd");
 
-        /*
+        //getImg();
+    }
+
+    private void getImg(){
+
         Glide.with(this)
                 .load("http://goo.gl/gEgYUd")
                 .apply(new RequestOptions().placeholder(R.drawable.ic_launcher_background).error(R.drawable.ic_launcher_background))
                 .into(iv1);
-        */
     }
 }

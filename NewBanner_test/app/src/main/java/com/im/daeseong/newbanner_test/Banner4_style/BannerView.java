@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.RelativeLayout;
-
 import com.im.daeseong.newbanner_test.R;
 
 public class BannerView extends RelativeLayout {

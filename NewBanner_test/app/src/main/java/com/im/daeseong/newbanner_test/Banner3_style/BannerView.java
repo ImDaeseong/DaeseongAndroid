@@ -3,13 +3,11 @@ package com.im.daeseong.newbanner_test.Banner3_style;
 import android.content.Context;
 import androidx.annotation.NonNull;//import android.support.annotation.NonNull;
 import androidx.annotation.Nullable;//import android.support.annotation.Nullable;
-
 import androidx.viewpager.widget.ViewPager;//import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.RelativeLayout;
-
 import com.im.daeseong.newbanner_test.R;
 
 public class BannerView extends RelativeLayout {

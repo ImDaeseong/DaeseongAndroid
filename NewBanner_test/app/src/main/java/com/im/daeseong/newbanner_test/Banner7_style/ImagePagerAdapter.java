@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import com.bumptech.glide.Glide;
 import com.im.daeseong.newbanner_test.OnSingleClickListener;
 import com.im.daeseong.newbanner_test.R;
 
@@ -64,10 +65,31 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter {
         try {
 
             int nPos = getPosition(position);
-            Log.e(TAG, String.valueOf(nPos));
-            holder.imageView.setImageResource(imgs[nPos]);
+            //holder.imageView.setImageResource(imgs[nPos]);
 
-        }catch (Exception ex){
+            String sUrl = "";
+            if (nPos == 0) {
+
+                sUrl = "https://.png";
+
+            } else if(nPos == 1) {
+
+                sUrl = "https://.png";
+
+            } else if(nPos == 2) {
+
+                sUrl = "https://.jpg";
+
+            } else if(nPos == 3) {
+
+                sUrl = "https://.png";
+            }
+
+            Glide.with(context)
+                    .load(sUrl)
+                    .into(holder.imageView);
+
+        } catch (Exception ex) {
             holder.imageView.setImageBitmap(BitmapFactory.decodeResource(view.getResources(), R.drawable.number1));
         }
 

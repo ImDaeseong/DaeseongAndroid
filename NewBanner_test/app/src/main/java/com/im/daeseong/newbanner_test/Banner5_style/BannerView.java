@@ -2,6 +2,7 @@ package com.im.daeseong.newbanner_test.Banner5_style;
 
 import android.content.Context;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import androidx.annotation.NonNull;//import android.support.annotation.NonNull;
 import androidx.annotation.Nullable;//import android.support.annotation.Nullable;
@@ -10,7 +11,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.RelativeLayout;
-
 import com.im.daeseong.newbanner_test.R;
 
 public class BannerView extends RelativeLayout {
@@ -65,7 +65,7 @@ public class BannerView extends RelativeLayout {
         });
     }
 
-    private Handler handler = new Handler(){
+    private Handler handler = new Handler(Looper.getMainLooper()){
         @Override
         public void handleMessage(Message msg) {
 

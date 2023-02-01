@@ -17,9 +17,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.RelativeLayout;
-
 import com.im.daeseong.newbanner_test.MainActivity;
-
 
 public class BannerView  extends RelativeLayout implements View.OnTouchListener {
 
