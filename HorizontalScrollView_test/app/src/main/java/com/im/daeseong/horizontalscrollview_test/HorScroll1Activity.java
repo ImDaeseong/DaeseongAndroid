@@ -72,6 +72,5 @@ public class HorScroll1Activity extends AppCompatActivity {
                 Log.e("Tag", "imageView10");
             }
         });
-
     }
 }
