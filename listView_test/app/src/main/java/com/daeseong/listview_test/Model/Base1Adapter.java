@@ -103,9 +103,9 @@ public class Base1Adapter extends BaseAdapter {
 
     private void highlightItem(int i, View view){
 
-        if(nSelect == i){
+        if (nSelect == i) {
             view.setBackgroundColor(Color.GRAY);
-        }else {
+        } else {
             view.setBackgroundColor(Color.WHITE);
         }
     }
@@ -133,4 +133,5 @@ public class Base1Adapter extends BaseAdapter {
     public void setSelectItem(int nSelect){
         this.nSelect = nSelect;
     }
+
 }

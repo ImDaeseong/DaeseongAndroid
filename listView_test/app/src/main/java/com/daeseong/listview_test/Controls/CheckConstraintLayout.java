@@ -30,7 +30,7 @@ public class CheckConstraintLayout extends ConstraintLayout implements Checkable
     @Override
     public void setChecked(boolean b) {
 
-        if(b) {
+        if (b) {
             setBackgroundColor(Color.WHITE);
         } else {
             setBackgroundColor(Color.GRAY);

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import com.daeseong.listview_test.Controls.CheckConstraintLayout;
 import com.daeseong.listview_test.R;
 import java.util.ArrayList;
 
@@ -15,6 +16,8 @@ public class Base9Adapter extends BaseAdapter {
 
     private Activity activity;
     private ArrayList<String> list;
+
+    private CheckConstraintLayout chCL;
 
     public Base9Adapter(Activity activity, ArrayList<String> list){
         this.activity = activity;

@@ -9,8 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.daeseong.listview_test.R;
+import java.util.HashMap;
 
 public class SelectConstraintLayout extends ConstraintLayout implements Checkable {
+
+    private static final String TAG = SelectConstraintLayout.class.getSimpleName();
 
     private static final int[] CHECKED_STATE_SET = {android.R.attr.state_checked};
 
@@ -53,13 +56,12 @@ public class SelectConstraintLayout extends ConstraintLayout implements Checkabl
     public void refreshDrawableState() {
         super.refreshDrawableState();
 
-        for(int i = 0; i < getChildCount(); i++) {
+        for (int i = 0; i < getChildCount(); i++) {
             View view = getChildAt(i);
-            if(view.getId() == R.id.tv1) {
-                if(isChecked) {
+            if (view.getId() == R.id.tv1) {
+                if (isChecked) {
                     ((TextView)view).setTextColor(Color.RED);
-                }
-                else {
+                } else {
                     ((TextView)view).setTextColor(Color.BLACK);
                 }
             }
