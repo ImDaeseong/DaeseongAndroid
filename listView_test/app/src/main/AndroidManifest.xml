@@ -13,6 +13,13 @@
         android:theme="@style/Theme.ListView_test"
         tools:targetApi="31">
         <activity
+            android:name=".ListView11Activity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ListView10Activity"
             android:exported="false">
             <meta-data

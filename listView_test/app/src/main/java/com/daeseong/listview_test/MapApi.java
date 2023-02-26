@@ -47,7 +47,7 @@ public class MapApi {
         return null;
     }
 
-    public HashMap<String, ArrayList<itemData>> getItem(){
+    public HashMap<String, ArrayList<itemData>> getItem() {
         return map;
     }
 

@@ -20,8 +20,7 @@ public class Base2Adapter extends BaseAdapter {
 
     private int nSelect = -1;
 
-
-    private ViewItemClickListener listener;
+    public ViewItemClickListener listener;
 
     public void setViewItemClickListener(ViewItemClickListener listener){
         this.listener = listener;

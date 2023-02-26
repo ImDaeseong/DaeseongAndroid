@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.daeseong.listview_test.R;
-import java.util.HashMap;
 
 public class SelectConstraintLayout extends ConstraintLayout implements Checkable {
 
@@ -61,8 +60,10 @@ public class SelectConstraintLayout extends ConstraintLayout implements Checkabl
             if (view.getId() == R.id.tv1) {
                 if (isChecked) {
                     ((TextView)view).setTextColor(Color.RED);
+                    view.setBackgroundColor(Color.LTGRAY);
                 } else {
                     ((TextView)view).setTextColor(Color.BLACK);
+                    view.setBackgroundColor(Color.WHITE);
                 }
             }
         }

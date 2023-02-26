@@ -11,9 +11,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import com.daeseong.listview_test.Model.Base1Adapter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import com.daeseong.listview_test.Model.Base1Adapter;
 
 public class ListView1Activity extends AppCompatActivity {
 
@@ -22,7 +22,8 @@ public class ListView1Activity extends AppCompatActivity {
     private Button button1, button2, button3, button4;
 
     private ListView lv1;
-    private Base1Adapter base1Adapter;
+
+    private Base1Adapter base1Adapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

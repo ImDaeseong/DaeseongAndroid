@@ -11,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import com.daeseong.listview_test.Model.Base10Adapter;
-
 import java.util.HashMap;
 
 public class ListView10Activity extends AppCompatActivity {

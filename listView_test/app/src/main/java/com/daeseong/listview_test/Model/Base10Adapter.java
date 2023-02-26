@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.daeseong.listview_test.Controls.SelectConstraintLayout;
 import com.daeseong.listview_test.R;
 import com.daeseong.listview_test.itemData;
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ public class Base10Adapter extends BaseAdapter {
     private Activity activity;
     private ArrayList<itemData> list;
 
-    private SelectConstraintLayout chCL;
+    private com.daeseong.listview_test.Controls.SelectConstraintLayout chCL;
 
     public Base10Adapter(Activity activity, ArrayList<itemData> list){
         this.activity = activity;
@@ -51,7 +50,7 @@ public class Base10Adapter extends BaseAdapter {
         view = inflater.inflate(R.layout.list_item10, null);
 
         //현재 선택된 값을 확인
-        chCL = (SelectConstraintLayout)view.findViewById(R.id.chCL);
+        chCL = (com.daeseong.listview_test.Controls.SelectConstraintLayout)view.findViewById(R.id.chCL);
 
         TextView tv1 = (TextView) view.findViewById(R.id.tv1);
         tv1.setText(list.get(i).getLocName());
