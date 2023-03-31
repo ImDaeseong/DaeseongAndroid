@@ -31,4 +31,6 @@ public abstract class ThreadTask<T1, T2> implements Runnable {
 
     //스레드 처리 내용 호출
     protected abstract T2 doInBackground(T1 Param);
+
+    protected abstract String doInBackground(String sUrl);
 }

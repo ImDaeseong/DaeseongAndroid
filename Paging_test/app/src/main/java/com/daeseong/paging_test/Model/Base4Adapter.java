@@ -79,7 +79,6 @@ public class Base4Adapter extends BaseAdapter {
             }
         });
 
-
         return view;
     }
 

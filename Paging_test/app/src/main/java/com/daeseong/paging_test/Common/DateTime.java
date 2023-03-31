@@ -17,11 +17,9 @@ public class DateTime {
     public static String getOneDayago(){
 
         SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, -1);
         String sResult = sDateFormat.format(calendar.getTime());
-
         return sResult;
     }
 }

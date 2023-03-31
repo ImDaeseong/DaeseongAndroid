@@ -293,7 +293,6 @@ public class Main5Activity extends AppCompatActivity {
                         public void run() {
 
                             adapter.addAll(list);
-                            //Log.e(TAG, String.valueOf(SearchApi.getInstance().getItem().size()));
                         }
                     });
                 }
