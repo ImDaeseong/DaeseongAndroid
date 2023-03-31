@@ -167,7 +167,7 @@ public class Main7Activity extends AppCompatActivity {
 
         try {
 
-            thread = new HandlerThread("Main6Activity_paging");
+            thread = new HandlerThread("Main7Activity_paging");
             thread.start();
 
             handler = new Handler(thread.getLooper()) {
