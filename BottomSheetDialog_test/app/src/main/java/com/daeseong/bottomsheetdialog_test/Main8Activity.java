@@ -154,6 +154,8 @@ public class Main8Activity extends AppCompatActivity {
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
         getWindow().setGravity(Gravity.BOTTOM);
+
+        //getWindow().getDecorView().setPadding(0,0,0, 100);
     }
 
     private void changeView(){

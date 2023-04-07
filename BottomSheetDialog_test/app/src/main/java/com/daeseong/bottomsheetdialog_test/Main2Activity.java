@@ -38,5 +38,7 @@ public class Main2Activity extends AppCompatActivity {
         customDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         customDialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
         customDialog.getWindow().setGravity(Gravity.BOTTOM);
+
+        //customDialog.getWindow().getDecorView().setPadding(0,0,0, 100);
     }
 }

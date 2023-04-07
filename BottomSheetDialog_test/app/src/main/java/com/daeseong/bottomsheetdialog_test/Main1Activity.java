@@ -65,5 +65,7 @@ public class Main1Activity extends AppCompatActivity {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
+
+        //dialog.getWindow().getDecorView().setPadding(0,0,0, 100);
     }
 }
