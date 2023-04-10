@@ -23,7 +23,9 @@
             android:name="com.kakao.sdk.AppKey"
             android:value="251718aa4bdbfda74ec81a745aeb39a0" />
 
-        <activity android:name=".MainActivity">
+        <activity
+            android:exported="true"
+            android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

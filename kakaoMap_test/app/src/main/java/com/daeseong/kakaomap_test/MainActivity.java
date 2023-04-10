@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +18,6 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -29,8 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Button button1, button2, button3, button4, button5;
 
-    private LocationManager locationManager;
-    private LocationListener locationListener;
+    private LocationManager locationManager  = null;
+    private LocationListener locationListener = null;
+    private boolean blastLocation = false;
 
     private  String[] REQUIRED_PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
 
@@ -43,37 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         checkPermission();
 
-        locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-        locationListener = new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
-
-                Log.d(TAG,  "latitude: " + Double.toString(location.getLatitude()) + " longitude: " + Double.toString(location.getLongitude()));
-            }
-
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) {
-            }
-
-            @Override
-            public void onProviderEnabled(String provider) {
-            }
-
-            @Override
-            public void onProviderDisabled(String provider) {
-            }
-        };
-
-        /*
-        // 현재 위치 구하기
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-
-        Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        if (location != null) {
-            Log.d(TAG,  "latitude: " + Double.toString(location.getLatitude()) + " longitude: " + Double.toString(location.getLongitude()));
-        }
-        */
+        initLocInfo();
 
         button1 = findViewById(R.id.button1);
         button1.setOnClickListener(new View.OnClickListener() {
@@ -165,4 +134,74 @@ public class MainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
+    private void initLocInfo() {
+
+        int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+        if (permissionCheck == PackageManager.PERMISSION_DENIED) {
+            Log.d(TAG, "권한 없음");
+            return;
+        }
+
+        locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+
+                Log.e(TAG,  "onLocationChanged - latitude: " + location.getLatitude() + " longitude: " + location.getLongitude());
+
+                if (blastLocation) {
+
+                    Log.e(TAG, "마지막 위치 정보 확인했으므로 위치 정보 요청 종료");
+                    if (locationManager != null) {
+                        locationListener.onProviderDisabled(LocationManager.NETWORK_PROVIDER);
+                        locationListener.onProviderDisabled(LocationManager.GPS_PROVIDER);
+                        locationManager.removeUpdates(locationListener);
+                    }
+                }
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+            }
+        };
+
+        boolean bNetwork = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        if (bNetwork) {
+
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+            if (locationManager != null) {
+
+                Location lastLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                if (lastLocation != null) {
+
+                    blastLocation = true;
+                    Log.e(TAG,  "정상적인 위치 정보 - latitude: " + lastLocation.getLatitude() + " longitude: " + lastLocation.getLongitude());
+
+                } else {
+
+                    Log.e(TAG, "마지막 위치 정보 없음 - 재요청");
+                    blastLocation = false;
+                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+                }
+            }
+        }
+
+        if (blastLocation) {
+
+            Log.e(TAG, "마지막 위치 정보 확인했으므로 위치 정보 요청 종료");
+            if (locationManager != null) {
+                locationListener.onProviderDisabled(LocationManager.NETWORK_PROVIDER);
+                locationListener.onProviderDisabled(LocationManager.GPS_PROVIDER);
+                locationManager.removeUpdates(locationListener);
+            }
+        }
+    }
 }
