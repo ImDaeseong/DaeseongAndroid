@@ -1,66 +1,63 @@
 package com.daeseong.fcm_test;
 
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.content.Context;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
-
+import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-
+import java.util.Random;
 
 public class FirebaseMessagingServiceEx extends FirebaseMessagingService {
 
     private static final String TAG = FirebaseMessagingServiceEx.class.getSimpleName();
 
     @Override
-    public void onMessageReceived(RemoteMessage remoteMessage) {
+    public void onMessageReceived(@NonNull RemoteMessage message) {
+        super.onMessageReceived(message);
 
-        Log.d(TAG, "getFrom : " + remoteMessage.getFrom());
+        try {
 
-        if (remoteMessage.getData().size() > 0) {
+            if (message.getData().size() > 0) {
+                Log.e(TAG, "getData: " + message.getData());
+            }
 
-            Log.d(TAG, "getData : " + remoteMessage.getData());
-        }
+            if (message.getNotification() != null) {
+                Log.e(TAG, "getTitle:" + message.getNotification().getTitle());
+                Log.e(TAG, "getBody:" + message.getNotification().getBody());
+                sendNotification(message.getNotification().getTitle(), message.getNotification().getBody() );
+            }
 
-        if (remoteMessage.getNotification() != null) {
-
-            Log.d(TAG, "getTitle : " + remoteMessage.getNotification().getTitle());
-            Log.d(TAG, "getBody : " + remoteMessage.getNotification().getBody());
-
-            sendNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody() );
+        } catch (Exception ex) {
+            Log.e(TAG, ex.getMessage().toString());
         }
     }
 
     private void sendNotification(String sTitle, String sMessage) {
 
-        int notifyID = 1;
-        String schannelID = "daeseong_01";
-        Notification.Builder builder;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            builder = new Notification.Builder(this, schannelID); //For > API26 (OREO)
+        Intent intent = new Intent(this, PushActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        PendingIntent pendingIntent;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
         } else {
-            builder = new Notification.Builder(this);
+            pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         }
 
-        builder.setAutoCancel(true)
-                .setSmallIcon(R.drawable.ic_launcher_background)
-                .setContentTitle(sTitle)
-                .setContentText(sMessage)
-                .setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_SOUND);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, getString(R.string.channel_id));
+        builder.setSmallIcon(R.drawable.ic_push_icons);
+        builder.setContentTitle(sTitle);
+        builder.setContentText(sMessage);
+        builder.setStyle(new NotificationCompat.BigTextStyle().bigText(sMessage));
+        builder.setContentIntent(pendingIntent);
+        builder.setAutoCancel(true);
 
-        NotificationManager notify = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(schannelID,"알림", NotificationManager.IMPORTANCE_DEFAULT);
-            notify.createNotificationChannel(channel);
-        }
-        notify.notify(notifyID, builder.build());
-    }
-
-    private static boolean isNullOrEmpty(String str) {
-        return str == null || str.trim().isEmpty();
+        int notificationId = new Random().nextInt();
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+        notificationManagerCompat.notify(notificationId, builder.build());
     }
 }

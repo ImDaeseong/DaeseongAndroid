@@ -2,14 +2,11 @@ package com.daeseong.fcm_test;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,32 +17,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String Token = FirebaseInstanceId.getInstance().getToken();
-        if(isNullOrEmpty(Token)){
-            Log.d(TAG, "not token = " + Token);
-        }else {
-            Log.d(TAG, "token = " + Token);
-        }
+        init();
+    }
 
-        FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-            @Override
-            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+    private void init() {
 
-                if(task.isSuccessful()){
+        try {
 
-                    String Token = task.getResult().getToken();
-                    String Id = task.getResult().getId();
-                    Log.d(TAG, "onComplete token = " + Token + " Id = " + Id);
+            //FCM 푸시 구독 방식
+            FirebaseMessaging.getInstance().subscribeToTopic("all");
+            FirebaseMessaging.getInstance().subscribeToTopic("notice");
+            FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+                @Override
+                public void onComplete(@NonNull Task<String> task) {
 
-                }else {
-                    Log.d(TAG, "onComplete token = " + task.getException());
+                    if (task.isSuccessful()) {
+                        String Token = task.getResult();
+                        Log.e(TAG, "Token = " + Token);
+                    }
                 }
-            }
-        });
+            });
 
+        } catch (Exception ex) {
+            Log.e(TAG, ex.getMessage().toString());
+        }
     }
 
-    private static boolean isNullOrEmpty(String str) {
-        return str == null || str.trim().isEmpty();
-    }
 }

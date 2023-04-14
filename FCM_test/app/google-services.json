@@ -1,34 +1,41 @@
 {
   "project_info": {
-    "project_number": "1092376356208",
-    "firebase_url": "https://fcmtest-64609.firebaseio.com",
-    "project_id": "fcmtest-64609",
-    "storage_bucket": "fcmtest-64609.appspot.com"
+    "project_number": "561053781425",
+    "project_id": "fcmtest-23888",
+    "storage_bucket": "fcmtest-23888.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1092376356208:android:c9b8caf545a1f360961bb5",
+        "mobilesdk_app_id": "1:561053781425:android:a72271aef01fdbde090190",
         "android_client_info": {
           "package_name": "com.daeseong.fcm_test"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1092376356208-jmscoevlk0jdkhjs7io13stmsapmrtho.apps.googleusercontent.com",
+          "client_id": "561053781425-o7vee13qirgs78csq17pua0l46dsk63n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.daeseong.fcm_test",
+            "certificate_hash": "09ec4ba9e7e64d3385630656625f8f8d8e9ca018"
+          }
+        },
+        {
+          "client_id": "561053781425-19oc5uj43b4h2toevs21o3c4etdgvnaq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAq1Pn70BmSxLX7g_ZOCxuzDH3Shn-xgeY"
+          "current_key": "AIzaSyBWyMyu5O1PITQVSOeof15sNZGHGVom8kI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1092376356208-jmscoevlk0jdkhjs7io13stmsapmrtho.apps.googleusercontent.com",
+              "client_id": "561053781425-19oc5uj43b4h2toevs21o3c4etdgvnaq.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
