@@ -1,6 +1,7 @@
 package com.daeseong.contextmenu_test;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -66,6 +67,13 @@ public class Popupmenu3Activity extends AppCompatActivity {
             }
         });
 
-        popupWindow.showAsDropDown(button1);
+
+        int nTop = dip2px(this, 4);
+        popupWindow.showAsDropDown(button1, 0, nTop);
+    }
+
+    private static int dip2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5F);
     }
 }
