@@ -3,7 +3,6 @@ package com.daeseong.permission33sdk_test;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -36,10 +35,9 @@ public class Permission4Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //sdk 33 이상
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 
-                    if (ActivityCompat.checkSelfPermission(Permission4Activity.this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || checkSelfPermission(Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) {
                         permissResultLauncher.launch(PERMISSIONS33);
                     } else {
                         Log.e(TAG, "이미 권한 소유");
@@ -47,7 +45,7 @@ public class Permission4Activity extends AppCompatActivity {
 
                 } else {
 
-                    if (ActivityCompat.checkSelfPermission(Permission4Activity.this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                         permissResultLauncher.launch(PERMISSIONS);
                     } else {
                         Log.e(TAG, "이미 권한 소유");

@@ -46,7 +46,6 @@ public class Permission1Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //sdk 33 이상
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 
                     if (ActivityCompat.checkSelfPermission(Permission1Activity.this, Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) {

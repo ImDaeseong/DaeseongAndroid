@@ -36,11 +36,13 @@ public class Permission2Activity extends AppCompatActivity {
 
                 boolean bPermissResult = false;
 
-                //sdk 33 이상
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 
                     for (String permission : PERMISSIONS33) {
                         bPermissResult = checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
+                        if(!bPermissResult) {
+                            break;
+                        }
                     }
 
                     if(!bPermissResult) {
@@ -53,6 +55,9 @@ public class Permission2Activity extends AppCompatActivity {
 
                     for (String permission : PERMISSIONS) {
                         bPermissResult = checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
+                        if(!bPermissResult) {
+                            break;
+                        }
                     }
 
                     if(!bPermissResult) {
@@ -92,5 +97,4 @@ public class Permission2Activity extends AppCompatActivity {
 
         });
     }
-
 }

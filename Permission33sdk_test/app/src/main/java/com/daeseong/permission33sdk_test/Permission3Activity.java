@@ -32,7 +32,6 @@ public class Permission3Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //sdk 33 이상
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 
                     if (ActivityCompat.checkSelfPermission(Permission3Activity.this, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
