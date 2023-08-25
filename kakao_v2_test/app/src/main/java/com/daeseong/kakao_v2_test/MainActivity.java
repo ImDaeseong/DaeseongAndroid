@@ -10,37 +10,47 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import com.kakao.sdk.auth.model.OAuthToken;
-import com.kakao.sdk.common.KakaoSdk;
-import com.kakao.sdk.share.model.SharingResult;
 import com.kakao.sdk.talk.TalkApiClient;
-import com.kakao.sdk.template.model.Content;
-import com.kakao.sdk.template.model.DefaultTemplate;
-import com.kakao.sdk.template.model.FeedTemplate;
-import com.kakao.sdk.template.model.ItemContent;
-import com.kakao.sdk.template.model.ItemInfo;
-import com.kakao.sdk.template.model.Link;
-import com.kakao.sdk.template.model.Social;
-import com.kakao.sdk.template.model.TextTemplate;
 import com.kakao.sdk.user.UserApiClient;
 import com.kakao.sdk.user.model.AccessTokenInfo;
 import com.kakao.sdk.user.model.User;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
-import java.util.Collections;
-
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
 import com.kakao.sdk.share.ShareClient;
-
-
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private Button button1, button2, button3, button4, button5;
+
+    private final Function2<OAuthToken, Throwable, Unit> callback = new Function2<OAuthToken, Throwable, Unit>() {
+        @Override
+        public Unit invoke(OAuthToken oAuthToken, Throwable throwable) {
+
+            try {
+
+                if (oAuthToken.getIdToken() != null) {
+
+                    Log.e(TAG, "getIdToken:" + oAuthToken.getIdToken());
+
+                } else if (oAuthToken.getAccessToken() != null) {
+
+                    Log.e(TAG, "getAccessToken:" + oAuthToken.getAccessToken());
+                }
+
+                requestLogin();
+
+            } catch (Exception e) {
+                Log.e(TAG, e.getMessage().toString());
+            }
+
+            return null;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,8 +103,6 @@ public class MainActivity extends AppCompatActivity {
                 kakaolink();
             }
         });
-
-        button1.performClick();
     }
 
     private void getHashKey() {
@@ -120,25 +128,6 @@ public class MainActivity extends AppCompatActivity {
 
     //카카오 로그인
     private void kakaologin() {
-
-        Function2<OAuthToken, Throwable, Unit> callback= new Function2<OAuthToken, Throwable, Unit>() {
-            @Override
-            public Unit invoke(OAuthToken oAuthToken, Throwable throwable) {
-
-                requestLogin();
-
-                if (oAuthToken.getIdToken()!= null) {
-
-                    Log.e(TAG, "getIdToken:" + oAuthToken.getIdToken());
-
-                } else if(oAuthToken.getAccessToken()!=null) {
-
-                    Log.e(TAG, "getAccessToken:" + oAuthToken.getAccessToken());
-                }
-
-                return null;
-            }
-        };
 
         if (UserApiClient.getInstance().isKakaoTalkLoginAvailable(this)) {
 
@@ -184,7 +173,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
     //카카오 로그아웃
     private void kakaologout() {
@@ -251,17 +239,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void kakaolink() {
 
-        //https://developers.kakao.com/docs/latest/ko/getting-started/sdk-android
-        //https://ddasi-live.tistory.com/100
-        //https://github.com/han0gu/domaadoNew/blob/a452fcc14e5fa9b36d17e0a29a14c0fa35f2f9d0/app/src/main/java/com/domaado/mobileapp/share/KakaoTalklink.java#L135
-
-        //https://kakao-tam.tistory.com/116
-        //https://jangstory.tistory.com/105
-        //https://pu1et-panggg.tistory.com/74
-
-        //https://github.com/kookmin-sw/capstone-2022-21/blob/19f72361fe089a75819d48371849bd49d6073e0e/app/src/main/java/com/example/myapplication/KakaoService.java#L52
-        //https://github.com/han0gu/domaadoNew/blob/a452fcc14e5fa9b36d17e0a29a14c0fa35f2f9d0/app/src/main/java/com/domaado/mobileapp/share/KakaoTalklink.java#L58
-
+        //v1 에서  v2 변경된 내용
+        //KakaoLinkService  -> ShareClient
+        //KakaoTalkService  -> TalkApiClient
 
         if (!ShareClient.getInstance().isKakaoTalkSharingAvailable(this))
             return;
@@ -277,127 +257,8 @@ public class MainActivity extends AppCompatActivity {
                     Log.e(TAG, friendFriends.toString());
                 }
             }
-
             return null;
         }));
-
-        DefaultTemplate defaulttxt = new TextTemplate("abc",new Link());
-        TalkApiClient.getInstance().sendDefaultMemo(defaulttxt,(error) -> {
-
-            Log.e(TAG, error.getMessage().toString());
-            return Unit.INSTANCE;
-        });
-
-        /*
-        //v1 에서  v2 변경된 내용
-        KakaoLinkService  -> ShareClient
-        KakaoTalkService  -> TalkApiClient
-        */
-
-        /*
-        FeedTemplate feedTemplate = new FeedTemplate(
-                new Content("제목1",
-                        "https://files.picaplay.com/upload/kakao/kakao_share_600_main.jpg",
-                        new Link("https://developers.kakao.com",
-                                "https://developers.kakao.com"),
-                        "테스트1"
-                ),
-                new ItemContent("제목2",
-                        "https://files.picaplay.com/upload/kakao/kakao_share_600_main.jpg",
-                        "이미지1",
-                        "https://files.picaplay.com/upload/kakao/kakao_share_600_main.jpg",
-                        "이미지2",
-                        Arrays.asList(new ItemInfo("아이템", "1000원")),
-                        "전체",
-                        "15000원"
-                ),
-                new Social(286, 45, 845),
-                Arrays.asList(new com.kakao.sdk.template.model.Button("웹으로 보기", new Link("https://developers.kakao.com", "https://developers.kakao.com")))
-        );
-
-        ShareClient.getInstance().shareDefault(this, feedTemplate, (SharingResult sharingResult, Throwable throwable) -> {
-            if (throwable != null) {
-                Log.e(TAG, "실패  : " + throwable + " ,  메세지   :  "  + throwable.getCause());
-            } else if (sharingResult != null) {
-                Log.e("TAG", String.valueOf(sharingResult.getIntent()));
-                Log.e("TAG", "Warning Msg: " + sharingResult.getWarningMsg());
-                Log.e("TAG", "Argument Msg: " + sharingResult.getArgumentMsg());
-            }
-            return null;
-        });
-        */
-
-        /*
-        String sUrl = "https://files.picaplay.com/upload/kakao/kakao_share_600_main.jpg";
-        String sMsg = "[카카오]\n카카오 링크 메시지 테스트!";
-        String sButton = "자세히 보기";
-        String link = "";
-
-        FeedTemplate feedTemplate2  = new FeedTemplate(
-                new Content(
-                        "sendPrefix",         // 타이틀
-                        sUrl,             // 이미지
-                        new Link("",      // web url
-                                ""        // mobile web url
-                        ),
-                        ""         // description
-                ),
-                null,
-                null,
-                Collections.singletonList(new Button(sButton, new Link(link, link)))
-        );
-
-        ShareClient.getInstance().shareDefault(this, feedTemplate2, (SharingResult sharingResult, Throwable throwable) -> {
-            if (throwable != null) {
-                LogUtil.d(TAG, "실패  : " + throwable + " ,  메세지   :  "  + throwable.getCause());
-            } else if (sharingResult != null) {
-                activity.startActivity(sharingResult.getIntent());
-                LogUtil.d("TAG", "Warning Msg: " + sharingResult.getWarningMsg());
-                LogUtil.d("TAG", "Argument Msg: " + sharingResult.getArgumentMsg());
-            }
-            return null;
-        });
-        */
-
-        /*
-        ShareClient.getInstance().shareDefault(context, feedTemplate, ((sharingResult, error) -> {
-            if(error!=null) {
-                myLog.e(TAG, "*** Error: "+error.getMessage());
-            } else if(sharingResult!=null) {
-                myLog.d(TAG, "*** SUCCESS: "+sharingResult.getIntent());
-                context.startActivity(sharingResult.getIntent());
-
-                if(sharingResult.getWarningMsg().size()>0) {
-                    for(Map.Entry<String, String> entry : sharingResult.getWarningMsg().entrySet()) {
-                        myLog.w(TAG, "*** WarningMessage: " + entry.getKey()+" - "+entry.getValue());
-                    }
-                }
-
-                if(sharingResult.getArgumentMsg().size()>0) {
-                    for(Map.Entry<String, String> entry : sharingResult.getArgumentMsg().entrySet()) {
-                        myLog.w(TAG, "*** ArgumentMessage: " + entry.getKey()+" - "+entry.getValue());
-                    }
-                }
-            }
-            return null;
-        }));
-
-        String sUrl = "http://files.picaplay.com/upload/kakao/kakao_share_600_main.jpg";
-        String sMsg = "[카카오]\n카카오 링크 메시지 테스트!";
-
-
-        Content content = new Content(title, sUrl, new Link(sUrl, sUrl), bodyText);
-
-        ItemContent itemContent = new ItemContent();
-        Social social = new Social();
-        Button[] buttons = new Button[]{button};
-
-        FeedTemplate feedTemplate = new FeedTemplate(content,
-                new ItemContent(),
-                new Social(),
-                Arrays.asList(buttons));
-
-         */
 
 
     }
