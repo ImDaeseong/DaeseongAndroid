@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.e(TAG, "getAccessToken:" + oAuthToken.getAccessToken());
                 }
 
-                requestLogin();
+                LoginInfo();
 
             } catch (Exception e) {
                 Log.e(TAG, e.getMessage().toString());
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void requestLogin() {
+    private void LoginInfo() {
 
         UserApiClient.getInstance().me(new Function2<User, Throwable, Unit>() {
             @Override
