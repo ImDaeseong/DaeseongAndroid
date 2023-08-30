@@ -10,12 +10,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import com.kakao.sdk.auth.model.OAuthToken;
-import com.kakao.sdk.talk.TalkApiClient;
+import com.kakao.sdk.template.model.Content;
+import com.kakao.sdk.template.model.FeedTemplate;
+import com.kakao.sdk.template.model.ItemContent;
+import com.kakao.sdk.template.model.Link;
+import com.kakao.sdk.template.model.Social;
 import com.kakao.sdk.user.UserApiClient;
 import com.kakao.sdk.user.model.AccessTokenInfo;
 import com.kakao.sdk.user.model.User;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
@@ -239,6 +244,34 @@ public class MainActivity extends AppCompatActivity {
 
     private void kakaolink() {
 
+        if (!ShareClient.getInstance().isKakaoTalkSharingAvailable(this))
+            return;
+
+        String title = "제목";
+        String imgUrl = "";
+        String desc = "";
+
+        Content content = new Content(title, imgUrl, new Link(imgUrl, imgUrl), desc);
+        ItemContent itemContent = new ItemContent();
+        Social social = new Social();
+
+        com.kakao.sdk.template.model.Button Button = new com.kakao.sdk.template.model.Button("자세히 보기", new Link(imgUrl, imgUrl));
+        com.kakao.sdk.template.model.Button[] buttons = new com.kakao.sdk.template.model.Button[] { Button };
+
+        FeedTemplate feedTemplate = new FeedTemplate(content, itemContent, social, Arrays.asList(buttons), "");
+
+        ShareClient.getInstance().shareDefault(this, feedTemplate, ((sharingResult, error) -> {
+
+            if (error != null) {
+                Log.e(TAG, "카카오톡 친구 목록 가져오기 실패:" + error);
+            } else {
+                Log.e(TAG, String.valueOf(sharingResult.getWarningMsg().size()));
+            }
+            return null;
+        }));
+
+
+        /*
         //v1 에서  v2 변경된 내용
         //KakaoLinkService  -> ShareClient
         //KakaoTalkService  -> TalkApiClient
@@ -259,8 +292,7 @@ public class MainActivity extends AppCompatActivity {
             }
             return null;
         }));
-
-
+        */
     }
 
 }
