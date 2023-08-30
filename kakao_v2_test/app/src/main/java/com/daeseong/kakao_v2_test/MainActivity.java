@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import com.kakao.sdk.auth.model.OAuthToken;
+import com.kakao.sdk.link.LinkClient;
+import com.kakao.sdk.talk.TalkApiClient;
 import com.kakao.sdk.template.model.Content;
 import com.kakao.sdk.template.model.FeedTemplate;
 import com.kakao.sdk.template.model.ItemContent;
@@ -244,34 +246,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void kakaolink() {
 
-        if (!ShareClient.getInstance().isKakaoTalkSharingAvailable(this))
-            return;
-
-        String title = "제목";
-        String imgUrl = "";
-        String desc = "";
-
-        Content content = new Content(title, imgUrl, new Link(imgUrl, imgUrl), desc);
-        ItemContent itemContent = new ItemContent();
-        Social social = new Social();
-
-        com.kakao.sdk.template.model.Button Button = new com.kakao.sdk.template.model.Button("자세히 보기", new Link(imgUrl, imgUrl));
-        com.kakao.sdk.template.model.Button[] buttons = new com.kakao.sdk.template.model.Button[] { Button };
-
-        FeedTemplate feedTemplate = new FeedTemplate(content, itemContent, social, Arrays.asList(buttons), "");
-
-        ShareClient.getInstance().shareDefault(this, feedTemplate, ((sharingResult, error) -> {
-
-            if (error != null) {
-                Log.e(TAG, "카카오톡 친구 목록 가져오기 실패:" + error);
-            } else {
-                Log.e(TAG, String.valueOf(sharingResult.getWarningMsg().size()));
-            }
-            return null;
-        }));
-
-
-        /*
         //v1 에서  v2 변경된 내용
         //KakaoLinkService  -> ShareClient
         //KakaoTalkService  -> TalkApiClient
@@ -279,6 +253,50 @@ public class MainActivity extends AppCompatActivity {
         if (!ShareClient.getInstance().isKakaoTalkSharingAvailable(this))
             return;
 
+        String title = "제목";
+        String imgUrl = "https://cdn.pixabay.com/photo/2015/07/14/18/14/school-845196_960_720.png";
+        String desc = "설명";
+        String linkUrl = "https://www.google.com";
+
+        Content content = new Content(title, imgUrl, new Link(linkUrl, linkUrl), desc);
+        ItemContent itemContent = new ItemContent();
+        Social social = new Social();
+
+        com.kakao.sdk.template.model.Button Button = new com.kakao.sdk.template.model.Button("자세히 보기", new Link(linkUrl, linkUrl));
+        com.kakao.sdk.template.model.Button[] buttons = new com.kakao.sdk.template.model.Button[] { Button };
+
+        FeedTemplate feedTemplate = new FeedTemplate(content, itemContent, social, Arrays.asList(buttons), "버튼제목");
+
+
+        ShareClient.getInstance().shareDefault(this, feedTemplate, ((sharingResult, error) -> {
+
+            if (error != null) {
+                Log.e(TAG, "카카오톡 공유 실패:" + error);
+            } else if (sharingResult != null) {
+                startActivity(sharingResult.getIntent());
+                Log.e(TAG, String.valueOf(sharingResult.getWarningMsg()));
+                Log.e(TAG, String.valueOf(sharingResult.getArgumentMsg()));
+                Log.e(TAG, String.valueOf(sharingResult.getWarningMsg().size()));
+            }
+            return null;
+        }));
+
+        /*
+        LinkClient.getInstance().defaultTemplate(this, feedTemplate, (linkResult, error) -> {
+
+            if (error != null) {
+                Log.e(TAG, "카카오링크 공유 실패:" + error);
+            } else if (linkResult != null) {
+                startActivity(linkResult.getIntent());
+                Log.e(TAG, String.valueOf(linkResult.getWarningMsg()));
+                Log.e(TAG, String.valueOf(linkResult.getArgumentMsg()));
+                Log.e(TAG, String.valueOf(linkResult.getWarningMsg().size()));
+            }
+            return null;
+        });
+        */
+
+        /*
         TalkApiClient.getInstance().friends(((friendFriends, error) -> {
             if(error != null) {
                 Log.e(TAG, "카카오톡 친구 목록 가져오기 실패:" + error);
