@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.viewpager.widget.PagerAdapter;//import android.support.v4.view.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;//import android.support.v4.view.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -146,7 +146,7 @@ public class ViewPager3Activity extends AppCompatActivity {
         }
     }
 
-    public class Pagar3Adapter extends PagerAdapter{
+    public class Pagar3Adapter extends PagerAdapter {
         private LayoutInflater inflater;
 
         public Pagar3Adapter(){

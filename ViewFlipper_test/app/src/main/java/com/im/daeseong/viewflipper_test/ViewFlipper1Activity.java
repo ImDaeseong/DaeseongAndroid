@@ -1,6 +1,6 @@
 package com.im.daeseong.viewflipper_test;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,7 +36,6 @@ public class ViewFlipper1Activity extends AppCompatActivity {
         //int childCount = viewFlipper1.getChildCount();
         //Log.e(TAG, "childID:" + String.valueOf(childID) + " childCount:" + String.valueOf(childCount) );
 
-        //
         viewFlipper1.setInAnimation(AnimationUtils.loadAnimation(ViewFlipper1Activity.this, android.R.anim.slide_in_left));
         viewFlipper1.setOutAnimation(AnimationUtils.loadAnimation(ViewFlipper1Activity.this, android.R.anim.slide_out_right));
 

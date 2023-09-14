@@ -1,6 +1,6 @@
 package com.im.daeseong.viewflipper_test;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.ViewFlipper;
@@ -44,8 +44,7 @@ public class ViewFlipper4Activity extends AppCompatActivity {
                 currentX = event.getX();
 
                 //왼쪽 -> 오른쪽
-                if (lastX < currentX)
-                {
+                if (lastX < currentX) {
                     //첫번째화면이면
                     if (viewFlipper1.getDisplayedChild() == 0)
                         break;
@@ -57,8 +56,7 @@ public class ViewFlipper4Activity extends AppCompatActivity {
                 }
 
                 //오른쪽 -> 왼쪽
-                if (lastX > currentX)
-                {
+                if (lastX > currentX) {
                     //첫번째화면이면
                     if (viewFlipper1.getDisplayedChild() == 1)
                         break;

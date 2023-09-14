@@ -2,19 +2,18 @@ package com.im.daeseong.viewpager_test;
 
 import android.content.Context;
 import android.os.Handler;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;//import android.support.constraint.ConstraintLayout;
+import com.google.android.material.snackbar.Snackbar;//import android.support.design.widget.Snackbar;
+import androidx.viewpager.widget.PagerAdapter;//import android.support.v4.view.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;//import android.support.v4.view.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toolbar;
-
+import androidx.appcompat.widget.Toolbar;//import android.widget.Toolbar;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -22,7 +21,7 @@ public class ViewPager5Activity extends AppCompatActivity {
 
     private static final String TAG = ViewPager5Activity.class.getSimpleName();
 
-    private android.support.v7.widget.Toolbar toolbar;
+    private Toolbar toolbar;//android.support.v7.widget.Toolbar toolbar;
     private Pagar5Adapter pagar5Adapter;
     private ViewPager viewPager5;
 
@@ -35,7 +34,7 @@ public class ViewPager5Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pager5);
 
-        toolbar = (android.support.v7.widget.Toolbar)findViewById(R.id.toolbar);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         pagar5Adapter = new Pagar5Adapter(this);
@@ -69,7 +68,7 @@ public class ViewPager5Activity extends AppCompatActivity {
     }
 
 
-    public class Pagar5Adapter extends PagerAdapter{
+    public class Pagar5Adapter extends PagerAdapter {
         private Context context;
         LayoutInflater inflater;
 

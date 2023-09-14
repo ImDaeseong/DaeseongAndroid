@@ -1,13 +1,12 @@
 package com.im.daeseong.viewpager_test;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.PagerTitleStrip;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.snackbar.Snackbar;//import android.support.design.widget.Snackbar;
+import androidx.viewpager.widget.PagerAdapter;//import android.support.v4.view.PagerAdapter;
+import androidx.viewpager.widget.PagerTitleStrip;
+import androidx.viewpager.widget.ViewPager;//import android.support.v4.view.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -87,7 +85,7 @@ public class ViewPager4Activity extends AppCompatActivity {
         }
     }
 
-    public class Pagar4Adapter extends PagerAdapter{
+    public class Pagar4Adapter extends PagerAdapter {
 
         Context context;
         LayoutInflater inflater;
