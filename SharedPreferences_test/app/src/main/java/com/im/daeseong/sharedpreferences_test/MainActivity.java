@@ -1,16 +1,14 @@
 package com.im.daeseong.sharedpreferences_test;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.im.daeseong.sharedpreferences_test.util.SharedPreferences_util;
-
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

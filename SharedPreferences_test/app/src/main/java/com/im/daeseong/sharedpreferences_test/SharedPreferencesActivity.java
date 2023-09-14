@@ -1,11 +1,10 @@
 package com.im.daeseong.sharedpreferences_test;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.im.daeseong.sharedpreferences_test.util.SharedPreferences_util;
 
 public class SharedPreferencesActivity extends AppCompatActivity {
