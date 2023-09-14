@@ -3,7 +3,7 @@ package com.im.daeseong.barcode_test;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;

@@ -3,9 +3,9 @@ package com.im.daeseong.barcode_test;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;//import android.support.annotation.NonNull;
+import androidx.core.app.ActivityCompat;//import android.support.v4.app.ActivityCompat;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
