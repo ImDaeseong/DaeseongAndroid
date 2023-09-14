@@ -22,9 +22,9 @@
 
         <service android:name=".ScreenOnOffService" android:enabled="true" android:exported="false" />
 
-        <activity android:name=".Main1Activity" />
+        <activity android:name=".Main1Activity" android:exported="false"/>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

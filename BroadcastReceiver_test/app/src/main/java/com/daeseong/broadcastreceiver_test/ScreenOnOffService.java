@@ -45,7 +45,7 @@ public class ScreenOnOffService extends Service {
             @Override
             public void onReceive(Context context, Intent intent) {
 
-                if(intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
+                if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
 
                     Log.e(TAG, "폰화면 꺼짐" );
 
@@ -54,7 +54,7 @@ public class ScreenOnOffService extends Service {
                     item.putExtra("screen", "off");
                     context.sendBroadcast(item);
 
-                } else if(intent.getAction().equals(Intent.ACTION_SCREEN_ON)){
+                } else if(intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
 
                     Log.e(TAG, "폰화면 켜짐" );
 

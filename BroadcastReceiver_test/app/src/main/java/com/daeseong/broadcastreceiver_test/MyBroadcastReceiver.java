@@ -14,9 +14,10 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
 
         Log.e(TAG, "onReceive:" + intent.getAction());
 
-        if(intent.getAction().equals("android.intent.action.MyMessage")){
+        if (intent.getAction().equals("android.intent.action.MyMessage")) {
 
             Intent newIntent = new Intent(context, Main1Activity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(newIntent);
         }
 

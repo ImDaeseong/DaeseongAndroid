@@ -31,13 +31,13 @@ public class Main1Activity extends AppCompatActivity {
         DestoryBroadcastReceiver();
     }
 
-    private void initBroadcastReceiver(){
+    private void initBroadcastReceiver() {
 
         broadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
 
-                if(intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
+                if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
 
                     Log.e(TAG, "폰화면 꺼짐" );
 
@@ -46,7 +46,7 @@ public class Main1Activity extends AppCompatActivity {
                     item.putExtra("screen", "off");
                     context.sendBroadcast(item);
 
-                } else if(intent.getAction().equals(Intent.ACTION_SCREEN_ON)){
+                } else if(intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
 
                     Log.e(TAG, "폰화면 켜짐" );
 
