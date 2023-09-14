@@ -3,15 +3,13 @@ package com.im.daeseong.splash_test;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Handler;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public class Splash5Activity extends AppCompatActivity {
 

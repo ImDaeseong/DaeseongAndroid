@@ -17,7 +17,8 @@
         <activity android:name=".Animate3Activity" />
         <activity android:name=".Animate2Activity" />
         <activity android:name=".Animate1Activity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

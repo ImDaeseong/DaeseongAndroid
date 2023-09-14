@@ -12,7 +12,8 @@
         <activity
             android:name=".Splash6Activity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,9 +23,9 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".Splash1Activity" />
         <activity android:name=".Splash2Activity" />
+        <activity android:name=".Splash3Activity" />
         <activity android:name=".Splash4Activity" />
-        <activity android:name=".Splash5Activity" />
-        <activity android:name=".Splash3Activity"></activity>
+        <activity android:name=".Splash5Activity"></activity>
     </application>
 
 </manifest>
