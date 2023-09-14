@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 33//27
     defaultConfig {
         applicationId "com.im.daeseong.alertdialog_test"
         minSdkVersion 14
-        targetSdkVersion 27
+        targetSdkVersion 33//27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
