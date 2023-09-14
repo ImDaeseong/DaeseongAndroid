@@ -8,11 +8,7 @@ public class GlobalApplication extends Application {
 
     private static GlobalApplication instance;
 
-    public static GlobalApplication getGlobalApplicationContext() {
-
-        if (instance == null) {
-            throw new IllegalStateException("This Application does not inherit com.kakao.GlobalApplication");
-        }
+    public static synchronized GlobalApplication getInstance() {
         return instance;
     }
 

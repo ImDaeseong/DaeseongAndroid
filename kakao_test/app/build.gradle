@@ -1,6 +1,9 @@
 apply plugin: 'com.android.application'
 
 android {
+
+    // 카카오 sdk v1 사용 => sdk 33 으로 올리는 순간 강제 종료됨 v2 라이브러리로 교체해야함
+
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
