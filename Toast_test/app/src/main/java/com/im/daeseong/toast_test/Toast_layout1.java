@@ -12,7 +12,7 @@ public class Toast_layout1  extends Toast {
     private View view;
     private TextView tv1;
 
-    public Toast_layout1(Context context, String sMsg){
+    public Toast_layout1(Context context, String sMsg) {
         super(context);
         layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = layoutInflater.inflate(R.layout.toast_layout1, null);

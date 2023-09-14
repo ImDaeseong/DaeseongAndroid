@@ -4,8 +4,8 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.snackbar.Snackbar;//import android.support.design.widget.Snackbar;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private Bitmap getBitmapFromView(View view){
+    private Bitmap getBitmapFromView(View view) {
         try {
             Bitmap returnedBitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
             Canvas canvas = new Canvas(returnedBitmap);
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 canvas.drawColor(Color.WHITE);
             view.draw(canvas);
             return returnedBitmap;
-        }catch (Exception e){
+        } catch (Exception e) {
         }
         return null;
     }

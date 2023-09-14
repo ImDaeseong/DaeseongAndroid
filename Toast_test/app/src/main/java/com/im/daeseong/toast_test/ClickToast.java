@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ClickToast extends Toast implements View.OnClickListener{
+public class ClickToast extends Toast implements View.OnClickListener {
 
     private LayoutInflater layoutInflater;
     private View view;
@@ -29,7 +29,7 @@ public class ClickToast extends Toast implements View.OnClickListener{
         try {
             Log.i("A", "onClick");
             cancel();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
