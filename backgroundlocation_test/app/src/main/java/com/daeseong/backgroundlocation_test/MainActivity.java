@@ -17,7 +17,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         DestoryFilter();
     }
 
-    private void initFilter(){
+    private void initFilter() {
 
         broadcastReceiver = new BroadcastReceiver() {
             @Override
@@ -93,14 +92,16 @@ public class MainActivity extends AppCompatActivity {
         registerReceiver(broadcastReceiver, intentFilter);
     }
 
-    private void DestoryFilter(){
-        if(broadcastReceiver != null) {
+    private void DestoryFilter() {
+        if (broadcastReceiver != null) {
             unregisterReceiver(broadcastReceiver);
         }
     }
 
-    public void runService(){
+    public void runService() {
+
         try {
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
                 if (LocationService.serviceIntent == null) {
@@ -116,17 +117,16 @@ public class MainActivity extends AppCompatActivity {
                     startService(intent);
                 }
             }
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.getMessage().toString();
         }
     }
 
-    public void stopService(){
-        try{
-
+    public void stopService() {
+        try {
             Intent intent = new Intent(this, LocationService.class);
             stopService(intent);
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.getMessage().toString();
         }
     }

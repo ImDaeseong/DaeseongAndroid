@@ -64,6 +64,7 @@ public class LocationService extends Service implements LocationListener {
     @Override
     public void onCreate() {
         super.onCreate();
+
     }
 
     @Override
