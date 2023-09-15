@@ -1,15 +1,14 @@
 package com.im.daeseong.db_test;
 
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import com.im.daeseong.db_test.SQLiteOpenHelper.Alarm;
 import com.im.daeseong.db_test.SQLiteOpenHelper.DbHelperAlarm;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -45,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String sCount = "개수:" + String.valueOf(nCount);
             textResult.setText(sCount);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -89,9 +88,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             editContent.setText("");
             editTitle.requestFocus();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-
         }
     }
 
@@ -108,8 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             textResult.setText(sMsg);
 
-        }catch (Exception e){
-
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -149,12 +146,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 textResult.setText("데이타 미존재");
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void delete(){
+    private void delete() {
 
         try {
 
@@ -169,10 +166,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //delete 후 데이타 확인
             read();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
 
         /*
         //가장 처음 입력한 데이타 조회
@@ -196,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //delete 후 데이타 확인
             read();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         */

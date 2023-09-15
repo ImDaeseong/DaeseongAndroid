@@ -7,17 +7,18 @@ public class Alarm {
     private String content;
     private String writeDate;
 
-    public Alarm(){
+    public Alarm() {
+
     }
 
-    public Alarm(int id, String title, String content, String writeDate){
+    public Alarm(int id, String title, String content, String writeDate) {
         this._id = id;
         this.title = title;
         this.content = content;
         this.writeDate = writeDate;
     }
 
-    public Alarm(String title, String content){
+    public Alarm(String title, String content) {
         this.title = title;
         this.content = content;
     }

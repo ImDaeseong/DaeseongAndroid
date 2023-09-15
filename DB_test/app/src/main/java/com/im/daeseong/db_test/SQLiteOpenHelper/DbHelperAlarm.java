@@ -10,7 +10,7 @@ import android.util.Log;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class DbHelperAlarm  extends SQLiteOpenHelper{
+public class DbHelperAlarm  extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "AlarmDB.db";
@@ -24,6 +24,7 @@ public class DbHelperAlarm  extends SQLiteOpenHelper{
 
     public DbHelperAlarm(Context context, String name, SQLiteDatabase.CursorFactory factory, int version){
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
+
     }
 
     @Override
@@ -52,8 +53,7 @@ public class DbHelperAlarm  extends SQLiteOpenHelper{
                     + COLUMN_WRITEDATE + " DATETIME DEFAULT CURRENT_DATE);";
             db.execSQL(createTable);
 
-        }catch (Exception e){
-
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -82,13 +82,12 @@ public class DbHelperAlarm  extends SQLiteOpenHelper{
             //db.execSQL("DROP TABLE IF EXISTS " + TABLE_ALARM);
             //onCreate(db);
 
-        }catch (Exception e){
-
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void addAlarm(Alarm alarm){
+    public void addAlarm(Alarm alarm) {
 
         try {
 
@@ -101,15 +100,14 @@ public class DbHelperAlarm  extends SQLiteOpenHelper{
             db.insert(TABLE_ALARM, null, values);
             db.close();
 
-        }catch (Exception e){
-
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void updateAlarm(Alarm alarm){
+    public void updateAlarm(Alarm alarm) {
 
-        try{
+        try {
 
             ContentValues values = new ContentValues();
             values.put(COLUMN_CONTENT, alarm.getContent());
@@ -120,23 +118,21 @@ public class DbHelperAlarm  extends SQLiteOpenHelper{
             db.update(TABLE_ALARM, values, filter, null );
             db.close();
 
-        }catch (Exception e){
-
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void deleteAlarm(String title){
 
-        try{
+        try {
 
             SQLiteDatabase db = this.getWritableDatabase();
             String filter = COLUMN_TITLE + " = \"" + title + "\"";
             db.delete(TABLE_ALARM, filter, null);
             db.close();
 
-        }catch (Exception e){
-
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -151,8 +147,7 @@ public class DbHelperAlarm  extends SQLiteOpenHelper{
             cursor.moveToFirst();
             db.close();
 
-        }catch (Exception e){
-
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -178,32 +173,31 @@ public class DbHelperAlarm  extends SQLiteOpenHelper{
                 alarm = null;
             }
             db.close();
-        }catch (Exception e){
 
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return alarm;
     }
 
-    public void clearAlarm(){
+    public void clearAlarm() {
 
-        try{
+        try {
 
             SQLiteDatabase db = this.getWritableDatabase();
             db.delete(TABLE_ALARM, "", null);
             db.close();
 
-        }catch (Exception e){
-
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public ArrayList<Alarm> getAlarmList(){
+    public ArrayList<Alarm> getAlarmList() {
 
         ArrayList<Alarm> list = new ArrayList<>();
 
-        try{
+        try {
 
             SQLiteDatabase db = this.getReadableDatabase();
             Cursor cursor = db.rawQuery("Select _id, title, content, writeDate from "
@@ -220,14 +214,13 @@ public class DbHelperAlarm  extends SQLiteOpenHelper{
             cursor.close();
             db.close();
 
-        }catch (Exception e){
-
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return list;
     }
 
-    public int getRowCount(){
+    public int getRowCount() {
 
         long count = 0;
 
@@ -237,14 +230,13 @@ public class DbHelperAlarm  extends SQLiteOpenHelper{
             count = DatabaseUtils.queryNumEntries(db, TABLE_ALARM);
             db.close();
 
-        }catch (Exception e){
-
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return (int)count;
     }
 
-    public boolean findAlarm(String title){
+    public boolean findAlarm(String title) {
 
         boolean bFind = false;
         try {
@@ -263,8 +255,7 @@ public class DbHelperAlarm  extends SQLiteOpenHelper{
             }
             db.close();
 
-        }catch (Exception e){
-
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return bFind;
@@ -292,11 +283,9 @@ public class DbHelperAlarm  extends SQLiteOpenHelper{
             }
             db.close();
 
-        }catch (Exception e){
-
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return alarm;
     }
-
 }
