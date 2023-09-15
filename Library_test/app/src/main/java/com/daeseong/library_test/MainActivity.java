@@ -1,14 +1,11 @@
 package com.daeseong.library_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
 import com.daeseong.stringutilslib.Stringutils;
-
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {

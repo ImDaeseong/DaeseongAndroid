@@ -5,11 +5,11 @@ group='com.github.ImDaeseong'
 
 android {
     namespace 'com.daeseong.stringutilslib'
-    compileSdk 32
+    compileSdk 33//32
 
     defaultConfig {
         minSdk 23
-        targetSdk 32
+        targetSdk 33//32
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
