@@ -1,7 +1,6 @@
 package com.daeseong.alarm_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -9,7 +8,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -61,7 +59,7 @@ public class Main1Activity extends AppCompatActivity {
             // 반복
             alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
             alarmIntent = new Intent(this, AlarmReceiver.class);
-            alarmpendingIntent = PendingIntent.getBroadcast(Main1Activity.this, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            alarmpendingIntent = PendingIntent.getBroadcast(Main1Activity.this, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(System.currentTimeMillis());
             calendar.add(Calendar.SECOND, 5);
@@ -78,7 +76,7 @@ public class Main1Activity extends AppCompatActivity {
             // 1회용
             alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
             alarmIntent = new Intent(this, AlarmReceiver.class);
-            alarmpendingIntent = PendingIntent.getBroadcast(Main1Activity.this, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            alarmpendingIntent = PendingIntent.getBroadcast(Main1Activity.this, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(System.currentTimeMillis());
             calendar.add(Calendar.SECOND, 5);
@@ -93,7 +91,7 @@ public class Main1Activity extends AppCompatActivity {
     private void DestroyAlarm(){
 
         if(alarmpendingIntent != null) {
-            alarmpendingIntent = PendingIntent.getBroadcast(Main1Activity.this,0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+            alarmpendingIntent = PendingIntent.getBroadcast(Main1Activity.this,0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE);
             alarmManager.cancel(alarmpendingIntent);
             alarmpendingIntent.cancel();
             alarmManager = null;

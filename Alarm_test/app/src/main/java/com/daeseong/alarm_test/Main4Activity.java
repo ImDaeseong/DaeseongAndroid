@@ -1,7 +1,6 @@
 package com.daeseong.alarm_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -9,7 +8,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -69,7 +67,7 @@ public class Main4Activity extends AppCompatActivity {
         AlarmID = 1;
         alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
         alarmIntent = new Intent(this, AlarmReceiver.class);
-        alarmpendingIntent = PendingIntent.getBroadcast(Main4Activity.this, AlarmID, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        alarmpendingIntent = PendingIntent.getBroadcast(Main4Activity.this, AlarmID, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         if(alarmpendingIntent == null){
             Log.e(TAG, "설정된 알람이 없음");
@@ -95,7 +93,7 @@ public class Main4Activity extends AppCompatActivity {
         AlarmID = 1;
         alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
         alarmIntent = new Intent(this, AlarmReceiver.class);
-        alarmpendingIntent = PendingIntent.getBroadcast(Main4Activity.this, AlarmID, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmpendingIntent = PendingIntent.getBroadcast(Main4Activity.this, AlarmID, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         if(alarmpendingIntent != null){
 
             Log.e(TAG, "1번 알람 취소");
@@ -113,7 +111,7 @@ public class Main4Activity extends AppCompatActivity {
         AlarmID = 2;
         alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
         alarmIntent = new Intent(this, AlarmReceiver.class);
-        alarmpendingIntent = PendingIntent.getBroadcast(Main4Activity.this, AlarmID, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        alarmpendingIntent = PendingIntent.getBroadcast(Main4Activity.this, AlarmID, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         if(alarmpendingIntent == null){
             Log.e(TAG, "설정된 알람이 없음");
@@ -139,7 +137,7 @@ public class Main4Activity extends AppCompatActivity {
         AlarmID = 2;
         alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
         alarmIntent = new Intent(this, AlarmReceiver.class);
-        alarmpendingIntent = PendingIntent.getBroadcast(Main4Activity.this, AlarmID, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmpendingIntent = PendingIntent.getBroadcast(Main4Activity.this, AlarmID, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         if(alarmpendingIntent != null){
 
             Log.e(TAG, "2번 알람 취소");

@@ -1,13 +1,11 @@
 package com.daeseong.alarm_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -40,7 +38,7 @@ public class Main3Activity extends AppCompatActivity {
 
         alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
         alarmIntent = new Intent(this, AlarmReceiver.class);
-        alarmpendingIntent = PendingIntent.getBroadcast(Main3Activity.this, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmpendingIntent = PendingIntent.getBroadcast(Main3Activity.this, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
@@ -64,7 +62,7 @@ public class Main3Activity extends AppCompatActivity {
     private void DestroyAlarm(){
 
         if(alarmpendingIntent != null) {
-            alarmpendingIntent = PendingIntent.getBroadcast(Main3Activity.this,0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+            alarmpendingIntent = PendingIntent.getBroadcast(Main3Activity.this,0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE);
             alarmManager.cancel(alarmpendingIntent);
             alarmpendingIntent.cancel();
             alarmManager = null;

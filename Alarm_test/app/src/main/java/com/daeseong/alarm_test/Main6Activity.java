@@ -1,7 +1,6 @@
 package com.daeseong.alarm_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +14,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import java.util.List;
 
 public class Main6Activity extends AppCompatActivity {

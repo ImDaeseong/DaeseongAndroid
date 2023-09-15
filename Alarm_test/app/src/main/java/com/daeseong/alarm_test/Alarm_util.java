@@ -5,7 +5,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -40,7 +39,7 @@ public class Alarm_util {
         //호출후 삭제 위해 꼭 넘겨야 한다.
         alarmIntent.putExtra("alarmID", nID);
 
-        alarmpendingIntent = PendingIntent.getBroadcast(mcontext, nID, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmpendingIntent = PendingIntent.getBroadcast(mcontext, nID, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
@@ -59,10 +58,9 @@ public class Alarm_util {
 
         //Intent alarmIntent = new Intent(mcontext, AlarmReceiver.class);
         Intent alarmIntent = new Intent(mcontext, AlarmNotificationReceiver.class);
-        alarmpendingIntent = PendingIntent.getBroadcast(mcontext, nID, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        alarmpendingIntent = PendingIntent.getBroadcast(mcontext, nID, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         alarmManager.cancel(alarmpendingIntent);
         alarmpendingIntent.cancel();
         //Log.e(TAG, "삭제된 알람 ID : " + nID);
     }
-
 }

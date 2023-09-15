@@ -14,16 +14,21 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        //호출후 삭제시 필요
-        int nID = intent.getExtras().getInt("alarmID");
+        try {
 
-        Log.e(TAG, "호출 시간 : " + getTimeDate() + " ID:" + nID);
+            //호출후 삭제시 필요
+            int nID = intent.getExtras().getInt("alarmID");
 
-        //activity에 전달
-        Intent iID = new Intent("com.daeseong.alarm_test.ID");
-        iID.putExtra("alarmID", nID);
-        context.sendBroadcast(iID);
+            Log.e(TAG, "호출 시간 : " + getTimeDate() + " ID:" + nID);
 
+            //activity에 전달
+            Intent iID = new Intent("com.daeseong.alarm_test.ID");
+            iID.putExtra("alarmID", nID);
+            context.sendBroadcast(iID);
+
+        } catch (Exception ex) {
+            Log.e(TAG, ex.getMessage().toString());
+        }
     }
 
     private static String getTimeDate() {
