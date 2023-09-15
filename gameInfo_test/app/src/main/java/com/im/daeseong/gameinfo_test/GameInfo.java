@@ -5,7 +5,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
 
