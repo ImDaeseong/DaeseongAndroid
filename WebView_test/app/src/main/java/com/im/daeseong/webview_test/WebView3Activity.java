@@ -25,8 +25,7 @@ public class WebView3Activity extends AppCompatActivity {
 
     private BackPressCloseHandler backPressCloseHandler;
 
-    public static boolean isNetworkAvailable(Context context)
-    {
+    public static boolean isNetworkAvailable(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()){
@@ -49,13 +48,13 @@ public class WebView3Activity extends AppCompatActivity {
         webView = (WebView)findViewById(R.id.webview1);
         webView.getSettings().setDefaultTextEncodingName("UTF-8");
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setAppCacheEnabled(true);
+        //webView.getSettings().setAppCacheEnabled(true);
         webView.setWebViewClient(new CustomWebViewClient());
 
         //네트워크 연결 여부
-        if(isNetworkAvailable(this)){
+        if (isNetworkAvailable(this)) {
             webView.loadUrl("http://m.naver.com");
-        }else {
+        } else {
             webView.loadUrl("about:blank");
         }
 

@@ -17,9 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </WebView>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressBar1"
@@ -33,4 +31,5 @@
         app:layout_constraintEnd_toEndOf="@+id/webview1"
         app:layout_constraintStart_toStartOf="@+id/webview1"
         app:layout_constraintTop_toTopOf="@+id/webview1" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
