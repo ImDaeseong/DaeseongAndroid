@@ -9,6 +9,7 @@
         android:drawableTop="@drawable/b1"
         android:text="left"
         android:textAlignment="center"
-        android:textSize="10dip"/>
+        android:textSize="10dip"
+        android:gravity="center_horizontal" />
 
 </LinearLayout>

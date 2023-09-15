@@ -1,12 +1,11 @@
 package com.im.daeseong.mainui_test;
 
 import android.graphics.Color;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.appbar.CollapsingToolbarLayout;//import android.support.design.widget.CollapsingToolbarLayout;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;//import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
-
 import java.sql.Time;
 
 public class Mainui7Activity extends AppCompatActivity {

@@ -1,14 +1,11 @@
 package com.im.daeseong.mainui_test;
 
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.appbar.CollapsingToolbarLayout;//import android.support.design.widget.CollapsingToolbarLayout;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;//import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 
 public class Mainui9Activity extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +17,5 @@ public class Mainui9Activity extends AppCompatActivity {
 
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout)findViewById(R.id.collapsingToolbar);
         collapsingToolbarLayout.setTitle("CollapsingToolbarLayout title");
-
     }
-
 }

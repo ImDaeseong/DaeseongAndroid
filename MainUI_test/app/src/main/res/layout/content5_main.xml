@@ -8,10 +8,10 @@
     tools:context="com.im.daeseong.mainui_test.Mainui5Activity"
     tools:showIn="@layout/app5_bar_main">
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recyclerview">
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout >
