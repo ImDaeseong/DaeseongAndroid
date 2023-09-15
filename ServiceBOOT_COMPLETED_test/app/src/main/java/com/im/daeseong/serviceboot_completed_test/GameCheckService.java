@@ -1,15 +1,12 @@
 package com.im.daeseong.serviceboot_completed_test;
 
-
 import android.app.Service;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;//import android.support.annotation.Nullable;
 import android.util.Log;
-import android.widget.Toast;
-
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;

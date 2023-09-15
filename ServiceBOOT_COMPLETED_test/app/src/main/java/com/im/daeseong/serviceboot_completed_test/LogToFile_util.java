@@ -2,7 +2,6 @@ package com.im.daeseong.serviceboot_completed_test;
 
 import android.content.Context;
 import android.os.Environment;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
