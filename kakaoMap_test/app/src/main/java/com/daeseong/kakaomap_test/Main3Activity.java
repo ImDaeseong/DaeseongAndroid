@@ -19,17 +19,24 @@ public class Main3Activity extends AppCompatActivity implements MapView.CurrentL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
-        mapView = (MapView)findViewById(R.id.map_view);
+        try {
 
-        // 현재 위치 이벤트 감지
-        mapView.setCurrentLocationEventListener(this);
-        mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
+            mapView = (MapView) findViewById(R.id.map_view);
 
+            // 현재 위치 이벤트 감지
+            mapView.setCurrentLocationEventListener(this);
+            mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
+            setContentView(mapView);
+
+        } catch (Exception ex) {
+            Log.e(TAG, ex.getMessage().toString());
+        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
     }
 
     @Override
