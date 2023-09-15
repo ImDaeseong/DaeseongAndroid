@@ -6,7 +6,6 @@ import android.os.Build;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
 import android.util.Log;
-
 import java.util.Locale;
 
 public class TextToSpeechUtil {
@@ -15,7 +14,7 @@ public class TextToSpeechUtil {
 
     private static  TextToSpeech textToSpeech;
 
-    public TextToSpeechUtil(Context context){
+    public TextToSpeechUtil(Context context) {
 
         try {
 
@@ -42,7 +41,7 @@ public class TextToSpeechUtil {
     /*
     //사용않함
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
-    public TextToSpeechUtil(Context context, final String sText){
+    public TextToSpeechUtil(Context context, final String sText) {
 
         try {
 
@@ -90,8 +89,7 @@ public class TextToSpeechUtil {
     }
     */
 
-    public static void Speak(final String sText)
-    {
+    public static void Speak(final String sText) {
         try {
 
             if (textToSpeech != null) {
@@ -113,8 +111,7 @@ public class TextToSpeechUtil {
         }
     }
 
-    public static void Stop()
-    {
+    public static void Stop() {
         try {
 
             if (textToSpeech != null) {
@@ -127,7 +124,7 @@ public class TextToSpeechUtil {
         }
     }
 
-    public static boolean isLanguageAvailable(){
+    public static boolean isLanguageAvailable() {
 
         boolean bAvailable = false;
         try {
