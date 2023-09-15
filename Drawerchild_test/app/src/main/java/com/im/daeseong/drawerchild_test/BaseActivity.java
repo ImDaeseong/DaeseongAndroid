@@ -1,14 +1,14 @@
 package com.im.daeseong.drawerchild_test;
 
 import android.content.Intent;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import androidx.appcompat.app.ActionBarDrawerToggle;//import android.support.v7.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;//import android.support.constraint.ConstraintLayout;
+import androidx.core.view.GravityCompat;//import android.support.v4.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;//import android.support.v4.widget.DrawerLayout;
+import com.google.android.material.navigation.NavigationView;//import android.support.design.widget.NavigationView;
 
 public class BaseActivity extends AppCompatActivity {
 

@@ -1,7 +1,6 @@
 package com.daeseong.devicepolicymanager_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
