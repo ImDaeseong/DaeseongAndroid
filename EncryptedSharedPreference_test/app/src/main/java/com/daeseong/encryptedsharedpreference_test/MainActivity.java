@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             editText2.setText(sLoadPassword);
             editText3.setText(String.valueOf(sLoadMemberNumber));
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
