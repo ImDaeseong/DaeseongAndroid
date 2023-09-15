@@ -1,7 +1,6 @@
 package com.daeseong.okhttpclient_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -9,7 +8,6 @@ import android.util.Log;
 import com.daeseong.okhttpclient_test.common.HttpUtilOK;
 import org.json.JSONObject;
 import java.io.IOException;
-
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;

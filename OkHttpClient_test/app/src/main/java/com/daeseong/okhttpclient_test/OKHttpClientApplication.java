@@ -2,7 +2,6 @@ package com.daeseong.okhttpclient_test;
 
 import android.app.Application;
 import android.content.res.Configuration;
-
 import androidx.annotation.NonNull;
 
 public class OKHttpClientApplication extends Application {
