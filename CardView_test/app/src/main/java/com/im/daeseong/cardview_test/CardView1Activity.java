@@ -9,6 +9,8 @@ import java.util.List;
 
 public class CardView1Activity extends AppCompatActivity {
 
+    private static final String TAG = CardView1Activity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

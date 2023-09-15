@@ -10,6 +10,8 @@ import java.util.List;
 
 public class CardView4Activity extends AppCompatActivity {
 
+    private static final String TAG = CardView4Activity.class.getSimpleName();
+
     private RecyclerView recyclerView;
     private RecyclerViewAdapter recyclerViewAdapter;
     private List<Item> itemList;

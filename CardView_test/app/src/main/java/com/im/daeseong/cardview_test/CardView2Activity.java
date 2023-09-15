@@ -8,6 +8,8 @@ import android.view.View;
 
 public class CardView2Activity extends AppCompatActivity {
 
+    private static final String TAG = CardView2Activity.class.getSimpleName();
+
     private CardView cardView;
 
     @Override
