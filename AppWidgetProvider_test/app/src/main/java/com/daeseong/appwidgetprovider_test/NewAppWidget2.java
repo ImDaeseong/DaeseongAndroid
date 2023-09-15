@@ -23,12 +23,12 @@ public class NewAppWidget2 extends AppWidgetProvider {
 
         Intent intent1 = new Intent(context, NewAppWidget2.class);
         intent1.setAction(ACTION_BTN);
-        PendingIntent pendingIntent1 = PendingIntent.getBroadcast(context,0, intent1, 0);
+        PendingIntent pendingIntent1 = PendingIntent.getBroadcast(context,0, intent1, PendingIntent.FLAG_IMMUTABLE);
         views.setOnClickPendingIntent(R.id.appwidget_img, pendingIntent1);
 
         Intent intent2 = new Intent(context, NewAppWidget2.class);
         intent2.setAction(ACTION_TXT);
-        PendingIntent pendingIntent2 = PendingIntent.getBroadcast(context,0, intent2, 0);
+        PendingIntent pendingIntent2 = PendingIntent.getBroadcast(context,0, intent2, PendingIntent.FLAG_IMMUTABLE);
         views.setOnClickPendingIntent(R.id.appwidget_tv, pendingIntent2);
 
         // Instruct the widget manager to update the widget

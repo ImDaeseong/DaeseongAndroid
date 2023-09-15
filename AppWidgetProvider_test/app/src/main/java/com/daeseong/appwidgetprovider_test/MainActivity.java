@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
                         ComponentName widgetProvider = new ComponentName(context, NewAppWidget.class);
                         Intent pinnedWidgetCallbackIntent = new Intent(this, MainActivity.class);
-                        PendingIntent successCallback = PendingIntent.getBroadcast(this, 0, pinnedWidgetCallbackIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                        PendingIntent successCallback = PendingIntent.getBroadcast(this, 0, pinnedWidgetCallbackIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
                         appWidgetManager.requestPinAppWidget(widgetProvider, null, successCallback);
                     }
                 }
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
                         ComponentName widgetProvider = new ComponentName(context, NewAppWidget2.class);
                         Intent pinnedWidgetCallbackIntent = new Intent(this, MainActivity.class);
-                        PendingIntent successCallback = PendingIntent.getBroadcast(this, 0, pinnedWidgetCallbackIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                        PendingIntent successCallback = PendingIntent.getBroadcast(this, 0, pinnedWidgetCallbackIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
                         appWidgetManager.requestPinAppWidget(widgetProvider, null, successCallback);
                     }
                 }

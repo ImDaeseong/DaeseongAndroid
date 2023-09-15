@@ -22,7 +22,7 @@ public class NewAppWidget extends AppWidgetProvider {
         views.setImageViewResource(R.id.appwidget_img, R.drawable.qr);
 
         Intent intent = new Intent(context, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
         views.setOnClickPendingIntent(R.id.appwidget_img, pendingIntent);
 
         // Instruct the widget manager to update the widget
