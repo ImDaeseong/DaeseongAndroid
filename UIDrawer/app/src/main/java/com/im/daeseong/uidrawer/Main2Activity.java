@@ -1,29 +1,25 @@
 package com.im.daeseong.uidrawer;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import androidx.annotation.NonNull;//import android.support.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;//import android.support.v7.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;//import android.support.v4.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;//import android.support.v4.widget.DrawerLayout;
+import androidx.viewpager.widget.ViewPager;//import android.support.v4.view.ViewPager;
+import com.google.android.material.navigation.NavigationView;//import android.support.design.widget.NavigationView;
+import com.google.android.material.tabs.TabLayout;//import android.support.design.widget.TabLayout;
 
-public class Main2Activity extends AppCompatActivity{
+public class Main2Activity extends AppCompatActivity {
 
     private DrawerLayout Main_drawerLayout;
     private ImageView Main_picabi, Main_picareser, Main_picamenu;
     private TabLayout Main_tabLayout;
-    private NavigationView  Main_navigationView;
+    private NavigationView Main_navigationView;
     private ViewPager Main_viewPager;
     private MainPagerAdapter mainPagerAdapter = null;
 

@@ -1,6 +1,5 @@
 package com.daeseong.changedeprecated.Common;
 
-
 public class GetStringTask extends ThreadTask<String, String> {
 
     private static final String TAG = GetStringTask.class.getSimpleName();

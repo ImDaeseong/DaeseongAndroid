@@ -1,6 +1,6 @@
 package com.im.daeseong.uidrawer;
 
-import android.support.design.widget.TabLayout;
+import com.google.android.material.tabs.TabLayout;//import android.support.design.widget.TabLayout;
 import android.util.Log;
 import android.view.View;
 

@@ -2,15 +2,13 @@ package com.im.daeseong.uidrawer;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.Nullable;//import android.support.annotation.Nullable;
+import androidx.fragment.app.Fragment;//import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -27,6 +25,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import androidx.appcompat.app.AlertDialog;
 
 /**
  * Created by Daeseong on 2018-03-02.
@@ -97,7 +96,7 @@ public class MainTab1Fragment extends Fragment {
         webSettings.setLoadsImagesAutomatically(true);//웹뷰가 앱에 등록되어 있는 이미지 리소스를 자동으로 로드하도록 설정하는 속성
         webSettings.setSupportZoom(false);//확대 축소 기능
         webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);//캐시모드를 사용하지 않고 네트워크를 통해서만 호출
-        webSettings.setAppCacheEnabled(false);//앱 내부 캐시 사용 여부 설정
+        //webSettings.setAppCacheEnabled(false);//앱 내부 캐시 사용 여부 설정
         webSettings.setDomStorageEnabled(true);//로컬 스토리지 사용 여부를 설정하는 속성으로 팝업창등을 '하루동안 보지 않기' 기능 사용에 필요
         webSettings.setUserAgentString("app");//웹에서 해당 속성을 통해 앱에서 띄운 웹뷰로 인지
         webSettings.setAllowFileAccess(true);// 웹 뷰 내에서 파일 액세스 활성화 여부
@@ -177,11 +176,11 @@ public class MainTab1Fragment extends Fragment {
             //alert 처리
             @Override
             public boolean onJsAlert(WebView view, String url, String message, final JsResult result) {
-                new android.support.v7.app.AlertDialog.Builder(view.getContext())
+                new AlertDialog.Builder(view.getContext())
                         .setTitle("알림1")
                         .setMessage(message)
                         .setPositiveButton("네",
-                                new android.support.v7.app.AlertDialog.OnClickListener() {
+                                new AlertDialog.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         result.confirm();
                                     }
@@ -196,17 +195,17 @@ public class MainTab1Fragment extends Fragment {
             //confirm 처리
             @Override
             public boolean onJsConfirm(WebView view, String url, String message, final JsResult result) {
-                new android.support.v7.app.AlertDialog.Builder(view.getContext())
+                new AlertDialog.Builder(view.getContext())
                         .setTitle("알림1")
                         .setMessage(message)
                         .setPositiveButton("네",
-                                new android.support.v7.app.AlertDialog.OnClickListener() {
+                                new AlertDialog.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         result.confirm();
                                     }
                                 })
                         .setNegativeButton("아니오",
-                                new android.support.v7.app.AlertDialog.OnClickListener() {
+                                new AlertDialog.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         result.cancel();
                                     }
