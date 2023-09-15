@@ -1,7 +1,6 @@
 package com.daeseong.rxjava3_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -9,13 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import com.daeseong.rxjava3_test.Common.SendUtil;
-
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Enumeration;
-
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class Main6Activity extends AppCompatActivity {

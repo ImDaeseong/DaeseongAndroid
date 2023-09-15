@@ -19,7 +19,6 @@ import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-
 public class Rxjava1Activity extends AppCompatActivity {
 
     private static final String TAG = Rxjava1Activity.class.getSimpleName();
