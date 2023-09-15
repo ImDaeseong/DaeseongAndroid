@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private void readLotto1(){
 
         RealmResults<Lotto> realmResults = dbHelperLotto.getLotto();
-        for(int i=0; i < realmResults.size(); i++){
+        for (int i=0; i < realmResults.size(); i++) {
             Log.e(TAG, realmResults.get(i).getrIndex() + " "
                     + realmResults.get(i).getDate() + " "
                     + realmResults.get(i).getPart1() + " "
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     private void readLotto2(){
 
         RealmResults<Lotto> realmResults = dbHelperLotto.getLotto();
-        for(Lotto lotto :realmResults) {
+        for (Lotto lotto :realmResults) {
             Log.e(TAG, lotto.getrIndex() + " "
                     + lotto.getDate() + " "
                     + lotto.getPart1() + " "
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
     private void readLotto3(){
 
         Lotto lotto = dbHelperLotto.getData(1);
-        if(lotto != null) {
+        if (lotto != null) {
             Log.e(TAG, String.valueOf(lotto.getrIndex()));
             Log.e(TAG, lotto.getDate());
             Log.e(TAG, String.valueOf(lotto.getPart1()));
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
     private void deleteLotto() {
 
         boolean bfind = dbHelperLotto.isExistData(6);
-        if(bfind){
+        if (bfind) {
             dbHelperLotto.deleteLotto(6);
         }
     }
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void ReadCSVtoAdd() {
 
-        try{
+        try {
 
             CSVReader csvReader = new CSVReader(new InputStreamReader(getResources().getAssets().open("lotto.csv"),"UTF-8"));
             String[] sline;
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
             }
             dbHelperLotto.getRealm().commitTransaction();
 
-        }catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         } catch (IOException ex) {
             ex.printStackTrace();

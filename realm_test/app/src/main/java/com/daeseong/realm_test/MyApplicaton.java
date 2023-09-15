@@ -2,7 +2,6 @@ package com.daeseong.realm_test;
 
 import android.app.Application;
 import android.content.res.Configuration;
-
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 

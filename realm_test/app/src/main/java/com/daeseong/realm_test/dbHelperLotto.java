@@ -12,8 +12,7 @@ public class dbHelperLotto {
     private Realm realm;
     private RealmResults<Lotto> realmResults;
 
-    public dbHelperLotto(){
-
+    public dbHelperLotto() {
         realm =  MyApplicaton.getInstance().getRealm();
     }
 
@@ -24,7 +23,7 @@ public class dbHelperLotto {
                     //.sort("_rIndex", Sort.ASCENDING)
                     .sort("_rIndex", Sort.DESCENDING)
                     .findAll();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             Log.e(TAG, ex.getMessage().toString());
         }
         return null;
@@ -34,14 +33,14 @@ public class dbHelperLotto {
         return realm;
     }
 
-    public void closeRealm(){
+    public void closeRealm() {
 
-        try{
-            if(realm != null) {
+        try {
+            if (realm != null) {
                 realm.close();
                 realm = null;
             }
-        }catch (Exception ex){
+        } catch (Exception ex) {
             Log.e(TAG, ex.getMessage().toString());
         }
     }
@@ -62,7 +61,7 @@ public class dbHelperLotto {
                     lotto.setPart5(Part5);
                     lotto.setPart6(Part6);
                     lotto.setBonus(Bonus);
-                }catch (Exception ex){
+                } catch (Exception ex) {
                     Log.e(TAG, ex.getMessage().toString());
                 }
             }
@@ -76,7 +75,7 @@ public class dbHelperLotto {
             Lotto lotto = realm.where(Lotto.class).equalTo("_rIndex", rIndex).findFirst();
             if (lotto != null)
                 bFindData = true;
-        }catch (Exception ex){
+        } catch (Exception ex) {
             Log.e(TAG, ex.getMessage().toString());
         }
         return bFindData;
@@ -85,7 +84,7 @@ public class dbHelperLotto {
     public Lotto getData(int rIndex) {
         try {
             return realm.where(Lotto.class).equalTo("_rIndex", rIndex).findFirst();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             Log.e(TAG, ex.getMessage().toString());
         }
         return null;
@@ -102,7 +101,7 @@ public class dbHelperLotto {
                     if (lotto != null) {
                         lotto.deleteFromRealm();
                     }
-                }catch (Exception ex){
+                } catch (Exception ex) {
                     Log.e(TAG, ex.getMessage().toString());
                 }
             }
@@ -116,18 +115,18 @@ public class dbHelperLotto {
         try {
             RealmResults<Lotto> results = realm.where(Lotto.class).findAll();
             nTotalcount = results.size();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             Log.e(TAG, ex.getMessage().toString());
         }
         return nTotalcount;
     }
 
-    public void deleteLottoAll(){
+    public void deleteLottoAll() {
         try {
             realm.beginTransaction();
             realm.deleteAll();
             realm.commitTransaction();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             Log.e(TAG, ex.getMessage().toString());
         }
     }
