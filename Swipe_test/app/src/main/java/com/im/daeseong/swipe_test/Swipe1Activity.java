@@ -2,7 +2,7 @@ package com.im.daeseong.swipe_test;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;

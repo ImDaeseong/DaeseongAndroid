@@ -4,7 +4,7 @@ public class Item {
     int image;
     String title;
 
-    int getImage(){
+    int getImage() {
         return this.image;
     }
 

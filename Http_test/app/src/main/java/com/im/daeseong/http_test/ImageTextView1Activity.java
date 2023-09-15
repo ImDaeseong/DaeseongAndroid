@@ -4,14 +4,12 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-
+import androidx.recyclerview.widget.LinearLayoutManager;//import android.support.v7.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;//import android.support.v7.widget.RecyclerView;
 import com.google.gson.Gson;
 import com.im.daeseong.http_test.HttpUtil.DownloadJson;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;

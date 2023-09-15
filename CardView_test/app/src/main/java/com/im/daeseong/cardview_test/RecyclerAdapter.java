@@ -15,7 +15,7 @@ import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder>{
     Context context;
-    List<Item> items;
+    List<com.im.daeseong.cardview_test.Item> items;
     int item_layout;
 
     public RecyclerAdapter(Context context, List<Item> items, int item_layout){
@@ -32,6 +32,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+
         final Item item = items.get(position);
         Drawable drawable = ContextCompat.getDrawable(context, item.getImage());
 

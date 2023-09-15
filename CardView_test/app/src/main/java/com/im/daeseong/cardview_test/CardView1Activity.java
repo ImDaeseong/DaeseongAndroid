@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;//import android.support.v7.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;//import android.support.v7.widget.RecyclerView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class CardView1Activity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<Item> items = new ArrayList<>();
+        List<com.im.daeseong.cardview_test.Item> items = new ArrayList<>();
         Item[] item = new Item[5];
         item[0] = new Item(R.drawable.banner1, "#1");
         item[1] = new Item(R.drawable.banner2, "#2");

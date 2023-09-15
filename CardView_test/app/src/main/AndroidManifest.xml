@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CardView4Activity"
+        <activity android:name=".CardView1Activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".CardView1Activity" />
+        <activity android:name=".CardView4Activity" />
         <activity android:name=".CardView2Activity" />
         <activity android:name=".CardView3Activity" />
     </application>

@@ -3,11 +3,10 @@ package com.im.daeseong.http_test;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
-
 import com.im.daeseong.http_test.HttpUtil.DownloadJson;
 
 public class TextView2Activity extends AppCompatActivity {

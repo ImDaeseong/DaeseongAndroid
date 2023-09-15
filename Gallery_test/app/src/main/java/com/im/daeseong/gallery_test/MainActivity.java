@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private ArrayList<ImageItem> initImages(){
+    private ArrayList<ImageItem> initImages() {
         try {
             ArrayList<ImageItem> imageItems = new ArrayList<>();
             for (String item : SearchImage.getAllPicture()){
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 imageItems.add(new ImageItem(bitmap, title));
             }
             return imageItems;
-        }catch (Exception e){
+        } catch (Exception e) {
         }
         return null;
     }
