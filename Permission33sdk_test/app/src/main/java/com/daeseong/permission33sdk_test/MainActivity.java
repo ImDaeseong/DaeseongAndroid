@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private Button button1, button2, button3, button4, button5, button6;
+    private Button button1, button2, button3, button4, button5, button6, button7;
 
     private static final String[] PERMISSIONS = new String[]{android.Manifest.permission.CAMERA, android.Manifest.permission.READ_EXTERNAL_STORAGE};
     private static final String[] PERMISSIONS33 = new String[]{android.Manifest.permission.CAMERA, Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.POST_NOTIFICATIONS};
@@ -83,6 +83,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(MainActivity.this, Permission6Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        button7 = findViewById(R.id.button7);
+        button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, Permission7Activity.class);
                 startActivity(intent);
             }
         });
