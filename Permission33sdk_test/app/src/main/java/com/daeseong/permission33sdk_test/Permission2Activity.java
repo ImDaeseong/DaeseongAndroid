@@ -89,7 +89,7 @@ public class Permission2Activity extends AppCompatActivity {
                 bImage = Boolean.TRUE.equals(result.get(Manifest.permission.READ_EXTERNAL_STORAGE));
             }
 
-            if (bCamera && bCamera) {
+            if (bCamera && bImage) {
                 Log.e(TAG, "PERMISSIONS 권한 소유");
             } else {
                 Log.e(TAG, "PERMISSIONS 권한 미소유");
