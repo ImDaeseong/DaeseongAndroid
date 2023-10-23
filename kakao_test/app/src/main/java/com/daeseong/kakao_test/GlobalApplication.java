@@ -1,7 +1,6 @@
 package com.daeseong.kakao_test;
 
 import android.app.Application;
-
 import com.kakao.auth.KakaoSDK;
 
 public class GlobalApplication extends Application {

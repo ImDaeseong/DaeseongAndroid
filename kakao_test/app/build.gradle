@@ -1,15 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-
-    // 카카오 sdk v1 사용 => sdk 33 으로 올리는 순간 강제 종료됨 v2 라이브러리로 교체해야함
-
-    compileSdkVersion 29
+    compileSdkVersion 33
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.daeseong.kakao_test"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -24,21 +21,21 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //Target SDK 31로 변경시 pendingIntent 사용하면 무조건 필요함
+    implementation 'androidx.work:work-runtime:2.7.1'
+
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    // 카카오 로그인 sdk를 사용하기 위해 필요.
+
+    //카카오 네비
+    implementation group: 'com.kakao.sdk', name: 'kakaonavi', version: project.KAKAO_SDK_VERSION
+    //카카오 로그인
     implementation group: 'com.kakao.sdk', name: 'usermgmt', version: project.KAKAO_SDK_VERSION
-
-    // 카카오링크 sdk를 사용하기 위해 필요.
+    //카카오 링크 - 친구초대 용
     implementation group: 'com.kakao.sdk', name: 'kakaolink', version: project.KAKAO_SDK_VERSION
-
-    // 카카오톡 sdk를 사용하기 위해 필요.
-    implementation group: 'com.kakao.sdk', name: 'kakaotalk', version: project.KAKAO_SDK_VERSION
-
-    // push sdk를 사용하기 위해 필요.
-    implementation group: 'com.kakao.sdk', name: 'push', version: project.KAKAO_SDK_VERSION
 }

@@ -2,13 +2,11 @@ package com.daeseong.kakao_test;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
@@ -17,7 +15,6 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeV2ResponseCallback;
 import com.kakao.usermgmt.response.MeV2Response;
 import com.kakao.util.exception.KakaoException;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -132,7 +129,10 @@ public class Main2Activity extends AppCompatActivity {
                     try {
                         Log.e(TAG,"user id : " + response.getId());
                         Log.e(TAG,"nickname : " + response.getNickname());
-                        Log.e(TAG,"email: " + response.getKakaoAccount().getEmail());
+
+                        if(response.getKakaoAccount() != null) {
+                            Log.e(TAG, "email: " + response.getKakaoAccount().getEmail());
+                        }
 
                     }catch (Exception ex){
                         Log.e(TAG, ex.getMessage().toString());
