@@ -19,6 +19,7 @@ public class Chart1Activity extends AppCompatActivity {
 
     private BarChart barChart;
     private ArrayList<BarEntry> arrayList1;
+    private List<Integer> barColors;
     private List<String> xlabels = new ArrayList<>();
 
     @Override
@@ -41,8 +42,16 @@ public class Chart1Activity extends AppCompatActivity {
         arrayList1.add(new BarEntry(2f, 63f));
         arrayList1.add(new BarEntry(3f, 44f));
 
+        //막대 색상
+        barColors = new ArrayList<>();
+        barColors.add(Color.BLUE);
+        barColors.add(Color.RED);
+        barColors.add(Color.GREEN);
+        barColors.add(Color.YELLOW);
+
         BarDataSet barDataSet = new BarDataSet(arrayList1, "arrayList1");
-        barDataSet.setColor(Color.BLUE); // 막대의 색상 설정
+        barDataSet.setColors(barColors); //막대 개별 색상 설정
+        //barDataSet.setColor(Color.BLUE); // 막대의 색상 설정 전부 동일하게
         barDataSet.setValueTextColor(Color.BLACK); // 막대에 표시되는 값의 텍스트 색상 설정
 
         BarData barData = new BarData(barDataSet);
