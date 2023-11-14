@@ -2,14 +2,12 @@ apply plugin: 'com.android.application'
 
 android {
 
-    // naver  => sdk 33 으로 올리는 순간 강제 종료됨
-
-    compileSdkVersion 29
+    compileSdkVersion 33//29
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.daeseong.naver_test"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 33//29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
