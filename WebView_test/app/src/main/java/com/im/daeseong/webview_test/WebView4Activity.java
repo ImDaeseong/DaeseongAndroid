@@ -124,7 +124,6 @@ public class WebView4Activity extends AppCompatActivity {
 
         webSettings.setLoadsImagesAutomatically(true);//웹뷰가 앱에 등록되어 있는 이미지 리소스를 자동으로 로드하도록 설정하는 속성
         webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);//캐시모드를 사용하지 않고 네트워크를 통해서만 호출
-        //webSettings.setAppCacheEnabled(false);//앱 내부 캐시 사용 여부 설정
         webSettings.setDomStorageEnabled(true);//로컬 스토리지 사용 여부를 설정하는 속성으로 팝업창등을 '하루동안 보지 않기' 기능 사용에 필요
         webSettings.setAllowFileAccess(false);// 웹 뷰 내에서 파일 액세스 활성화 여부
 

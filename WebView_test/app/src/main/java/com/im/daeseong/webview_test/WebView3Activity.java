@@ -12,6 +12,7 @@ import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -33,7 +34,6 @@ public class WebView3Activity extends AppCompatActivity {
         }
         return false;
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,12 +48,12 @@ public class WebView3Activity extends AppCompatActivity {
         webView = (WebView)findViewById(R.id.webview1);
         webView.getSettings().setDefaultTextEncodingName("UTF-8");
         webView.getSettings().setJavaScriptEnabled(true);
-        //webView.getSettings().setAppCacheEnabled(true);
+        webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);//캐시모드를 사용하지 않고 네트워크를 통해서만 호출
         webView.setWebViewClient(new CustomWebViewClient());
 
         //네트워크 연결 여부
         if (isNetworkAvailable(this)) {
-            webView.loadUrl("http://m.naver.com");
+            webView.loadUrl("https://m.naver.com");
         } else {
             webView.loadUrl("about:blank");
         }
