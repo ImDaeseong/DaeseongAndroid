@@ -295,7 +295,6 @@ public class WebView4Activity extends AppCompatActivity {
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         // 프로그램을 종료
-                                        //EventActivity.this.finish();
                                         result.confirm();
                                     }
                                 })
@@ -303,7 +302,6 @@ public class WebView4Activity extends AppCompatActivity {
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         // 다이얼로그를 취소
-                                        //dialog.cancel();
                                         result.cancel();
                                     }
                                 });

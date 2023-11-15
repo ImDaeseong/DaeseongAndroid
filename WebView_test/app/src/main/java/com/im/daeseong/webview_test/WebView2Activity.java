@@ -167,7 +167,6 @@ public class WebView2Activity extends AppCompatActivity {
                 e.printStackTrace();
             }
             return true;
-            //return super.shouldOverrideUrlLoading(view, url);
         }
 
         @TargetApi(Build.VERSION_CODES.N)
@@ -190,7 +189,6 @@ public class WebView2Activity extends AppCompatActivity {
                 e.printStackTrace();
             }
             return true;
-            //return super.shouldOverrideUrlLoading(view, request);
         }
 
         @Override
