@@ -3,7 +3,6 @@ package com.daeseong.audiorecorder_test;
 import android.content.Context;
 import android.media.MediaRecorder;
 import android.os.Environment;
-import android.util.Log;
 import java.io.File;
 import java.io.IOException;
 

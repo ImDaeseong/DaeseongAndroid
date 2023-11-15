@@ -1,10 +1,9 @@
 package com.daeseong.audiorecorder_test;
 
-import androidx.annotation.NonNull;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import android.Manifest;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,7 +16,10 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private String[] permissions = {Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    public ActivityResultLauncher<String[]> requestPermissions;
+
+    private static final String[] PERMISSIONS = new String[]{Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    private static final String[] PERMISSIONS33 = new String[]{Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_MEDIA_AUDIO};
 
     private Button button1, button2, button3, button4;
 
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         audioRecorder = new AudioRecorder(this);
         audioPlayer = AudioPlayer.getInstance();
 
-        checkPermissions();
+        initPermissionsLauncher();
 
         button1 = (Button)findViewById(R.id.button1);
         button1.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +126,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        checkPermissions();
     }
 
     @Override
@@ -137,43 +141,69 @@ public class MainActivity extends AppCompatActivity {
         audioPlayer.release();
     }
 
-    private static boolean hasPermissions(Context context, String... permissions) {
+    private void initPermissionsLauncher() {
 
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
+        requestPermissions = registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), result -> {
 
-            for (String permission : permissions) {
-                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
-                    return false;
-                }
+            boolean bRecord = false;
+            boolean bAudio = false;
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+
+                bRecord = Boolean.TRUE.equals(result.get(Manifest.permission.RECORD_AUDIO));
+                bAudio = Boolean.TRUE.equals(result.get(Manifest.permission.READ_MEDIA_AUDIO));
+
+            } else {
+
+                bRecord = Boolean.TRUE.equals(result.get(Manifest.permission.RECORD_AUDIO));
+                bAudio = Boolean.TRUE.equals(result.get(Manifest.permission.WRITE_EXTERNAL_STORAGE));
             }
-        }
-        return true;
+
+            if (bRecord && bAudio) {
+                Log.e(TAG, "PERMISSIONS 권한 소유");
+            } else {
+                Log.e(TAG, "PERMISSIONS 권한 미소유");
+            }
+        });
     }
 
     private void checkPermissions() {
 
-        if (!hasPermissions(this, permissions)) {
-            if ( ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.RECORD_AUDIO) ||
-                 ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) ) {
-                 ActivityCompat.requestPermissions(this, permissions, 1);
-            } else {
-                 ActivityCompat.requestPermissions(this, permissions, 1);
-            }
-        }
-    }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+            boolean bPermissResult = false;
 
-        if (requestCode == 1) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 
-            for (int i = 0; i < permissions.length; i++) {
-                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
-                    Log.e(TAG, "권한이 승인됨 상태:" + permissions[i]);
+                for (String permission : PERMISSIONS33) {
+                    bPermissResult = checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
+                    if(!bPermissResult) {
+                        break;
+                    }
+                }
+
+                if(!bPermissResult) {
+                    requestPermissions.launch(PERMISSIONS33);
                 } else {
-                    Log.e(TAG, "권한이 승인되지 않음 상태:" + permissions[i]);
+                    Log.e(TAG, "PERMISSIONS33 권한 소요");
+                }
+
+            } else {
+
+                for (String permission : PERMISSIONS) {
+                    bPermissResult = checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
+                    if(!bPermissResult) {
+                        break;
+                    }
+                }
+
+                if(!bPermissResult) {
+                    requestPermissions.launch(PERMISSIONS);
+                } else {
+                    Log.e(TAG, "PERMISSIONS 권한 소요");
                 }
             }
         }
+
     }
 }
