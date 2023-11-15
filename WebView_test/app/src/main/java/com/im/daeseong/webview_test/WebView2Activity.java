@@ -94,7 +94,6 @@ public class WebView2Activity extends AppCompatActivity {
                         .create()
                         .show();
                 return true;
-                //return super.onJsAlert(view, url, message, result);
             }
 
             //confirm 처리
@@ -119,7 +118,6 @@ public class WebView2Activity extends AppCompatActivity {
                         .create()
                         .show();
                 return true;
-                //return super.onJsConfirm(view, url, message, result);
             }
 
             @Override

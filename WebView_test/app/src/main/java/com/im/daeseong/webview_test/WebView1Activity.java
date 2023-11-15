@@ -41,9 +41,6 @@ public class WebView1Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //setTheme(android.R.style.Theme.NoTitleBar);
-
         setContentView(R.layout.activity_web_view1);
         context = getApplicationContext();
 
@@ -81,7 +78,6 @@ public class WebView1Activity extends AppCompatActivity {
                         .create()
                         .show();
                 return true;
-                //return super.onJsAlert(view, url, message, result);
             }
 
             //confirm 처리
@@ -106,7 +102,6 @@ public class WebView1Activity extends AppCompatActivity {
                         .create()
                         .show();
                 return true;
-                //return super.onJsConfirm(view, url, message, result);
             }
 
             @Override

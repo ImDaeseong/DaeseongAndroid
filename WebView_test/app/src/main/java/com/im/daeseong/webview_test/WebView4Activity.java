@@ -175,7 +175,6 @@ public class WebView4Activity extends AppCompatActivity {
                 Log.d(TAG, request.getUrl().toString());
 
                 return true;
-                //return super.shouldOverrideUrlLoading(view, request);
             }
 
             @Override
@@ -279,7 +278,6 @@ public class WebView4Activity extends AppCompatActivity {
                 btnPositive.setTextColor(Color.BLACK);
 
                 return true;
-                //return super.onJsAlert(view, url, message, result);
             }
 
             @Override
@@ -320,7 +318,6 @@ public class WebView4Activity extends AppCompatActivity {
                 btnPositive.setTextColor(Color.BLACK);
 
                 return true;
-                //return super.onJsConfirm(view, url, message, result);
             }
 
             @Override

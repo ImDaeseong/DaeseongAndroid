@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.WebResourceError;
@@ -83,7 +84,6 @@ public class WebView3Activity extends AppCompatActivity {
     public void onBackPressed() {
 
         backPressCloseHandler.onBackPressed();
-        //super.onBackPressed();
     }
 
     private class CustomWebViewClient extends WebViewClient {
@@ -115,7 +115,7 @@ public class WebView3Activity extends AppCompatActivity {
 
             if(url.startsWith("http://127.0.0.1")){
                 if(url.contains("/login")){
-
+                    Log.e(TAG, "shouldOverrideUrlLoading");
                 }
             }
 
