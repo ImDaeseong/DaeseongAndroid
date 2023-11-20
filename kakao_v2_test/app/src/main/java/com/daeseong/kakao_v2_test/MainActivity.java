@@ -1,9 +1,12 @@
 package com.daeseong.kakao_v2_test;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -71,6 +74,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if (!ShareClient.getInstance().isKakaoTalkSharingAvailable(MainActivity.this)) {
+                    Kakaoinstall(MainActivity.this);
+                    return;
+                }
+
                 kakaologin();
             }
         });
@@ -79,6 +87,11 @@ public class MainActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (!ShareClient.getInstance().isKakaoTalkSharingAvailable(MainActivity.this)) {
+                    Kakaoinstall(MainActivity.this);
+                    return;
+                }
 
                 kakaologout();
             }
@@ -89,6 +102,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if (!ShareClient.getInstance().isKakaoTalkSharingAvailable(MainActivity.this)) {
+                    Kakaoinstall(MainActivity.this);
+                    return;
+                }
+
                 kakaoTokenInfo();
             }
         });
@@ -97,6 +115,11 @@ public class MainActivity extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (!ShareClient.getInstance().isKakaoTalkSharingAvailable(MainActivity.this)) {
+                    Kakaoinstall(MainActivity.this);
+                    return;
+                }
 
                 kakaounReg();
             }
@@ -107,8 +130,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if (!ShareClient.getInstance().isKakaoTalkSharingAvailable(MainActivity.this)) {
+                    Kakaoinstall(MainActivity.this);
+                    return;
+                }
+
                 kakaolink();
-                kakaolink_temp();
+                //kakaolink_temp();
             }
         });
     }
@@ -320,4 +348,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void Kakaoinstall(Activity activity) {
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("market://details?id=" + "com.kakao.talk"));
+        activity.startActivity(intent);
+    }
 }
