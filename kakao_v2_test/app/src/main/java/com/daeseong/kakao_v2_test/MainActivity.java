@@ -26,6 +26,9 @@ import com.kakao.sdk.user.model.User;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
@@ -74,11 +77,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (!ShareClient.getInstance().isKakaoTalkSharingAvailable(MainActivity.this)) {
-                    Kakaoinstall(MainActivity.this);
-                    return;
-                }
-
+                //카카오 미설치시 웹으로 로그인
                 kakaologin();
             }
         });
@@ -136,9 +135,31 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 kakaolink();
-                //kakaolink_temp();
+                //kakaolink1();
+                //kakaolink2();
             }
         });
+
+        if (getIntent() != null && getIntent().getData() != null) {
+
+            Uri uri = getIntent().getData();
+            if( uri != null ) {
+
+                String sURi = uri.toString().toLowerCase();
+                if (sURi.contains("kakaolink")) {
+                    String sType1 = uri.getQueryParameter("key1");
+                    if(sType1 != null){
+                        Log.e(TAG, "key1:" + sType1);
+                    }
+
+                    String sType2 = uri.getQueryParameter("key2");
+                    if(sType2 != null){
+                        Log.e(TAG, "key2:" +sType2);
+                    }
+                }
+            }
+        }
+
     }
 
     private void getHashKey() {
@@ -285,14 +306,30 @@ public class MainActivity extends AppCompatActivity {
         String imgUrl = "https://cdn.pixabay.com/photo/2015/07/14/18/14/school-845196_960_720.png";
         String title = "[나의앱]\n나의앱 제목!";
         String desc = "나의앱에 대한 설명과 링크 정보:\nhttps://m.naver.com";
-        String linkUrl = "";
 
-        Content content = new Content(title, imgUrl, new Link(linkUrl, linkUrl), desc);
+        //링크에 파라미터 전달 여부
+        boolean blinkparam = true;
+
+        Map<String, String> param1 = new HashMap<>();
+        param1.put("key1", "value1");
+        param1.put("key2", "value2");
+        Link link = new Link(null, null, param1, null);
+
         ItemContent itemContent = new ItemContent();
         Social social = new Social();
 
-        com.kakao.sdk.template.model.Button Button = new com.kakao.sdk.template.model.Button("앱에서 보기", new Link(linkUrl, linkUrl));
-        com.kakao.sdk.template.model.Button[] buttons = new com.kakao.sdk.template.model.Button[] { Button };
+        Content content;
+        com.kakao.sdk.template.model.Button button;
+
+        if (blinkparam) {
+            content = new Content(title, imgUrl, link, desc);
+            button = new com.kakao.sdk.template.model.Button("앱에서 보기", link);
+        } else {
+            content = new Content(title, imgUrl, new Link(), desc);
+            button = new com.kakao.sdk.template.model.Button("앱에서 보기", new Link());
+        }
+
+        com.kakao.sdk.template.model.Button[] buttons = new com.kakao.sdk.template.model.Button[] { button };
         FeedTemplate feedTemplate = new FeedTemplate(content, itemContent, social, Arrays.asList(buttons));
 
         ShareClient.getInstance().shareDefault(this, feedTemplate, ((sharingResult, error) -> {
@@ -310,7 +347,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void kakaolink_temp() {
+    private void kakaolink1() {
 
         //v1 에서  v2 변경된 내용
         //KakaoLinkService  -> ShareClient
@@ -322,14 +359,32 @@ public class MainActivity extends AppCompatActivity {
         String imgUrl = "https://cdn.pixabay.com/photo/2015/07/14/18/14/school-845196_960_720.png";
         String title = "[나의앱]\n나의앱 제목!";
         String desc = "나의앱에 대한 설명과 링크 정보:\nhttps://m.naver.com";
-        String linkUrl = "https://developers.kakao.com";
 
-        Content content = new Content(title, imgUrl, new Link(linkUrl, linkUrl), desc);
+        //링크에 파라미터 전달 여부
+        boolean blinkparam = true;
+
+        Map<String, String> param1 = new HashMap<>();
+        param1.put("key1", "value1");
+        param1.put("key2", "value2");
+        Link link = new Link(null, null, param1, null);
+
         ItemContent itemContent = new ItemContent();
-        Social social = new Social();
+        Social social = new Social(0,0);
 
-        com.kakao.sdk.template.model.Button Button1 = new com.kakao.sdk.template.model.Button("앱에서 보기", new Link(linkUrl, linkUrl));
-        com.kakao.sdk.template.model.Button Button2 = new com.kakao.sdk.template.model.Button("앱에서 보기1", new Link("", ""));
+        Content content;
+        com.kakao.sdk.template.model.Button Button1;
+        com.kakao.sdk.template.model.Button Button2;
+
+        if (blinkparam) {
+            content = new Content(title, imgUrl, link, desc);
+            Button1 = new com.kakao.sdk.template.model.Button("앱에서 보기", link);
+            Button2 = new com.kakao.sdk.template.model.Button("앱에서 보기1", link);
+        } else {
+            content = new Content(title, imgUrl, new Link(), desc);
+            Button1 = new com.kakao.sdk.template.model.Button("앱에서 보기", new Link(null, null, null, null));
+            Button2 = new com.kakao.sdk.template.model.Button("앱에서 보기1", new Link(null, null, null, null));
+        }
+
         com.kakao.sdk.template.model.Button[] buttons = new com.kakao.sdk.template.model.Button[] { Button1, Button2 };
         FeedTemplate feedTemplate = new FeedTemplate(content, itemContent, social, Arrays.asList(buttons));
 
@@ -345,7 +400,54 @@ public class MainActivity extends AppCompatActivity {
             }
             return null;
         }));
+    }
 
+    private void kakaolink2() {
+
+        //v1 에서  v2 변경된 내용
+        //KakaoLinkService  -> ShareClient
+        //KakaoTalkService  -> TalkApiClient
+
+        if (!ShareClient.getInstance().isKakaoTalkSharingAvailable(this))
+            return;
+
+        String imgUrl = "https://cdn.pixabay.com/photo/2015/07/14/18/14/school-845196_960_720.png";
+        String title = "[나의앱]\n나의앱 제목!";
+        String desc = "나의앱에 대한 설명과 링크 정보:\nhttps://m.naver.com";
+
+        //링크에 파라미터 전달 여부
+        boolean blinkparam = true;
+
+        Map<String, String> param1 = new HashMap<>();
+        param1.put("key1", "https://m.naver.com");
+        param1.put("key2", "http://m.naver.com");
+        Link link = new Link(null, null, param1, null);
+
+        ItemContent itemContent = new ItemContent();
+        Social social = new Social(0,0);
+
+        Content content;
+
+        if (blinkparam) {
+            content = new Content(title, imgUrl, link, desc);
+        } else {
+            content = new Content(title, imgUrl, new Link(), desc);
+        }
+
+        FeedTemplate feedTemplate = new FeedTemplate(content, itemContent, social);
+
+        ShareClient.getInstance().shareDefault(this, feedTemplate, ((sharingResult, error) -> {
+
+            if (error != null) {
+                Log.e(TAG, "카카오톡 공유 실패:" + error);
+            } else if (sharingResult != null) {
+                startActivity(sharingResult.getIntent());
+                Log.e(TAG, String.valueOf(sharingResult.getWarningMsg()));
+                Log.e(TAG, String.valueOf(sharingResult.getArgumentMsg()));
+                Log.e(TAG, String.valueOf(sharingResult.getWarningMsg().size()));
+            }
+            return null;
+        }));
     }
 
     private void Kakaoinstall(Activity activity) {

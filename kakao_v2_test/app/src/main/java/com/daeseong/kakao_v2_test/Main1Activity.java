@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
-import com.kakao.sdk.share.ShareClient;
 import com.kakao.sdk.user.UserApiClient;
 
 public class Main1Activity extends AppCompatActivity {
