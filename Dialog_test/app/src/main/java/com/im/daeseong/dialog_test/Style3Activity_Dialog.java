@@ -2,7 +2,6 @@ package com.im.daeseong.dialog_test;
 
 import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 
@@ -20,7 +19,6 @@ public class Style3Activity_Dialog extends AppCompatActivity {
     }
 
     public void btnOK_Click(View v){
-        Log.e("TAG", "btnOK");
         finish();
     }
 }

@@ -2,9 +2,7 @@ package com.im.daeseong.dialog_test;
 
 import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.Window;
 
 public class Style4Activity_Dialog extends AppCompatActivity {
 
@@ -12,15 +10,12 @@ public class Style4Activity_Dialog extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-
         setContentView(R.layout.activity_style4__dialog);
 
         setFinishOnTouchOutside(false);  //다른 영역 클릭 방지
     }
 
     public void btnOK_Click(View v){
-        Log.e("TAG", "btnOK");
         finish();
     }
 }
