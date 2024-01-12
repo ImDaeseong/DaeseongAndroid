@@ -84,6 +84,9 @@ public class FloatinView2Activity extends AppCompatActivity {
         floatingview.getFloatingview().setLayoutParams(layoutParams);
         rootView.addView(floatingview.getFloatingview());
 
+        //슬라이딩 효과
+        Utils.slideingView(floatingview.getFloatingview());
+
         floatingview.setText1("테스트 메시지1", Color.parseColor("#ff9900"));
         floatingview.setText2("테스트 메시지2", Color.parseColor("#ff9900"));
     }
@@ -115,6 +118,9 @@ public class FloatinView2Activity extends AppCompatActivity {
         floatingview.getFloatingview().setLayoutParams(layoutParams);
         rootView.addView(floatingview.getFloatingview());
 
+        //슬라이딩 효과
+        Utils.slideingView(floatingview.getFloatingview());
+
         floatingview.setText1("테스트 메시지1", Color.parseColor("#ff9900"));
         floatingview.setText2("테스트 메시지2", Color.parseColor("#ff9900"));
     }
@@ -145,6 +151,9 @@ public class FloatinView2Activity extends AppCompatActivity {
 
         floatingview.getFloatingview().setLayoutParams(layoutParams);
         rootView.addView(floatingview.getFloatingview());
+
+        //슬라이딩 효과
+        Utils.slideingView(floatingview.getFloatingview());
 
         floatingview.setText1("테스트 메시지1", Color.parseColor("#ff9900"));
         floatingview.setText2("테스트 메시지2", Color.parseColor("#ff9900"));
