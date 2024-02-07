@@ -4,13 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;//import android.support.v7.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;//import android.support.v7.widget.RecyclerView;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class CardView4Activity extends AppCompatActivity {
-
-    private static final String TAG = CardView4Activity.class.getSimpleName();
 
     private RecyclerView recyclerView;
     private RecyclerViewAdapter recyclerViewAdapter;
@@ -30,7 +27,7 @@ public class CardView4Activity extends AppCompatActivity {
         prepareItems();
     }
 
-    private void prepareItems(){
+    private void prepareItems() {
 
         Item item = new Item(R.drawable.banner1, "item1");
         itemList.add(item);

@@ -9,8 +9,6 @@ import java.util.List;
 
 public class CardView1Activity extends AppCompatActivity {
 
-    private static final String TAG = CardView1Activity.class.getSimpleName();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +30,7 @@ public class CardView1Activity extends AppCompatActivity {
         for (int i = 0; i < 5; i++) {
             items.add(item[i]);
         }
+
         recyclerView.setAdapter(new RecyclerAdapter(getApplicationContext(), items, R.layout.activity_main));
     }
 }

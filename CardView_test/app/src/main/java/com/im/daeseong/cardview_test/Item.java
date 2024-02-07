@@ -1,6 +1,7 @@
 package com.im.daeseong.cardview_test;
 
 public class Item {
+
     int image;
     String title;
 
@@ -8,11 +9,11 @@ public class Item {
         return this.image;
     }
 
-    String getTitle(){
+    String getTitle() {
         return this.title;
     }
 
-    Item(int image, String title){
+    Item(int image, String title) {
         this.image = image;
         this.title = title;
     }

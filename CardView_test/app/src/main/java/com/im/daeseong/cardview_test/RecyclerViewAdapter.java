@@ -12,7 +12,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private List<Item> itemList;
 
-    RecyclerViewAdapter(List<Item> itemList){
+    RecyclerViewAdapter(List<Item> itemList) {
         this.itemList = itemList;
     }
 
@@ -32,7 +32,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public int getItemCount() {
         return itemList.size();
     }
-
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 

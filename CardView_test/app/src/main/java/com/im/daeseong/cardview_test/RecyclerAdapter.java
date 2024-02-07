@@ -13,7 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.List;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder>{
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+
     Context context;
     List<com.im.daeseong.cardview_test.Item> items;
     int item_layout;
@@ -60,8 +61,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         return this.items.size();
     }
 
-
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
         TextView title;
         CardView cardView;
