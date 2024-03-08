@@ -32,6 +32,9 @@ public class coordinatorlayout2Activity extends AppCompatActivity {
             }
         });
 
+        //시작시 축소된 상태
+        aB1.setExpanded(false);
+
         web1 = (WebView)findViewById(R.id.web1);
         web1.getSettings().setJavaScriptEnabled(true);
         web1.setWebViewClient(new WebViewClient());
