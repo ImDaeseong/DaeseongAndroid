@@ -10,8 +10,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
-import java.util.Arrays;
 import java.util.Map;
 
 public class Permission5Activity extends AppCompatActivity {

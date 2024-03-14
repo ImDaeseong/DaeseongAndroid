@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private Button button1, button2, button3, button4, button5, button6, button7;
+    private Button button1, button2, button3, button4, button5, button6, button7, button8, button9;
 
     private static final String[] PERMISSIONS = new String[]{android.Manifest.permission.CAMERA, android.Manifest.permission.READ_EXTERNAL_STORAGE};
     private static final String[] PERMISSIONS33 = new String[]{android.Manifest.permission.CAMERA, Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.POST_NOTIFICATIONS};
@@ -96,10 +96,42 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        button8 = findViewById(R.id.button8);
+        button8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, Permission8Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        button9 = findViewById(R.id.button9);
+        button9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, Permission9Activity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void init() {
 
+        String[] permissions = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) ? PERMISSIONS33 : PERMISSIONS;
+
+        for (String permission : permissions) {
+
+            if (ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_DENIED) {
+                Log.e(TAG, permission + " 권한 없음");
+            } else {
+                Log.e(TAG,  "권한 이미 있음");
+            }
+        }
+
+        /*
         //sdk 33 이상
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 
@@ -120,5 +152,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+        */
+
     }
 }
