@@ -5,7 +5,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import com.google.android.material.snackbar.Snackbar;//import android.support.design.widget.Snackbar;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
+
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -18,7 +22,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button button1, button2, button3, button4;
+    private Button button1, button2, button3, button4, button5;
     private ImageView ivbitmap;
 
     @Override
@@ -75,6 +79,27 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new Toast_layout1(MainActivity.this, "ClickToast ClickToast");
+            }
+        });
+
+        button5 = (Button)findViewById(R.id.button5);
+        button5.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+            @Override
+            public void onClick(View v) {
+
+                View view = findViewById(android.R.id.content);
+                Snackbar snackbar = Snackbar.make(view, "Snackbar test", Snackbar.LENGTH_LONG);
+
+                //배경색
+                snackbar.getView().setBackgroundColor(Color.WHITE);
+
+                //글자색,가운데정렬
+                TextView textView = snackbar.getView().findViewById(com.google.android.material.R.id.snackbar_text);
+                textView.setTextColor(Color.BLACK);
+                textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                snackbar.show();
             }
         });
 
