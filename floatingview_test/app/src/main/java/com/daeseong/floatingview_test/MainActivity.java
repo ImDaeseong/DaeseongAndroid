@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -24,6 +25,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
         button4.setOnClickListener(this);
+
+        topFloating();
+        bottomFloating();
     }
 
     @Override
@@ -43,4 +47,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
+    private void bottomFloating() {
+        try {
+            ViewGroup rootView = findViewById(android.R.id.content);
+            FloatingImgBottomLayout floatingImgBottomLayout = new FloatingImgBottomLayout(this);
+            floatingImgBottomLayout.show(rootView);
+
+            View floatingView = floatingImgBottomLayout.getFloatingView();
+
+            floatingView.setOnClickListener(new OnSingleClickListener() {
+                @Override
+                public void onSingleClick(View view) {
+                    try {
+                        startActivity(new Intent(MainActivity.this, FloatinView1Activity.class));
+                        floatingImgBottomLayout.hide();
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            });
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void topFloating() {
+        ViewGroup rootView = findViewById(android.R.id.content);
+        FloatingImgTopLayout floatingImgTopLayout = new FloatingImgTopLayout(this);
+        floatingImgTopLayout.show(rootView, R.id.cL1);
+
+        /*
+        ViewGroup rootView = findViewById(android.R.id.content);
+        FloatingDoubleImgTopLayout floatingDoubleImgTopLayout = new FloatingDoubleImgTopLayout(this);
+        floatingDoubleImgTopLayout.show(rootView, R.id.cL1);
+        */
+    }
+
 }
