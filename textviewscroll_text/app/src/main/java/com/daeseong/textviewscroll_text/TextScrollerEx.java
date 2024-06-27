@@ -10,22 +10,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import java.util.List;
 
-
-public class TextScroller {
+public class TextScrollerEx {
 
     private static final String TAG = TextScroller.class.getSimpleName();
 
-    private static final long ANIMATION_DURATION = 500;// 애니메이션 지속 시간 (밀리초)
-    private static final long TEXT_CHANGE_INTERVAL = 5000;// 텍스트 변경 간격 (밀리초)
+    private static final long ANIMATION_DURATION = 1000; // 애니메이션 지속 시간 (밀리초)
+    private static final long TEXT_CHANGE_INTERVAL = 5000; // 텍스트 변경 간격 (밀리초)
 
     private final TextView textView1;
     private final TextView textView2;
     private int currentIndex;
-    private boolean isTextView1Visible = true;// textView1이 현재 보이는지 여부
-    private boolean isAnimating = false;// 애니메이션 진행 중 여부
+    private boolean isTextView1Visible = true;
+    private boolean isAnimating = false;
     private ValueAnimator animator;
 
-    public TextScroller(@NonNull TextView tv1, @NonNull TextView tv2) {
+    public TextScrollerEx(@NonNull TextView tv1, @NonNull TextView tv2) {
         this.textView1 = tv1;
         this.textView2 = tv2;
 
@@ -35,27 +34,23 @@ public class TextScroller {
 
     //초기화
     private void setupViews() {
-
-        //클릭 이벤트
         View.OnClickListener onClickListener = v -> {
             urlApi.urlItem item = getCurrentItem();
-
             Log.e(TAG, item.getText() + " : " + item.getUrl());
         };
         textView1.setOnClickListener(onClickListener);
         textView2.setOnClickListener(onClickListener);
 
-        //textView1 설정
         List<urlApi.urlItem> items = urlApi.getInstance().getItem();
         if (items != null && items.size() > 0) {
             textView1.setText(items.get(0).getText());
         }
         textView2.setVisibility(View.INVISIBLE);
+        textView2.setTranslationY(textView1.getHeight());
     }
 
     // 애니메이션 시작
     private void startAnimation() {
-
         animator = ValueAnimator.ofFloat(0f, 1f);
         animator.setDuration(ANIMATION_DURATION);
         animator.setInterpolator(new AccelerateDecelerateInterpolator());
@@ -64,6 +59,9 @@ public class TextScroller {
             @Override
             public void onAnimationStart(Animator animation) {
                 isAnimating = true;
+                TextView invisibleTextView = getInvisibleTextView();
+                updateNextText(invisibleTextView);
+                invisibleTextView.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -79,7 +77,6 @@ public class TextScroller {
 
     // TextView 위치 업데이트
     private void updateTextViewPositions(ValueAnimator animation) {
-
         float value = (float) animation.getAnimatedValue();
         TextView visibleTextView = getVisibleTextView();
         TextView invisibleTextView = getInvisibleTextView();
@@ -88,20 +85,25 @@ public class TextScroller {
         invisibleTextView.setTranslationY((1 - value) * invisibleTextView.getHeight());
     }
 
+    // 다음 텍스트 내용 설정
+    private void updateNextText(TextView textView) {
+        List<urlApi.urlItem> items = urlApi.getInstance().getItem();
+        if (items != null && items.size() > 0) {
+            int nextIndex = (currentIndex + 1) % items.size();
+            textView.setText(items.get(nextIndex).getText());
+        }
+    }
+
     // TextView 교체
     private void swapTextViews() {
-
         TextView visibleTextView = getVisibleTextView();
         TextView invisibleTextView = getInvisibleTextView();
 
         visibleTextView.setVisibility(View.INVISIBLE);
-        invisibleTextView.setVisibility(View.VISIBLE);
+        visibleTextView.setTranslationY(visibleTextView.getHeight());
+        invisibleTextView.setTranslationY(0);
 
-        List<urlApi.urlItem> items = urlApi.getInstance().getItem();
-        if (items != null && items.size() > 0) {
-            currentIndex = (currentIndex + 1) % items.size();
-            invisibleTextView.setText(items.get(currentIndex).getText());
-        }
+        currentIndex = (currentIndex + 1) % urlApi.getInstance().getItem().size();
 
         isTextView1Visible = !isTextView1Visible;
     }
@@ -141,5 +143,3 @@ public class TextScroller {
         }
     }
 }
-
-
