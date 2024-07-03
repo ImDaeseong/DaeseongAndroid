@@ -12,7 +12,7 @@ import java.util.List;
 
 public class TextScrollerEx {
 
-    private static final String TAG = TextScroller.class.getSimpleName();
+    private static final String TAG = TextScrollerEx.class.getSimpleName();
 
     private static final long ANIMATION_DURATION = 1000; // 애니메이션 지속 시간 (밀리초)
     private static final long TEXT_CHANGE_INTERVAL = 5000; // 텍스트 변경 간격 (밀리초)
@@ -23,6 +23,8 @@ public class TextScrollerEx {
     private boolean isTextView1Visible = true;
     private boolean isAnimating = false;
     private ValueAnimator animator;
+
+    private boolean isDirectUp = true;
 
     public TextScrollerEx(@NonNull TextView tv1, @NonNull TextView tv2) {
         this.textView1 = tv1;
@@ -77,12 +79,23 @@ public class TextScrollerEx {
 
     // TextView 위치 업데이트
     private void updateTextViewPositions(ValueAnimator animation) {
+
         float value = (float) animation.getAnimatedValue();
         TextView visibleTextView = getVisibleTextView();
         TextView invisibleTextView = getInvisibleTextView();
 
-        visibleTextView.setTranslationY(-value * visibleTextView.getHeight());
-        invisibleTextView.setTranslationY((1 - value) * invisibleTextView.getHeight());
+        if (isDirectUp) {
+
+            //Log.e(TAG, "스크롤 위로");
+            visibleTextView.setTranslationY(-value * visibleTextView.getHeight());
+            invisibleTextView.setTranslationY((1 - value) * invisibleTextView.getHeight());
+
+        } else {
+
+            //Log.e(TAG, "스크롤 아래로");
+            visibleTextView.setTranslationY(value * visibleTextView.getHeight());
+            invisibleTextView.setTranslationY(-(1 - value) * invisibleTextView.getHeight());
+        }
     }
 
     // 다음 텍스트 내용 설정
@@ -96,15 +109,27 @@ public class TextScrollerEx {
 
     // TextView 교체
     private void swapTextViews() {
+
         TextView visibleTextView = getVisibleTextView();
         TextView invisibleTextView = getInvisibleTextView();
 
         visibleTextView.setVisibility(View.INVISIBLE);
-        visibleTextView.setTranslationY(visibleTextView.getHeight());
-        invisibleTextView.setTranslationY(0);
+        invisibleTextView.setVisibility(View.VISIBLE);
+
+        if (isDirectUp) {
+
+            //Log.e(TAG, "스크롤 위로");
+            visibleTextView.setTranslationY(visibleTextView.getHeight());
+            invisibleTextView.setTranslationY(0);
+
+        } else {
+
+            //Log.e(TAG, "스크롤 아래로");
+            visibleTextView.setTranslationY(-visibleTextView.getHeight());
+            invisibleTextView.setTranslationY(0);
+        }
 
         currentIndex = (currentIndex + 1) % urlApi.getInstance().getItem().size();
-
         isTextView1Visible = !isTextView1Visible;
     }
 
@@ -142,4 +167,9 @@ public class TextScrollerEx {
             isAnimating = false;
         }
     }
+
+    public void setDirect(boolean isDirectUp) {
+        this.isDirectUp = isDirectUp;
+    }
 }
+
