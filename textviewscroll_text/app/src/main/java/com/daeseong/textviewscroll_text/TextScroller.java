@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import java.util.List;
 
-
 public class TextScroller {
 
     private static final String TAG = TextScroller.class.getSimpleName();
@@ -39,7 +38,6 @@ public class TextScroller {
         //클릭 이벤트
         View.OnClickListener onClickListener = v -> {
             urlApi.urlItem item = getCurrentItem();
-
             Log.e(TAG, item.getText() + " : " + item.getUrl());
         };
         textView1.setOnClickListener(onClickListener);

@@ -129,7 +129,10 @@ public class TextScrollerEx {
             invisibleTextView.setTranslationY(0);
         }
 
-        currentIndex = (currentIndex + 1) % urlApi.getInstance().getItem().size();
+        List<urlApi.urlItem> items = urlApi.getInstance().getItem();
+        if (items != null && !items.isEmpty()) {
+            currentIndex = (currentIndex + 1) % items.size();
+        }
         isTextView1Visible = !isTextView1Visible;
     }
 
