@@ -61,9 +61,12 @@ public class TextScrollerCL {
             @Override
             public void onAnimationStart(Animator animation) {
                 isAnimating = true;
-                View view = getInvisibleView();
-                updateNextText(view, (currentIndex + 1) % urlApi.getInstance().getItem().size());
-                view.setVisibility(View.VISIBLE);
+                List<urlApi.urlItem> items = urlApi.getInstance().getItem();
+                if (items != null && !items.isEmpty()) {
+                    View view = getInvisibleView();
+                    updateNextText(view, (currentIndex + 1) % items.size());
+                    view.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
