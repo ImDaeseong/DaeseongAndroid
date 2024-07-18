@@ -57,12 +57,15 @@ public class Chart6Activity extends AppCompatActivity {
         //데이터셋 생성
         LineDataSet dataSet1 = new LineDataSet(arrayList1, "arrayList1");
         dataSet1.setColor(Color.RED);
+        dataSet1.setValueTextColor(Color.BLACK);
 
         LineDataSet dataSet2 = new LineDataSet(arrayList2, "arrayList2");
         dataSet2.setColor(Color.BLUE);
+        dataSet2.setValueTextColor(Color.BLACK);
 
         LineDataSet dataSet3 = new LineDataSet(arrayList3, "arrayList3");
         dataSet3.setColor(Color.GREEN);
+        dataSet3.setValueTextColor(Color.BLACK);
 
         LineData scatterData = new LineData(dataSet1, dataSet2, dataSet3);
         lineChart.setData(scatterData);

@@ -45,11 +45,13 @@ public class Chart3Activity extends AppCompatActivity {
 
         CandleDataSet dataSet = new CandleDataSet(arrayList1, "arrayList1");
         dataSet.setDrawIcons(false);
+        dataSet.setColors(Color.rgb(80, 80, 80));
         dataSet.setShadowColor(Color.DKGRAY);
-        dataSet.setDecreasingColor(Color.RED); // 하락 캔들 색상
-        dataSet.setIncreasingColor(Color.GREEN); // 상승 캔들 색상
+        dataSet.setShadowWidth(0.7f);
         dataSet.setNeutralColor(Color.BLUE); // 중립 캔들 색상
+        dataSet.setDecreasingColor(Color.RED); // 하락 캔들 색상
         dataSet.setDecreasingPaintStyle(Paint.Style.FILL); // 하락 캔들 스타일
+        dataSet.setIncreasingColor(Color.GREEN); // 상승 캔들 색상
         dataSet.setIncreasingPaintStyle(Paint.Style.FILL); // 상승 캔들 스타일
 
         CandleData candleData = new CandleData(dataSet);
