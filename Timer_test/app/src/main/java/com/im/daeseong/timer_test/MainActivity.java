@@ -1,104 +1,44 @@
 package com.im.daeseong.timer_test;
 
 import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.Timer;
-import java.util.TimerTask;
+public class MainActivity extends AppCompatActivity  {
 
-public class MainActivity extends AppCompatActivity {
-
-    private TextView tv1;
-    private Button btn1;
-
-    private Timer timer = null;
-
-    private void closeTimer(){
-        try {
-            if (timer != null) {
-                timer.cancel();
-                timer = null;
-            }
-        }catch (Exception e){
-        }
-    }
-
-    private void startTimer(){
-
-        closeTimer();
-
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
-
-            int nTimeCount = 0;
-
-            @Override
-            public void run() {
-
-                try {
-                    nTimeCount++;
-
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            String sMsg = String.format("%d", nTimeCount);
-                            tv1.setText(sMsg);
-                        }
-                    });
-
-                    if (nTimeCount > 180) {  //3분까지만 체크
-
-                        closeTimer();
-
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(MainActivity.this, "Toast test", Toast.LENGTH_SHORT).show();
-                                tv1.setText("완료");
-                            }
-                        });
-                    }
-
-                }catch (Exception e){
-                }
-            }
-
-        }, 0, 1000);
-    }
+    private Button button1, button2, button3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tv1 = (TextView)findViewById(R.id.tv1);
-        btn1 = (Button)findViewById(R.id.btn1);
-        btn1.setOnClickListener(new View.OnClickListener() {
+        button1 = (Button)findViewById(R.id.button1);
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                startTimer();
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Timer1Activity.class));
             }
         });
 
-        startTimer();
-    }
+        button2 = (Button)findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Timer2Activity.class));
+            }
+        });
 
-    @Override
-    protected void onPause() {
-        super.onPause();
+        button3 = (Button)findViewById(R.id.button3);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Timer3Activity.class));
+            }
+        });
 
-        closeTimer();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        closeTimer();
     }
 
 }
