@@ -1,7 +1,6 @@
 package com.daeseong.progresscircular_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
