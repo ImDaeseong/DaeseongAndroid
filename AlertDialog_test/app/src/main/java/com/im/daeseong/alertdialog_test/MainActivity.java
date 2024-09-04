@@ -3,7 +3,7 @@ package com.im.daeseong.alertdialog_test;
 import android.content.DialogInterface;
 import android.app.AlertDialog;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -168,13 +168,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
-
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
     }
 }

@@ -1,7 +1,9 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 34//33//26
+    compileSdk 34
+    //compileSdkVersion 34//33//26
+
     defaultConfig {
         applicationId "com.im.daeseong.button_test"
         minSdkVersion 26//14
