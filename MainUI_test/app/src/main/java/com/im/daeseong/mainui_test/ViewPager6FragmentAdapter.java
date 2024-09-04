@@ -1,29 +1,26 @@
 package com.im.daeseong.mainui_test;
 
-import androidx.fragment.app.Fragment;//import android.support.v4.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;//import android.support.v4.app.FragmentManager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 import java.util.List;
 
-/**
- * Created by Daeseong on 2018-02-26.
- */
-
-public class ViewPager6FragmentAdapter extends FragmentPagerAdapter {
+public class ViewPager6FragmentAdapter extends FragmentStateAdapter {
 
     private List<Fragment> fragmentList;
-    public ViewPager6FragmentAdapter(FragmentManager fm, List<Fragment> fragmentList){
-        super(fm);
+
+    public ViewPager6FragmentAdapter(FragmentActivity fragmentActivity, List<Fragment> fragmentList) {
+        super(fragmentActivity);
         this.fragmentList = fragmentList;
     }
 
     @Override
-    public Fragment getItem(int position) {
+    public Fragment createFragment(int position) {
         return fragmentList.get(position);
     }
 
     @Override
-    public int getCount() {
+    public int getItemCount() {
         return fragmentList.size();
     }
 }

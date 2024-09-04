@@ -1,56 +1,35 @@
 package com.im.daeseong.mainui_test;
 
-import android.content.Context;
-import androidx.fragment.app.Fragment;//import android.support.v4.app.Fragment;
-import androidx.fragment.app.FragmentManager;//import android.support.v4.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;//import android.support.v4.app.FragmentStatePagerAdapter;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-public class Tab2PagerAdapter extends FragmentStatePagerAdapter  {
+public class Tab2PagerAdapter extends FragmentStateAdapter {
 
-    private final static int TAB_COUNT = 4;     // 탭의 개수
+    private static final int TAB_COUNT = 4;
 
-    private int[] tabTitle = {R.string.Tab1, R.string.Tab2, R.string.Tab3, R.string.Tab4};
-
-    private Context mContext;
-
-    private ui2_1Fragment F1ragment = null;
-    private ui2_2Fragment F2ragment = null;
-    private ui2_3Fragment F3ragment = null;
-    private ui2_4Fragment F4ragment = null;
-
-    public Tab2PagerAdapter(FragmentManager fm, Context context){
-        super(fm);
-        this.mContext = context;
+    public Tab2PagerAdapter(@NonNull FragmentActivity fragmentActivity) {
+        super(fragmentActivity);
     }
 
+    @NonNull
     @Override
-    public Fragment getItem(int position) {
+    public Fragment createFragment(int position) {
         switch (position) {
-            case 0:
-                F1ragment = ui2_1Fragment.newInstance();
-                return F1ragment;
             case 1:
-                F2ragment = ui2_2Fragment.newInstance();
-                return F2ragment;
+                return ui2_2Fragment.newInstance();
             case 2:
-                F3ragment = ui2_3Fragment.newInstance();
-                return F3ragment;
+                return ui2_3Fragment.newInstance();
             case 3:
-                F4ragment = ui2_4Fragment.newInstance();
-                return F4ragment;
+                return ui2_4Fragment.newInstance();
             default:
-                F1ragment = ui2_1Fragment.newInstance();
-                return F1ragment;
+                return ui2_1Fragment.newInstance();
         }
     }
 
     @Override
-    public CharSequence getPageTitle(int position) {
-        return mContext.getString(tabTitle[position]);
-    }
-
-    @Override
-    public int getCount() {
+    public int getItemCount() {
         return TAB_COUNT;
     }
 }

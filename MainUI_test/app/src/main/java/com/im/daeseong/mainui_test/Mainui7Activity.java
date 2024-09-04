@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.
 import androidx.appcompat.widget.Toolbar;//import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.widget.ImageView;
-import java.sql.Time;
 
 public class Mainui7Activity extends AppCompatActivity {
 

@@ -6,10 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * Created by Daeseong on 2018-02-26.
- */
-
 public class ui6_3Fragment extends Fragment {
 
     @Override

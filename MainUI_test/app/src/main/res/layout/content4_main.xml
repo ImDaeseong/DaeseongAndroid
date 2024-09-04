@@ -58,7 +58,6 @@
             android:layout_below="@+id/tv05"
             android:text="Hello World!" />
 
-
     </RelativeLayout>
 
 </androidx.core.widget.NestedScrollView>

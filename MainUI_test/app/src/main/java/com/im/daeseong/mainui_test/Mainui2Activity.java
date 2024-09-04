@@ -1,23 +1,22 @@
 package com.im.daeseong.mainui_test;
 
-import androidx.annotation.NonNull;//import android.support.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;//import android.support.v7.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;//import android.support.v7.widget.Toolbar;
-import androidx.core.view.GravityCompat;//import android.support.v4.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;//import android.support.v4.widget.DrawerLayout;
-import androidx.viewpager.widget.ViewPager;//import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.MenuItem;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class Mainui2Activity extends AppCompatActivity {
 
-    private DrawerLayout mdrawerLayout = null;
-    private TabLayout mtabLayout = null;
-    private ViewPager mviewPager = null;
-    private  Tab2PagerAdapter mtab2PagerAdapter = null;
+    private DrawerLayout drawerLayout;
+    private TabLayout tabLayout;
+    private ViewPager2 viewPager;
+    private Tab2PagerAdapter tab2PagerAdapter;
 
     private int[] tabIcons = {
             R.drawable.b1,
@@ -31,66 +30,40 @@ public class Mainui2Activity extends AppCompatActivity {
             R.string.Tab2,
             R.string.Tab3,
             R.string.Tab4
-    } ;
-
-    private int[] tabIconsSelect = {
-            R.drawable.b1,
-            R.drawable.b2,
-            R.drawable.b3,
-            R.drawable.b4
     };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainui2);
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false); // 타이틀에 있는 앱이름 숨기기
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        mdrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerLayout = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, mdrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        mdrawerLayout.setDrawerListener(toggle);
+                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationViewleft = (NavigationView)findViewById(R.id.navigation_view);
-        navigationViewleft.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                mdrawerLayout.closeDrawer(GravityCompat.START);
-                return true;
-            }
+        NavigationView navigationView = findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(item -> {
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return true;
         });
 
+        tabLayout = findViewById(R.id.tablayout);
+        viewPager = findViewById(R.id.viewpager);
 
-        mtabLayout = (TabLayout)findViewById(R.id.tablayout);
-        mviewPager = (ViewPager)findViewById(R.id.viewpager);
-        mtabLayout.setupWithViewPager(mviewPager);
+        tab2PagerAdapter = new Tab2PagerAdapter(this);
+        viewPager.setAdapter(tab2PagerAdapter);
 
-        mtab2PagerAdapter = new Tab2PagerAdapter(getSupportFragmentManager(), this);
-        mviewPager.setAdapter(mtab2PagerAdapter);
-        mviewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mtabLayout));
-        mtabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                mviewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
+            tab.setText(getString(tabTexts[position]));
+            tab.setIcon(tabIcons[position]);
+        }).attach();
 
     }
-
 }

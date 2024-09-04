@@ -1,14 +1,17 @@
 package com.im.daeseong.mainui_test;
 
-import com.google.android.material.tabs.TabLayout;//import android.support.design.widget.TabLayout;
-import androidx.viewpager.widget.ViewPager;//import android.support.v4.view.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;//import android.support.v7.widget.Toolbar;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+import androidx.viewpager2.widget.ViewPager2;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 public class Mainui8Activity extends AppCompatActivity {
 
-    private ViewPager viewPager;
+    private ViewPager2 viewPager;
     private TabLayout tabLayout;
 
     @Override
@@ -16,18 +19,21 @@ public class Mainui8Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainui8);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        viewPager = (ViewPager)findViewById(R.id.viewpager);
+        viewPager = findViewById(R.id.viewpager);
         setupViewPage(viewPager);
 
-        tabLayout = (TabLayout)findViewById(R.id.tab);
-        tabLayout.setupWithViewPager(viewPager);
+        tabLayout = findViewById(R.id.tab);
+
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
+            tab.setText(((Page8Adapter)viewPager.getAdapter()).getPageTitle(position));
+        }).attach();
     }
 
-    private void setupViewPage(ViewPager viewPager){
-        Page8Adapter adapter =  new Page8Adapter(getSupportFragmentManager());
+    private void setupViewPage(ViewPager2 viewPager) {
+        Page8Adapter adapter = new Page8Adapter(this);
         adapter.addFragment(new ui6_1Fragment(), "tab1");
         adapter.addFragment(new ui6_2Fragment(), "tab2");
         adapter.addFragment(new ui6_3Fragment(), "tab3");
@@ -35,4 +41,11 @@ public class Mainui8Activity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+    public void backPress(View view) {
+        Toast.makeText(this, "backPress", Toast.LENGTH_SHORT).show();
+    }
+
+    public void profileClick(View view) {
+        Toast.makeText(this, "profileClick", Toast.LENGTH_SHORT).show();
+    }
 }

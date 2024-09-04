@@ -1,90 +1,75 @@
 package com.im.daeseong.mainui_test;
 
 import android.graphics.Color;
-import com.google.android.material.tabs.TabLayout;//import android.support.design.widget.TabLayout;
-import androidx.fragment.app.Fragment;//import android.support.v4.app.Fragment;
-import androidx.viewpager.widget.ViewPager;//import android.support.v4.view.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;//import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Mainui6Activity extends AppCompatActivity {
 
-    private ViewPager viewPager;
+    private ViewPager2 viewPager;
     private TabLayout tabLayout;
     private Toolbar toolbar;
 
-    private int[] IconResID = {R.drawable.b1,R.drawable.b2,R.drawable.b3,R.drawable.b4};
-    private int[] TollBarTitle = {R.string.Tab1,R.string.Tab2,R.string.Tab3,R.string.Tab4};
-
+    private final int[] iconResId = {R.drawable.b1, R.drawable.b2, R.drawable.b3, R.drawable.b4};
+    private final int[] toolbarTitle = {R.string.Tab1, R.string.Tab2, R.string.Tab3, R.string.Tab4};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainui6);
 
-        viewPager = (ViewPager) findViewById(R.id.myViewPager);
-        tabLayout = (TabLayout) findViewById(R.id.TabLayout);
-        toolbar = (Toolbar) findViewById(R.id.ToolBar);
-        toolbar.setTitle(TollBarTitle[0]);
+        viewPager = findViewById(R.id.myViewPager);
+        tabLayout = findViewById(R.id.TabLayout);
+        toolbar = findViewById(R.id.ToolBar);
+        toolbar.setTitle(toolbarTitle[0]);
         toolbar.setTitleTextColor(Color.YELLOW);
         setSupportActionBar(toolbar);
 
-        setViewPager();
-        tabLayout.setupWithViewPager(viewPager);
-        setTabLayoutIcon();
+        setupViewPager();
+        setupTabLayout();
     }
 
-    private void setViewPager(){
-        ui6_1Fragment myFragment1 = new ui6_1Fragment();
-        ui6_2Fragment myFragment2 = new ui6_2Fragment();
-        ui6_3Fragment myFragment3 = new ui6_3Fragment();
-        ui6_4Fragment myFragment4 = new ui6_4Fragment();
+    private void setupViewPager() {
 
         List<Fragment> fragmentList = new ArrayList<>();
-        fragmentList.add(myFragment1);
-        fragmentList.add(myFragment2);
-        fragmentList.add(myFragment3);
-        fragmentList.add(myFragment4);
-        ViewPager6FragmentAdapter myFragmentAdapter = new ViewPager6FragmentAdapter(getSupportFragmentManager(), fragmentList);
-        viewPager.setAdapter(myFragmentAdapter);
+        fragmentList.add(new ui6_1Fragment());
+        fragmentList.add(new ui6_2Fragment());
+        fragmentList.add(new ui6_3Fragment());
+        fragmentList.add(new ui6_4Fragment());
+
+        ViewPager6FragmentAdapter adapter = new ViewPager6FragmentAdapter(this, fragmentList);
+        viewPager.setAdapter(adapter);
     }
 
-    public void setTabLayoutIcon(){
-        for(int i =0; i < 4;i++){
-            tabLayout.getTabAt(i).setIcon(IconResID[i]);
-        }
+    private void setupTabLayout() {
+
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
+            tab.setIcon(iconResId[position]);
+        }).attach();
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                toolbar.getMenu().clear();
-                switch(tab.getPosition()){
-                    case 0:
-                        //toolbar.inflateMenu(R.menu.menu_one);
-                        toolbar.setTitle(TollBarTitle[0]);
-                        break;
-                    case 1:
-                        //toolbar.inflateMenu(R.menu.menu_two);
-                        toolbar.setTitle(TollBarTitle[1]);
-                        break;
-                    case 2:
-                        //toolbar.inflateMenu(R.menu.menu_three);
-                        toolbar.setTitle(TollBarTitle[2]);
-                        break;
-                    case 3:
-                        //toolbar.inflateMenu(R.menu.menu_three);
-                        toolbar.setTitle(TollBarTitle[3]);
-                        break;
-                }
+            public void onTabSelected(@NonNull TabLayout.Tab tab) {
+                toolbar.setTitle(toolbarTitle[tab.getPosition()]);
             }
+
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {}
+            public void onTabUnselected(@NonNull TabLayout.Tab tab) {
+
+            }
+
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {}
+            public void onTabReselected(@NonNull TabLayout.Tab tab) {
+
+            }
         });
-
     }
-
 }

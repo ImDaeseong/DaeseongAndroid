@@ -4,7 +4,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.view.View;
 import android.widget.TextView;
-
 import android.os.Handler;
 import java.util.TimerTask;
 
