@@ -2,7 +2,6 @@ package com.daeseong.volley_test;
 
 import android.app.Application;
 import android.content.res.Configuration;
-
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
