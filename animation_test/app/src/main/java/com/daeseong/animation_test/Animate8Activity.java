@@ -1,12 +1,10 @@
 package com.daeseong.animation_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-
 import java.util.Timer;
 
 public class Animate8Activity extends AppCompatActivity {

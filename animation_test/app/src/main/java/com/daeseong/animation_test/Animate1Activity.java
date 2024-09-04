@@ -1,7 +1,6 @@
 package com.daeseong.animation_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;

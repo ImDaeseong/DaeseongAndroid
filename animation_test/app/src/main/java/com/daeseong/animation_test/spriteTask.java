@@ -5,10 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.widget.ImageView;
-
-
 import android.os.Handler;
-
 import java.util.ArrayList;
 import java.util.TimerTask;
 
