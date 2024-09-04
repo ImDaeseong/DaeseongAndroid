@@ -6,8 +6,8 @@ android {
 
     defaultConfig {
         applicationId "com.im.daeseong.button_test"
-        minSdkVersion 26//14
-        targetSdkVersion 34//33//26
+        minSdk 26//14
+        targetSdk 34//33//26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

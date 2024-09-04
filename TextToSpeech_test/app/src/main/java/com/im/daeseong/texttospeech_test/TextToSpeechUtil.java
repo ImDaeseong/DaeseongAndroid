@@ -1,10 +1,8 @@
 package com.im.daeseong.texttospeech_test;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.speech.tts.TextToSpeech;
-import android.speech.tts.UtteranceProgressListener;
 import android.util.Log;
 import java.util.Locale;
 
@@ -37,57 +35,6 @@ public class TextToSpeechUtil {
             e.printStackTrace();
         }
     }
-
-    /*
-    //사용않함
-    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
-    public TextToSpeechUtil(Context context, final String sText) {
-
-        try {
-
-            if (textToSpeech == null) {
-                textToSpeech = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
-                    @Override
-                    public void onInit(int i) {
-
-                        //textToSpeech.setLanguage(Locale.KOREAN);
-
-                        if(i != TextToSpeech.ERROR){
-                            textToSpeech.setLanguage(Locale.KOREAN);
-                        }
-
-                        if (i == TextToSpeech.SUCCESS) {
-                            Speak(sText);
-                        }
-
-
-                        textToSpeech.setOnUtteranceProgressListener(new UtteranceProgressListener() {
-
-                            @Override
-                            public void onStart(String s) {
-
-                            }
-
-                            @Override
-                            public void onDone(String s) {
-
-                            }
-
-                            @Override
-                            public void onError(String s) {
-
-                            }
-                        });
-
-                    }
-                });
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-    */
 
     public static void Speak(final String sText) {
         try {

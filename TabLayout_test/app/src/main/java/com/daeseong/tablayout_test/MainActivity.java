@@ -1,7 +1,6 @@
 package com.daeseong.tablayout_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -39,34 +38,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.button1:
-                startActivity(new Intent(this, Main1Activity.class));
-                break;
-            case R.id.button2:
-                startActivity(new Intent(this, Main2Activity.class));
-                break;
-            case R.id.button3:
-                startActivity(new Intent(this, Main3Activity.class));
-                break;
-            case R.id.button4:
-                startActivity(new Intent(this, Main4Activity.class));
-                break;
-            case R.id.button5:
-                startActivity(new Intent(this, Main5Activity.class));
-                break;
-            case R.id.button6:
-                startActivity(new Intent(this, Main6Activity.class));
-                break;
-            case R.id.button7:
-                startActivity(new Intent(this, Main7Activity.class));
-                break;
-            case R.id.button8:
-                startActivity(new Intent(this, Main8Activity.class));
-                break;
-            case R.id.button9:
-                startActivity(new Intent(this, Main9Activity.class));
-                break;
+
+        int id = v.getId();
+
+        if (id == R.id.button1) {
+            startActivity(new Intent(this, Main1Activity.class));
+        } else if (id == R.id.button2) {
+            startActivity(new Intent(this, Main2Activity.class));
+        } else if (id == R.id.button3) {
+            startActivity(new Intent(this, Main3Activity.class));
+        } else if (id == R.id.button4) {
+            startActivity(new Intent(this, Main4Activity.class));
+        } else if (id == R.id.button5) {
+            startActivity(new Intent(this, Main5Activity.class));
+        } else if (id == R.id.button6) {
+            startActivity(new Intent(this, Main6Activity.class));
+        } else if (id == R.id.button7) {
+            startActivity(new Intent(this, Main7Activity.class));
+        } else if (id == R.id.button8) {
+            startActivity(new Intent(this, Main8Activity.class));
+        } else if (id == R.id.button9) {
+            startActivity(new Intent(this, Main9Activity.class));
         }
     }
 }
