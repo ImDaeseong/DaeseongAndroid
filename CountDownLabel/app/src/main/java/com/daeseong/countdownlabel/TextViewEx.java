@@ -5,7 +5,6 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-
 import androidx.annotation.Nullable;
 import java.util.Timer;
 import java.util.TimerTask;

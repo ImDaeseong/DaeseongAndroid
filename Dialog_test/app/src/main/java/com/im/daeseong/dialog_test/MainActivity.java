@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
 
         new Custom1_Dialog(this, new View.OnClickListener() {
             @Override
