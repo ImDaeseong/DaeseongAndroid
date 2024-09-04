@@ -5,10 +5,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import com.google.android.material.snackbar.Snackbar;//import android.support.design.widget.Snackbar;
-
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;

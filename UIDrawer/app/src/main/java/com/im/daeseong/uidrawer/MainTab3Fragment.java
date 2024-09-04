@@ -27,11 +27,6 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-
-/**
- * Created by Daeseong on 2018-03-02.
- */
-
 public class MainTab3Fragment extends Fragment {
 
     private static final String TAG = MainTab3Fragment.class.getSimpleName();

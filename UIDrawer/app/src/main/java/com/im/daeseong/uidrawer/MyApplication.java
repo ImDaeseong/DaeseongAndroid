@@ -3,10 +3,6 @@ package com.im.daeseong.uidrawer;
 import android.app.Application;
 import android.content.Context;
 
-/**
- * Created by Daeseong on 2018-03-05.
- */
-
 public class MyApplication extends Application {
 
     private static int nScreenWidth;

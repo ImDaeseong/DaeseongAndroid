@@ -26,11 +26,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-
-/**
- * Created by Daeseong on 2018-03-02.
- */
-
 public class MainTab2Fragment extends Fragment {
 
     private static final String TAG = MainTab2Fragment.class.getSimpleName();

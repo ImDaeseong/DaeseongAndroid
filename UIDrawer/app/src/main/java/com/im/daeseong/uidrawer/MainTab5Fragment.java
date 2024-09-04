@@ -7,10 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
-/**
- * Created by Daeseong on 2018-03-10.
- */
 public class MainTab5Fragment extends Fragment {
 
     @Nullable

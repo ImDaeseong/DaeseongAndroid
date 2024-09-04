@@ -27,10 +27,6 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 
-/**
- * Created by Daeseong on 2018-03-02.
- */
-
 public class MainTab1Fragment extends Fragment {
 
     private static final String TAG = MainTab1Fragment.class.getSimpleName();
