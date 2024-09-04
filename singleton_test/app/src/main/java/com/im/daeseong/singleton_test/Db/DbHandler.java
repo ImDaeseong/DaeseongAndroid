@@ -1,7 +1,6 @@
 package com.im.daeseong.singleton_test.Db;
 
 import android.content.Context;
-
 import java.util.ArrayList;
 
 public class DbHandler {

@@ -3,12 +3,10 @@ package com.im.daeseong.singleton_test;
 import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-
 import com.im.daeseong.singleton_test.Db.Alarm;
 import com.im.daeseong.singleton_test.Db.DbHandler;
 import com.im.daeseong.singleton_test.util.Screen_util;
 import com.im.daeseong.singleton_test.util.SharedPreferences_util;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {

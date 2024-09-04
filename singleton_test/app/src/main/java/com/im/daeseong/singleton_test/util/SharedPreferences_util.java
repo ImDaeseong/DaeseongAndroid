@@ -2,7 +2,6 @@ package com.im.daeseong.singleton_test.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import java.util.Map;
 
 

@@ -1,7 +1,6 @@
 package com.im.daeseong.singleton_test.util;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 

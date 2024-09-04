@@ -1,7 +1,6 @@
 package com.im.daeseong.singleton_test;
 
 import android.app.Application;
-
 import com.im.daeseong.singleton_test.Db.DbHandler;
 import com.im.daeseong.singleton_test.util.Screen_util;
 import com.im.daeseong.singleton_test.util.SharedPreferences_util;
