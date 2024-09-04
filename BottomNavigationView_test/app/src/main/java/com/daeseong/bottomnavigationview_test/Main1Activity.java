@@ -36,23 +36,19 @@ public class Main1Activity extends AppCompatActivity {
 
                 //Log.e(TAG, String.valueOf(menuItem.getItemId()));
 
-                switch (menuItem.getItemId()){
-                    case R.id.list:
-                        SelectIndex(0);
-                        break;
-                    case R.id.sentence:
-                        SelectIndex(1);
-                        break;
-                    case R.id.word:
-                        SelectIndex(2);
-                        break;
-                    case R.id.myword:
-                        SelectIndex(3);
-                        break;
-                    case R.id.setting:
-                        SelectIndex(4);
-                        break;
+                int itemId = menuItem.getItemId();
+                if (itemId == R.id.list) {
+                    SelectIndex(0);
+                } else if (itemId == R.id.sentence) {
+                    SelectIndex(1);
+                } else if (itemId == R.id.word) {
+                    SelectIndex(2);
+                } else if (itemId == R.id.myword) {
+                    SelectIndex(3);
+                } else if (itemId == R.id.setting) {
+                    SelectIndex(4);
                 }
+
                 return true;
             }
         });

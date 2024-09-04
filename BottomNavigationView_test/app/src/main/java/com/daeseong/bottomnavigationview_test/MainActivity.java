@@ -10,54 +10,49 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private Button button1, button2, button3, button4, button5, button6, button7;
+    private final int[] buttonIds = {
+            R.id.button1,
+            R.id.button2,
+            R.id.button3,
+            R.id.button4,
+            R.id.button5,
+            R.id.button6,
+            R.id.button7
+    };
+
+    private final Class<?>[] activities = {
+            Main1Activity.class,
+            Main2Activity.class,
+            Main3Activity.class,
+            Main4Activity.class,
+            Main5Activity.class,
+            Main6Activity.class,
+            Main7Activity.class
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button1 = (Button)findViewById(R.id.button1);
-        button2 = (Button)findViewById(R.id.button2);
-        button3 = (Button)findViewById(R.id.button3);
-        button4 = (Button)findViewById(R.id.button4);
-        button5 = (Button)findViewById(R.id.button5);
-        button6 = (Button)findViewById(R.id.button6);
-        button7 = (Button)findViewById(R.id.button7);
-
-        button1.setOnClickListener(this);
-        button2.setOnClickListener(this);
-        button3.setOnClickListener(this);
-        button4.setOnClickListener(this);
-        button5.setOnClickListener(this);
-        button6.setOnClickListener(this);
-        button7.setOnClickListener(this);
+        for (int buttonId : buttonIds) {
+            Button button = findViewById(buttonId);
+            if (button != null) {
+                button.setOnClickListener(this);
+            }
+        }
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.button1:
-                startActivity(new Intent(this, Main1Activity.class));
-                break;
-            case R.id.button2:
-                startActivity(new Intent(this, Main2Activity.class));
-                break;
-            case R.id.button3:
-                startActivity(new Intent(this, Main3Activity.class));
-                break;
-            case R.id.button4:
-                startActivity(new Intent(this, Main4Activity.class));
-                break;
-            case R.id.button5:
-                startActivity(new Intent(this, Main5Activity.class));
-                break;
-            case R.id.button6:
-                startActivity(new Intent(this, Main6Activity.class));
-                break;
-            case R.id.button7:
-                startActivity(new Intent(this, Main7Activity.class));
-                break;
+
+        int id = v.getId();
+        for (int i = 0; i < buttonIds.length; i++) {
+            if (id == buttonIds[i]) {
+                startActivity(new Intent(this, activities[i]));
+                return;
+            }
         }
+
     }
 }

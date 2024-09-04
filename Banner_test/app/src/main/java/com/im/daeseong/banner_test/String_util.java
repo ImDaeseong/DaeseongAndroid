@@ -1,7 +1,5 @@
 package com.im.daeseong.banner_test;
 
-import android.util.Log;
-import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -42,9 +40,8 @@ public class String_util {
 
     //대문자 변환
     public static String getUpper(String sInput){
-        //String sResult = sInput.toUpperCase();
-        //return sResult;
-        StringBuffer stringBuffer = new StringBuffer();
+
+        StringBuilder stringBuffer = new StringBuilder();
         if(sInput != null){
 
             for(int i=0;i<sInput.length();i++){
@@ -63,9 +60,8 @@ public class String_util {
 
     //소문자 변화
     public static String getLower(String sInput){
-        //String sResult = sInput.toLowerCase();
-        //return sResult;
-        StringBuffer stringBuffer = new StringBuffer();
+
+        StringBuilder stringBuffer = new StringBuilder();
         if(sInput != null){
 
             for(int i=0;i<sInput.length();i++){
@@ -95,8 +91,8 @@ public class String_util {
     }
 
     //시간 문자형
-    public static String getTime()
-    {
+    public static String getTime() {
+
         String format1 = "yyyy-MM-dd hh:mm:ss";
         String format2 = "yyyyMMddhhmmssSSS";
         String format3 = "yyyy-MM-dd";
@@ -301,7 +297,6 @@ public class String_util {
     }
 
     public static String getReplace(String sInput) {
-
         return sInput.replace(" ", "+");
     }
 
