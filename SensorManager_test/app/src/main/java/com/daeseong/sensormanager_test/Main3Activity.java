@@ -1,7 +1,6 @@
 package com.daeseong.sensormanager_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;

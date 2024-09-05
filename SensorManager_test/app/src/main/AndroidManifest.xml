@@ -12,12 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <service android:name=".ScreenOnOffService" />
+
+        <service android:name=".ScreenOnOffService"  android:exported="true"/>
         <activity android:name=".LockActivity" />
         <activity android:name=".Main4Activity" />
         <activity android:name=".Main3Activity" />
         <activity android:name=".Main2Activity" />
         <activity android:name=".Main1Activity" />
+
         <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -26,6 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
