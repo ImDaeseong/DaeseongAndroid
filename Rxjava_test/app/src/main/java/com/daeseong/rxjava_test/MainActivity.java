@@ -28,19 +28,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.button1:
-                startActivity(new Intent(this, Rxjava1Activity.class));
-                break;
-            case R.id.button2:
-                startActivity(new Intent(this, Rxjava2Activity.class));
-                break;
-            case R.id.button3:
-                startActivity(new Intent(this, Rxjava3Activity.class));
-                break;
-            case R.id.button4:
-                startActivity(new Intent(this, Rxjava4Activity.class));
-                break;
+
+        int nID =  v.getId();
+        if (nID == R.id.button1) {
+            startActivity(new Intent(this, Rxjava1Activity.class));
+        } else if (nID == R.id.button2) {
+            startActivity(new Intent(this, Rxjava2Activity.class));
+        } else if (nID == R.id.button3) {
+            startActivity(new Intent(this, Rxjava3Activity.class));
+        } else if (nID == R.id.button4) {
+            startActivity(new Intent(this, Rxjava4Activity.class));
         }
+
     }
 }
