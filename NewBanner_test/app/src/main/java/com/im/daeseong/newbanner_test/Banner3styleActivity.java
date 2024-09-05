@@ -3,10 +3,7 @@ package com.im.daeseong.newbanner_test;
 import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-
 import com.im.daeseong.newbanner_test.Banner3_style.BannerView;
-
-import java.util.ArrayList;
 
 public class Banner3styleActivity extends AppCompatActivity {
 

@@ -21,11 +21,13 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
+
     private Button button1, button2;
 
     private BroadcastReceiver broadcastReceiver;
     private static double currentLatitude;
-    private static double  currentLongitude;
+    private static double currentLongitude;
+    private IntentFilter intentFilter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 runService();
             }
         });
@@ -45,28 +46,36 @@ public class MainActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 stopService();
             }
         });
 
+        // 브로드캐스트 수신기 설정
         if (broadcastReceiver == null) {
             broadcastReceiver = new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context context, Intent intent) {
+                    currentLatitude = intent.getDoubleExtra("LATITUDE", 0.0);
+                    currentLongitude = intent.getDoubleExtra("LONGITUDE", 0.0);
+                    Log.e(TAG, "onReceive currentLatitude: " + currentLatitude);
+                    Log.e(TAG, "onReceive currentLongitude: " + currentLongitude);
 
-                    currentLatitude = (intent.getDoubleExtra("LATITUDE", 0.0));
-                    currentLongitude = (intent.getDoubleExtra("LONGITUDE", 0.0));
-                    //Log.e(TAG, "onReceive currentLatitude: " + currentLatitude);
-                    //Log.e(TAG, "onReceive currentLongitude: " + currentLongitude);
-
-                    String sMsg = String.format("currentLatitude %f currentLongitude %f", currentLatitude, currentLongitude);
-                    Toast.makeText(MainActivity.this,sMsg, Toast.LENGTH_SHORT).show();
+                    String sMsg = String.format("Latitude: %f, Longitude: %f", currentLatitude, currentLongitude);
+                    Toast.makeText(MainActivity.this, sMsg, Toast.LENGTH_SHORT).show();
                 }
             };
-            registerReceiver(broadcastReceiver, new IntentFilter("LOCATION_UPDATE"));
+
+            intentFilter = new IntentFilter();
+            intentFilter.addAction("LOCATION_UPDATE");
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                registerReceiver(broadcastReceiver, intentFilter, Context.RECEIVER_NOT_EXPORTED);
+            } else {
+                registerReceiver(broadcastReceiver, intentFilter);
+            }
         }
 
+        // 권한 체크
         checkPermission();
     }
 
@@ -74,10 +83,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 
-        //Log.e(TAG, "onDestroy");
-
+        // 서비스 중지 및 브로드캐스트 수신기 해제
         stopService();
-
         if (broadcastReceiver != null) {
             unregisterReceiver(broadcastReceiver);
         }
@@ -87,84 +94,64 @@ public class MainActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        //Log.e(TAG, "onRequestPermissionsResult");
+        if (requestCode == 1) {
 
-        if(requestCode == 1){
-
-            // 네트워크 권한
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-                //Log.e(TAG, "네트워크 권한 없음");
-
-            } else {
-
-                //Log.e(TAG, "네트워크 권한 있음");
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.e(TAG, "Permission granted, starting service");
                 runService();
+            } else {
+                Log.e(TAG, "Permission denied");
+                Toast.makeText(this, "Location permission denied", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    private void runService(){
-
+    private void runService() {
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-
-                //Log.e(TAG, "startForegroundService");
-
                 if (LocationService.serviceIntent == null) {
-
                     Intent intent = new Intent(this, LocationService.class);
                     startForegroundService(intent);
                 } else {
-                    Log.e(TAG, "startForegroundService 이미 실행중");
+                    Log.e(TAG, "Service already running");
                 }
-
             } else {
-
-                //Log.e(TAG, "startService");
-
                 if (LocationService.serviceIntent == null) {
-
                     Intent intent = new Intent(this, LocationService.class);
                     startService(intent);
                 } else {
-                    Log.e(TAG, "startService 이미 실행중");
+                    Log.e(TAG, "Service already running");
                 }
             }
-        }catch (Exception ex){
-            Log.e(TAG, ex.getMessage().toString());
+        } catch (Exception ex) {
+            Log.e(TAG, ex.getMessage());
         }
     }
 
-    private void stopService(){
-        try{
-            Intent intent = new Intent(this, LocationService.class);
-            stopService(intent);
-        }catch (Exception ex){
-            Log.e(TAG, ex.getMessage().toString());
+    private void stopService() {
+        try {
+            if (LocationService.serviceIntent != null) {
+                Intent intent = new Intent(this, LocationService.class);
+                stopService(intent);
+                LocationService.serviceIntent = null;
+            }
+        } catch (Exception ex) {
+            Log.e(TAG, ex.getMessage());
         }
     }
 
-    private void checkPermission(){
+    private void checkPermission() {
 
-        // 네트워크 권한
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.FOREGROUND_SERVICE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-            //Log.e(TAG, "네트워크 권한 없음");
-
-            if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_FINE_LOCATION)){
-
-                //Log.e(TAG, "사용자가 네트워크 권한 취소시 권한 재요청");
-                ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
+                ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.FOREGROUND_SERVICE_LOCATION }, 1);
+            } else {
+                ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.FOREGROUND_SERVICE_LOCATION}, 1);
             }
-            else {
 
-                //Log.e(TAG, "최초로 네트워크 권한 요청 첫실행");
-                ActivityCompat.requestPermissions(this, new String[]  {Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-            }
         } else {
-
-            //Log.e(TAG, "네트워크 권한 있음");
             runService();
         }
     }

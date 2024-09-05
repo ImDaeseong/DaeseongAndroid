@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import com.im.daeseong.newbanner_test.Banner1_style.BannerView;
 
 public class Banner1styleActivity extends AppCompatActivity {

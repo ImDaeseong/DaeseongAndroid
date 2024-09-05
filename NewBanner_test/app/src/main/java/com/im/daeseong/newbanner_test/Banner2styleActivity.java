@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.
 import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.LinearLayout;
-
 import com.im.daeseong.newbanner_test.Banner2_style.BannerView;
 
 public class Banner2styleActivity extends AppCompatActivity {
