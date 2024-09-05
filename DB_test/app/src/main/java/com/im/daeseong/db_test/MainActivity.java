@@ -1,6 +1,5 @@
 package com.im.daeseong.db_test;
 
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;

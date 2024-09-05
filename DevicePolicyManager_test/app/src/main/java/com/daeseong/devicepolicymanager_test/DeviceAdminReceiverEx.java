@@ -4,7 +4,6 @@ import android.app.admin.DeviceAdminReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
 
 public class DeviceAdminReceiverEx extends DeviceAdminReceiver {
