@@ -1,6 +1,5 @@
 package com.daeseong.calendar_test;
 
-
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.text.style.AbsoluteSizeSpan;
@@ -8,11 +7,9 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
-
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.DayViewDecorator;
 import com.prolificinteractive.materialcalendarview.DayViewFacade;
-
 
 public class DayViewDecoratorEx2 implements DayViewDecorator {
 

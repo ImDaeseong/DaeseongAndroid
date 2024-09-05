@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.GridView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 

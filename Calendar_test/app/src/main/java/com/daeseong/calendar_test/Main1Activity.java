@@ -2,7 +2,6 @@ package com.daeseong.calendar_test;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.CalendarView;
