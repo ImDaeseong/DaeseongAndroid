@@ -3,13 +3,10 @@ package com.im.daeseong.http_test.HttpUtil;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
-
 import com.google.gson.Gson;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;

@@ -3,9 +3,7 @@ package com.im.daeseong.http_test.HttpUtil;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-
 import com.im.daeseong.http_test.ImageView2Activity;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;

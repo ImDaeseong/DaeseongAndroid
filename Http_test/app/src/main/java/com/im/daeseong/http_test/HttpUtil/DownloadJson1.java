@@ -2,9 +2,7 @@ package com.im.daeseong.http_test.HttpUtil;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-
 import com.im.daeseong.http_test.ImageTextView2Activity;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;

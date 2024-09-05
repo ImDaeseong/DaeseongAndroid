@@ -1,7 +1,6 @@
 package com.daeseong.imageviewgradient_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 public class Main7Activity extends AppCompatActivity {

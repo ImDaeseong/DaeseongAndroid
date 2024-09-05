@@ -4,9 +4,7 @@ import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-
 import com.im.daeseong.http_test.ImageTextView2Activity;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
