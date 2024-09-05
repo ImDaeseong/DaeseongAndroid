@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.daeseong.fcm_test'
-    compileSdk 33//31
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.daeseong.fcm_test"
-        minSdk 23
-        targetSdk 33//31
+        minSdk 26
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -31,13 +31,11 @@ android {
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.google.firebase:firebase-messaging:23.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 
-    // Firebase Analytics
-    implementation 'com.google.firebase:firebase-analytics:20.0.1'
+    implementation 'com.google.firebase:firebase-messaging:24.0.1'
+    implementation 'com.google.firebase:firebase-analytics:22.1.0'
 }
-apply plugin: 'com.google.gms.google-services'
