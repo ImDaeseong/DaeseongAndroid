@@ -2,7 +2,6 @@ package com.daeseong.horizontalscrollview_flingtest;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -15,9 +14,7 @@ import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 import java.util.ArrayList;
-
 
 public class HorizontalScrollView3Activity extends AppCompatActivity {
 
