@@ -3,8 +3,8 @@ plugins {
 }
 
 android {
-    namespace 'com.daeseong.loading_test'
     compileSdk 34//33
+    //compileSdkVersion 34//33//26
 
     defaultConfig {
         applicationId "com.daeseong.loading_test"
@@ -26,6 +26,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'com.daeseong.loading_test'
 }
 
 dependencies {
