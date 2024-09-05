@@ -1,7 +1,6 @@
 package com.daeseong.spannable_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;

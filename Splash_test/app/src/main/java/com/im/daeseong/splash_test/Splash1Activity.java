@@ -9,9 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-
 import com.im.daeseong.splash_test.util.SharedPreferences_util;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
