@@ -6,7 +6,6 @@ import android.os.Handler;
 import androidx.annotation.NonNull;//import android.support.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import com.im.daeseong.permission_test.Util.PermissionUtil;
 
 public class Permission1Activity extends AppCompatActivity {

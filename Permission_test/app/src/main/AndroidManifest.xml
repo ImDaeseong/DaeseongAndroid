@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.im.daeseong.permission_test">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- 네트워크 연결 상태 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

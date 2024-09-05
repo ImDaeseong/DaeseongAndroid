@@ -6,7 +6,6 @@ import androidx.core.app.ActivityCompat;//import android.support.v4.app.Activity
 import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-
 import com.im.daeseong.permission_test.Util.PermissionUtilA;
 
 public class MainActivity extends AppCompatActivity {

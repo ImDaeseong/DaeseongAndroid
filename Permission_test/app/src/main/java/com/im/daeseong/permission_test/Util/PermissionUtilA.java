@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import androidx.core.app.ActivityCompat;//import android.support.v4.app.ActivityCompat;
 
-
 public class PermissionUtilA {
 
     public static final int RESULT_CODE = 1;
