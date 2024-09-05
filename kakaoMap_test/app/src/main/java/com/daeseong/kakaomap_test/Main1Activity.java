@@ -1,10 +1,8 @@
 package com.daeseong.kakaomap_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
-
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
