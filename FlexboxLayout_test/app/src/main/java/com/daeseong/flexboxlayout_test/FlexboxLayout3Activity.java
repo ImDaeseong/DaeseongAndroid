@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import com.google.android.flexbox.FlexboxLayout;
-
 import java.util.HashMap;
 
 public class FlexboxLayout3Activity extends AppCompatActivity {
