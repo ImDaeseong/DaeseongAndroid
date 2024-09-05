@@ -1,7 +1,6 @@
 package com.daeseong.timepicker_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.TimePickerDialog;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TimePicker;
-
 import java.util.Calendar;
 
 public class Main3Activity extends AppCompatActivity {
