@@ -85,11 +85,17 @@ public class Main5Activity extends AppCompatActivity {
             scanner.process(image)
                     .addOnSuccessListener(barcodes -> {
 
-                        // 바코드 인식 성공
-                        for (Barcode barcode : barcodes) {
-                            String rawValue = barcode.getRawValue();
-                            Log.e(TAG, "Barcode: " + rawValue);
+                        if (!barcodes.isEmpty()) {
+                            // 바코드 인식 성공
+                            for (Barcode barcode : barcodes) {
+                                String sText = barcode.getRawValue();
+                                Log.e(TAG, "Barcode: " + sText);
+                            }
+
+                            // 인식 성공 시 카메라 멈춤
+                            cameraProvider.unbindAll();
                         }
+
                     })
                     .addOnFailureListener(e -> Log.e(TAG, e.getMessage().toString())) // 바코드 인식 실패 시
                     .addOnCompleteListener(task -> imageProxy.close()); // 이미지 프로세싱 완료 후 이미지 닫기
