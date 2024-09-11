@@ -9,6 +9,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import java.util.Map;
 import java.util.Random;
 
 public class FirebaseMessagingServiceEx extends FirebaseMessagingService {
@@ -19,16 +20,20 @@ public class FirebaseMessagingServiceEx extends FirebaseMessagingService {
     public void onMessageReceived(@NonNull RemoteMessage message) {
         super.onMessageReceived(message);
 
+        Log.e(TAG, "onMessageReceived:" + message);
+
         try {
 
-            if (message.getData().size() > 0) {
-                Log.e(TAG, "getData: " + message.getData());
-            }
+            String sTitle = message.getNotification() != null ? message.getNotification().getTitle() : "";
+            String sMessage = message.getNotification() != null ? message.getNotification().getBody() : "";
 
-            if (message.getNotification() != null) {
-                Log.e(TAG, "getTitle:" + message.getNotification().getTitle());
-                Log.e(TAG, "getBody:" + message.getNotification().getBody());
-                sendNotification(message.getNotification().getTitle(), message.getNotification().getBody() );
+            Log.e(TAG, "sTitle:" + sTitle);
+            Log.e(TAG, "sMessage:" + sMessage);
+
+            if (message.getData().isEmpty()) {
+                sendNotification(sTitle, sMessage, null);
+            } else {
+                sendNotification(sTitle, sMessage, message.getData());
             }
 
         } catch (Exception ex) {
@@ -36,7 +41,28 @@ public class FirebaseMessagingServiceEx extends FirebaseMessagingService {
         }
     }
 
-    private void sendNotification(String sTitle, String sMessage) {
+    @Override
+    public void onNewToken(@NonNull String token) {
+        super.onNewToken(token);
+        Log.e(TAG, "onNewToken: " + token);
+    }
+
+    private void sendNotification(String sTitle, String sMessage, Map<String, String> data) {
+
+        if (data != null) {
+
+            Log.e(TAG, "data: " + data.toString());
+
+            String sParam1 = data.get("param1");
+            if (sParam1 != null) {
+                Log.e(TAG, "sParam1:" + sParam1);
+            }
+
+            String sParam2 = data.get("param2");
+            if (sParam2 != null) {
+                Log.e(TAG, "sParam2:" + sParam2);
+            }
+        }
 
         Intent intent = new Intent(this, PushActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
