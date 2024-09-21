@@ -83,7 +83,7 @@ public class Main4Activity extends AppCompatActivity {
 
         @Override
         public void possibleResultPoints(List resultPoints) {
-            // 사용 안 함
+
         }
     };
 

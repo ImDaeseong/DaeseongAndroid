@@ -68,7 +68,7 @@ public class Main5Activity extends AppCompatActivity { //implements ZXingScanner
 
         @Override
         public void possibleResultPoints(List resultPoints) {
-            // 필요시 구현
+
         }
     };
 
