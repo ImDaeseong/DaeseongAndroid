@@ -8,9 +8,7 @@ import androidx.core.app.ActivityCompat;//import android.support.v4.app.Activity
 import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
-
 import com.google.zxing.Result;
-
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class Qr1Activity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
@@ -71,7 +69,7 @@ public class Qr1Activity extends AppCompatActivity implements ZXingScannerView.R
     private boolean checkPermission() {
 
         //마시멜로 이상일 경우만 권한 체크
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
             //권한이 없는 경우 요청
             if(ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED) {
@@ -86,14 +84,14 @@ public class Qr1Activity extends AppCompatActivity implements ZXingScannerView.R
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if(requestCode == 1) {
+        if (requestCode == 1) {
 
-            if(grantResults.length > 0) {
+            if (grantResults.length > 0) {
 
                 boolean result = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                if(!result) {
-                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        if(shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
+                if (!result) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
                             requestPermissions(new String[] {Manifest.permission.CAMERA}, 1);
                         }
                     }

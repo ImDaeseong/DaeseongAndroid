@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
@@ -16,7 +15,6 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
-
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -60,7 +58,8 @@ public class Qr4Activity extends AppCompatActivity implements ZXingScannerView.R
 
         try {
             zXingScannerView.stopCamera();
-        }catch (Exception e){
+        } catch (Exception ex) {
+            ex.getMessage().toString();
         }
     }
 
@@ -70,19 +69,21 @@ public class Qr4Activity extends AppCompatActivity implements ZXingScannerView.R
 
         try {
             zXingScannerView.stopCamera();
-        }catch (Exception e){
+        } catch (Exception ex) {
+            ex.getMessage().toString();
         }
     }
 
     //com.journeyapps.barcodescanner.BarcodeEncoder
     private void displayCode1(String sCode){
         MultiFormatWriter writer = new MultiFormatWriter();
-        try{
+        try {
             BitMatrix bitMatrix = writer.encode(sCode, BarcodeFormat.CODE_128, 300, 100);
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
             imageView1.setImageBitmap(bitmap);
-        }catch (WriterException e){
+        } catch (WriterException ex) {
+            ex.getMessage().toString();
         }
     }
 
@@ -91,7 +92,8 @@ public class Qr4Activity extends AppCompatActivity implements ZXingScannerView.R
         try {
             Bitmap bitmap = encodeBitmap1(sCode, BarcodeFormat.CODE_128, 300, 100);
             imageView2.setImageBitmap(bitmap);
-        } catch (WriterException e) {
+        } catch (WriterException ex) {
+            ex.getMessage().toString();
         }
     }
 
@@ -117,7 +119,6 @@ public class Qr4Activity extends AppCompatActivity implements ZXingScannerView.R
         try {
             result = writer.encode(contentsToEncode, format, nWidht, nHeight, hints);
         } catch (IllegalArgumentException iae) {
-            // Unsupported format
             return null;
         }
 
@@ -135,6 +136,7 @@ public class Qr4Activity extends AppCompatActivity implements ZXingScannerView.R
         bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
         return bitmap;
     }
+
     private String guessAppropriateEncoding(CharSequence contents) {
         for (int i = 0; i < contents.length(); i++) {
             if (contents.charAt(i) > 0xFF) {
@@ -149,7 +151,8 @@ public class Qr4Activity extends AppCompatActivity implements ZXingScannerView.R
         try {
             Bitmap bitmap = encodeBitmap2(sCode);
             imageView3.setImageBitmap(bitmap);
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            ex.getMessage().toString();
         }
     }
 
@@ -170,7 +173,8 @@ public class Qr4Activity extends AppCompatActivity implements ZXingScannerView.R
             Bitmap bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
             bitmap.setPixels(pixels, 0, 300,0, 0, w, h);
             return bitmap;
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            ex.getMessage().toString();
         }
         return null;
     }

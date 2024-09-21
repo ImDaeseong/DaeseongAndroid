@@ -5,13 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;//import android.support.v7.app.
 import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class Qr3Activity extends AppCompatActivity implements ZXingScannerView.ResultHandler{
