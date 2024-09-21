@@ -1,7 +1,6 @@
 package com.daeseong.qrcode_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -33,7 +32,7 @@ public class Main1Activity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Bitmap bitmap = CreateQRrcode("0123456789-qr:코드읽기", 512, 512);
-                if(bitmap != null) {
+                if (bitmap != null) {
                     iv1.setImageBitmap(bitmap);
                 }
             }
@@ -60,7 +59,7 @@ public class Main1Activity extends AppCompatActivity {
                 }
             }
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
             Log.e(TAG, ex.getMessage().toString());
         }
 

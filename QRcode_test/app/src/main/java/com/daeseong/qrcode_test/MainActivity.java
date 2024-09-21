@@ -89,14 +89,14 @@ public class MainActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if(requestCode == 1) {
+        if (requestCode == 1) {
 
-            if(grantResults.length > 0) {
+            if (grantResults.length > 0) {
 
                 boolean result = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                if(!result) {
-                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        if(shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
+                if (!result) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
                             requestPermissions(new String[] {Manifest.permission.CAMERA}, 1);
                         }
                     }

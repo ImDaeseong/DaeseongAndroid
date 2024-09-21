@@ -13,38 +13,82 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
 import com.google.zxing.Result;
-import me.dm7.barcodescanner.core.IViewFinder;
-import me.dm7.barcodescanner.core.ViewFinderView;
-import me.dm7.barcodescanner.zxing.ZXingScannerView;
+//import me.dm7.barcodescanner.core.IViewFinder;
+//import me.dm7.barcodescanner.core.ViewFinderView;
+//import me.dm7.barcodescanner.zxing.ZXingScannerView;
+import com.google.zxing.Result;
+import com.journeyapps.barcodescanner.DecoratedBarcodeView;
+import com.journeyapps.barcodescanner.BarcodeCallback;
+import com.journeyapps.barcodescanner.BarcodeResult;
+import java.util.List;
 
 public class Main4Activity extends AppCompatActivity {
 
     private static final String TAG = Main4Activity.class.getSimpleName();
 
-    private ZXingScannerView zXingScannerView;
-    private ZXingScannerViewResultHandler zXingScannerViewResultHandler;
+    //private ZXingScannerView zXingScannerView;
+    //private ZXingScannerViewResultHandler zXingScannerViewResultHandler;
+    //private ConstraintLayout cL1;
 
-    private ConstraintLayout cL1;
+    private DecoratedBarcodeView barcodeView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
 
+        barcodeView = findViewById(R.id.dv);
+        barcodeView.decodeContinuous(callback);
+
+        /*
         cL1 = findViewById(R.id.cL1);
-
         initScanner();
-
         startScanner();
+        */
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        barcodeView.resume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        barcodeView.pause();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        barcodeView.pause();
 
-        stopScanner();
+        //stopScanner();
     }
 
+    private BarcodeCallback callback = new BarcodeCallback() {
+        @Override
+        public void barcodeResult(BarcodeResult result) {
+
+            if (result.getText() != null) {
+
+                Log.e(TAG, "handleResult - sText : " + result.getText() +
+                        " sBarcodeFormatText: " + result.getBarcodeFormat().toString());
+
+                // 일정 시간 후 미리보기 재개
+                new Handler().postDelayed(() -> barcodeView.resume(), 2000);
+            }
+        }
+
+        @Override
+        public void possibleResultPoints(List resultPoints) {
+            // 사용 안 함
+        }
+    };
+
+
+    /*
     private void initScanner(){
 
         zXingScannerViewResultHandler = new ZXingScannerViewResultHandler();
@@ -135,5 +179,5 @@ public class Main4Activity extends AppCompatActivity {
             canvas.drawText(TRADE_MARK_TEXT, tradeMarkLeft, tradeMarkTop, PAINT);
         }
     }
-
+    */
 }
