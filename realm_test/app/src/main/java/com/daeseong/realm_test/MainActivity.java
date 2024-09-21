@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
 import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity {
@@ -143,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
-        } catch (IOException ex) {
+        } catch (IOException | CsvValidationException ex) {
             ex.printStackTrace();
         }
     }
