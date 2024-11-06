@@ -227,7 +227,7 @@ public class Main6Activity extends AppCompatActivity {
         intentFilter.addAction("com.daeseong.alarm_test.ID");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            registerReceiver(broadcastReceiver, intentFilter, Context.RECEIVER_NOT_EXPORTED);
+            registerReceiver(broadcastReceiver, intentFilter, Context.RECEIVER_EXPORTED);
         } else {
             registerReceiver(broadcastReceiver, intentFilter);
         }

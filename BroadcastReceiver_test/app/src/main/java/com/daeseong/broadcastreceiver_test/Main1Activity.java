@@ -64,7 +64,7 @@ public class Main1Activity extends AppCompatActivity {
         intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            registerReceiver(broadcastReceiver, intentFilter, Context.RECEIVER_NOT_EXPORTED);
+            registerReceiver(broadcastReceiver, intentFilter, Context.RECEIVER_EXPORTED);
         } else {
             registerReceiver(broadcastReceiver, intentFilter);
         }

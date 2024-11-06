@@ -99,7 +99,7 @@ public class MainActivity4 extends AppCompatActivity {
         intentFilter.addAction(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            registerReceiver(broadcastReceiver, intentFilter, Context.RECEIVER_NOT_EXPORTED);
+            registerReceiver(broadcastReceiver, intentFilter, Context.RECEIVER_EXPORTED);
         } else {
             registerReceiver(broadcastReceiver, intentFilter);
         }
