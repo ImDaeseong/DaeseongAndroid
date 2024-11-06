@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         intentFilter.addAction("com.daeseong.sensormanager_test.Front");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            registerReceiver(broadcastReceiver, intentFilter, Context.RECEIVER_NOT_EXPORTED);
+            registerReceiver(broadcastReceiver, intentFilter, Context.RECEIVER_EXPORTED);
         } else {
             registerReceiver(broadcastReceiver, intentFilter);
         }
