@@ -12,14 +12,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BottomSheetDialog_test"
         tools:targetApi="31">
+
         <activity
-            android:name=".Main8Activity"
-            android:theme="@style/PopupTheme"
+            android:name=".Main9Activity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <activity
+            android:name=".Main8Activity"
+            android:exported="false"
+            android:theme="@style/PopupTheme">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
         <activity
             android:name=".Main7Activity"
             android:exported="false">
@@ -27,6 +37,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".Main6Activity"
             android:exported="false">
@@ -34,6 +45,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".Main5Activity"
             android:exported="false">
@@ -41,6 +53,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".Main4Activity"
             android:exported="false">
@@ -48,6 +61,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".Main3Activity"
             android:exported="false">
@@ -55,6 +69,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".Main2Activity"
             android:exported="false">
@@ -62,13 +77,15 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".Main1Activity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-        </activity>
+        </activity
+            >
         <activity
             android:name=".MainActivity"
             android:exported="true">
