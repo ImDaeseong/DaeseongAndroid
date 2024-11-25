@@ -8,6 +8,8 @@ import android.util.Log;
 import androidx.core.content.pm.ShortcutInfoCompat;
 import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.core.graphics.drawable.IconCompat;
+
+import java.util.Collections;
 import java.util.List;
 
 public class ShortCutUtil {
@@ -28,12 +30,14 @@ public class ShortCutUtil {
         String sShortcutId = sPackageName + "_" + sID;
 
         boolean bUpdate = false;
+        ShortcutInfo existingShortcut = null;
 
         // 이미 고정된 바로가기를 확인
         List<ShortcutInfo> pinnedShortcuts = getPinnedShortcuts(context);
         for (ShortcutInfo shortcut : pinnedShortcuts) {
             if (shortcut.getId().equals(sShortcutId)) {
                 bUpdate = true;
+                existingShortcut = shortcut;
                 break;
             }
         }
@@ -41,6 +45,16 @@ public class ShortCutUtil {
         // 이미 존재하는지 여부 체크
         if (bUpdate) {
             Log.e(TAG, "바로가기 이미 존재: " + sShortcutId);
+
+            ShortcutManager shortcutManager = (ShortcutManager) context.getSystemService(ShortcutManager.class);
+            if (!existingShortcut.isEnabled()) {
+                try {
+                    Log.e(TAG, "바로가기가 비활성화된 상태라면 활성화:" + sShortcutId);
+                    List<String> shortcutIds = Collections.singletonList(sShortcutId);
+                    shortcutManager.enableShortcuts(shortcutIds);
+                } catch (Exception ex) {
+                }
+            }
         }
 
         // 실행할 인텐트 생성
@@ -91,4 +105,29 @@ public class ShortCutUtil {
 
         return false;
     }
+
+    //바로가기 비활성화 -보안상의 이유로 앱에서 바탕화면의 바로가기를 직접 삭제하는 것은 제한
+    public static void removePinnedShortcut(Context context, String sID) {
+
+        String shortcutId = context.getPackageName() + "_" + sID;
+
+        ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
+
+        if (isPinnedShortcuts(context, sID)) {
+
+            List<String> shortcutsToRemove = Collections.singletonList(shortcutId);
+
+            try {
+
+                // 바로가기 비활성화
+                if (shortcutManager != null) {
+                    shortcutManager.removeDynamicShortcuts(shortcutsToRemove);
+                    shortcutManager.disableShortcuts(shortcutsToRemove, null);
+                }
+
+            } catch (Exception e) {
+            }
+        }
+    }
+
 }

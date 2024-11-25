@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button2;
     private Button button3;
     private Button button4;
+    private Button button5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,17 +64,23 @@ public class MainActivity extends AppCompatActivity {
                 if ( ShortCutUtil.isPinnedShortcuts(MainActivity.this, "testID123")) {
 
                     Log.e(TAG, "바로가기 이미 존재");
-
                     ShortCutUtil.checkShortCut(MainActivity.this, getPackageName(), "바로가기", "testID123", "전달할 추가 데이터 업데이트");
 
                 } else {
 
                     Log.e(TAG, "바로가기 생성");
-
                     ShortCutUtil.checkShortCut(MainActivity.this, getPackageName(), "바로가기", "testID123", "전달할 추가 데이터");
-
                 }
+            }
+        });
 
+        button5 = (Button)findViewById(R.id.button5);
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //바로가기 비활성화
+                ShortCutUtil.removePinnedShortcut(MainActivity.this, "testID123");
             }
         });
     }
