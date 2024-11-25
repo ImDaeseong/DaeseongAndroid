@@ -74,4 +74,21 @@ public class ShortCutUtil {
         ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
         return shortcutManager != null ? shortcutManager.getPinnedShortcuts() : List.of();
     }
+
+    //바로가기 존재 여부
+    public static boolean isPinnedShortcuts(Context context, String sID) {
+
+        String shortcutId = context.getPackageName() + "_" + sID;
+
+        ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
+
+        List<ShortcutInfo> pinnedShortcuts = (shortcutManager != null) ? shortcutManager.getPinnedShortcuts() : List.of();
+        for (ShortcutInfo shortcut : pinnedShortcuts) {
+            if (shortcut.getId().equals(shortcutId)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

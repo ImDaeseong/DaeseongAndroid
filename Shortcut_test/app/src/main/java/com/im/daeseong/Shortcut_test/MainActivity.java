@@ -60,7 +60,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                ShortCutUtil.checkShortCut(MainActivity.this, getPackageName(), "바로가기", "testID123", "전달할 추가 데이터");
+                if ( ShortCutUtil.isPinnedShortcuts(MainActivity.this, "testID123")) {
+
+                    Log.e(TAG, "바로가기 이미 존재");
+
+                    ShortCutUtil.checkShortCut(MainActivity.this, getPackageName(), "바로가기", "testID123", "전달할 추가 데이터 업데이트");
+
+                } else {
+
+                    Log.e(TAG, "바로가기 생성");
+
+                    ShortCutUtil.checkShortCut(MainActivity.this, getPackageName(), "바로가기", "testID123", "전달할 추가 데이터");
+
+                }
 
             }
         });
