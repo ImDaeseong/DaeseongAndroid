@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button1;
     private Button button2;
     private Button button3;
+    private Button button4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,16 @@ public class MainActivity extends AppCompatActivity {
                 for (ShortcutInfo id : ids) {
                     Log.e(TAG, id.toString());
                 }
+            }
+        });
+
+        button4 = (Button)findViewById(R.id.button4);
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ShortCutUtil.checkShortCut(MainActivity.this, getPackageName(), "바로가기", "testID123", "전달할 추가 데이터");
+
             }
         });
     }

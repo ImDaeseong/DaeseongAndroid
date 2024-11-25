@@ -21,6 +21,7 @@ public class SplashActivity extends AppCompatActivity {
 
         String sPackageName = getIntent().getStringExtra("pkg");
         String sID = getIntent().getStringExtra("userId");
+        String sUserData = getIntent().getStringExtra("userData");
 
         if (sPackageName != null && !sPackageName.isEmpty()) {
             Log.e(TAG, "sPackageName:" + sPackageName);
@@ -30,6 +31,11 @@ public class SplashActivity extends AppCompatActivity {
         if (sID != null && !sID.isEmpty()) {
             Log.e(TAG, "sID:" + sID);
             Toast.makeText(this, sID, Toast.LENGTH_LONG).show();
+        }
+
+        if (sUserData != null && !sUserData.isEmpty()) {
+            Log.e(TAG, "sUserData:" + sUserData);
+            Toast.makeText(this, sUserData, Toast.LENGTH_LONG).show();
         }
 
         init();
