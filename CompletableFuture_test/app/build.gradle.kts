@@ -45,4 +45,6 @@ dependencies {
     implementation (libs.coil)
 
     //okhttp3
-    implementation (libs.okhttp)}
+    implementation (libs.okhttp)
+
+}
